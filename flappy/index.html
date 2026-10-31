@@ -5,9 +5,9 @@ canvas{max-height:100vh;max-width:100vw;touch-action:none}
 #m{position:fixed;top:10px;right:10px;background:#0006;color:#fff;border:0;border-radius:8px;padding:6px 10px;font-size:18px}</style></head><body>
 <canvas id="c" width="400" height="600"></canvas><button id="m">🔊</button>
 <script>
-const c=document.getElementById('c'),x=c.getContext('2d'),W=400,H=600,G=0.45,F=-7.5,PW=62;
-const MODES={easy:{GAP:190,SP:2.2,EVERY:110},hard:{GAP:140,SP:3.3,EVERY:80}};let mode='easy',GAP,SP,EVERY;
-function setMode(m){mode=m;({GAP,SP,EVERY}=MODES[m])}setMode('easy');
+const c=document.getElementById('c'),x=c.getContext('2d'),W=400,H=600,PW=62;let G,F;
+const MODES={easy:{GAP:235,SP:1.8,EVERY:140,G:.32,F:-6.3},hard:{GAP:140,SP:3.3,EVERY:80,G:.45,F:-7.5}};let mode='easy',GAP,SP,EVERY;
+function setMode(m){mode=m;({GAP,SP,EVERY,G,F}=MODES[m])}setMode('easy');
 // punga bark texture
 const pt=document.createElement('canvas');pt.width=PW;pt.height=36;{const q=pt.getContext('2d');q.fillStyle='#2b1d12';q.fillRect(0,0,PW,36);
  for(let r=0;r<2;r++)for(let i=-1;i<4;i++){const cx=i*20+(r?10:0)+6,cy=r*18+9;q.fillStyle=r?'#4a3322':'#5a3e28';q.beginPath();q.moveTo(cx,cy-8);q.lineTo(cx+9,cy);q.lineTo(cx,cy+8);q.lineTo(cx-9,cy);q.closePath();q.fill();q.fillStyle='#1a110a';q.fillRect(cx-1,cy-2,2,4)}
