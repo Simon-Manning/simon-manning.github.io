@@ -22,9 +22,18 @@ function tone(f,d,type='sine',v=.2,f2){if(muted)return;const a=A(),o=a.createOsc
  if(f2)o.frequency.exponentialRampToValueAtTime(f2,a.currentTime+d);g.gain.setValueAtTime(v,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+d);o.connect(g).connect(a.destination);o.start();o.stop(a.currentTime+d)}
 const sFlap=()=>tone(500,.12,'triangle',.15,900),sScore=()=>{tone(880,.1,'square',.08);setTimeout(()=>tone(1320,.15,'square',.08),90)},
  sHit=()=>tone(200,.3,'sawtooth',.2,60),sOver=()=>[523,392,330,262].forEach((f,i)=>setTimeout(()=>tone(f,.3,'triangle',.18),i*180));
-const mel=[392,440,523,587,523,440,392,330,392,440,523,659,587,523,440,523];let mi=0;
-function music(){if(musicT)return;musicT=setInterval(()=>{if(state!=='play'||muted)return;tone(mel[mi%16],.35,'sine',.06);if(mi%4===0)tone(mel[mi%16]/2,.6,'triangle',.05);mi++},260)}
-document.getElementById('m').onclick=e=>{e.stopPropagation();muted=!muted;e.target.textContent=muted?'🔇':'🔊'};
+let amb=null;
+function music(){if(amb)return;const a=A();amb=a.createGain();amb.gain.value=muted?0:1;amb.connect(a.destination);
+ const n=a.createBuffer(1,a.sampleRate*4,a.sampleRate),d=n.getChannelData(0);let l=0;for(let i=0;i<d.length;i++){l=(l+.02*(Math.random()*2-1))/1.02;d[i]=l*3.5}
+ const noise=(fr,q,v)=>{const s=a.createBufferSource();s.buffer=n;s.loop=true;const f=a.createBiquadFilter();f.type='bandpass';f.frequency.value=fr;f.Q.value=q;const g=a.createGain();g.gain.value=v;s.connect(f).connect(g).connect(amb);s.start();return g};
+ const wind=noise(400,.6,.35);noise(2500,.8,.05);
+ setInterval(()=>{wind.gain.setTargetAtTime(.2+Math.random()*.35,a.currentTime,1.5)},2500);
+ const chirp=(f1,f2,d,v,at)=>{const o=a.createOscillator(),g=a.createGain();o.frequency.setValueAtTime(f1,at);o.frequency.exponentialRampToValueAtTime(f2,at+d);g.gain.setValueAtTime(0,at);g.gain.linearRampToValueAtTime(v,at+d*.2);g.gain.exponentialRampToValueAtTime(.001,at+d);o.connect(g).connect(amb);o.start(at);o.stop(at+d+.05)};
+ const bird=()=>{const t0=a.currentTime,base=1800+Math.random()*1800,k=2+Math.floor(Math.random()*4);for(let i=0;i<k;i++)chirp(base*(1+Math.random()*.3),base*(.7+Math.random()*.8),.08+Math.random()*.12,.025,t0+i*.15);setTimeout(bird,800+Math.random()*3500)};
+ const tui=()=>{const t0=a.currentTime;chirp(900,1400,.25,.03,t0);chirp(2400,2200,.1,.02,t0+.3);chirp(600,500,.15,.03,t0+.45);setTimeout(tui,6000+Math.random()*9000)};
+ const kiwiCall=()=>{const t0=a.currentTime,k=6+Math.floor(Math.random()*6);for(let i=0;i<k;i++)chirp(1400,2900,.45,.045,t0+i*.6);setTimeout(kiwiCall,18000+Math.random()*20000)};
+ bird();setTimeout(tui,3000);setTimeout(kiwiCall,5000)}
+document.getElementById('m').onclick=e=>{e.stopPropagation();muted=!muted;if(amb)amb.gain.value=muted?0:1;e.target.textContent=muted?'🔇':'🔊'};
 // ---- game ----
 function reset(){b={x:90,y:H/2,v:0};pipes=[];score=0;t=0;lives=3;inv=0}
 function start(m){setMode(m);best=+localStorage['fk_'+m]||0;state='play';b.v=F;sFlap()}
