@@ -5,9 +5,16 @@ canvas{max-height:100vh;max-width:100vw;touch-action:none}
 #m{position:fixed;top:10px;right:10px;background:#0006;color:#fff;border:0;border-radius:8px;padding:6px 10px;font-size:18px}</style></head><body>
 <canvas id="c" width="400" height="600"></canvas><button id="m">🔊</button>
 <script>
-const c=document.getElementById('c'),x=c.getContext('2d'),W=400,H=600,G=0.45,F=-7.5,GAP=165,PW=62,SP=2.5;
+const c=document.getElementById('c'),x=c.getContext('2d'),W=400,H=600,G=0.45,F=-7.5,PW=62;
+const MODES={easy:{GAP:190,SP:2.2,EVERY:110},hard:{GAP:140,SP:3.3,EVERY:80}};let mode='easy',GAP,SP,EVERY;
+function setMode(m){mode=m;({GAP,SP,EVERY}=MODES[m])}setMode('easy');
+// punga bark texture
+const pt=document.createElement('canvas');pt.width=PW;pt.height=36;{const q=pt.getContext('2d');q.fillStyle='#2b1d12';q.fillRect(0,0,PW,36);
+ for(let r=0;r<2;r++)for(let i=-1;i<4;i++){const cx=i*20+(r?10:0)+6,cy=r*18+9;q.fillStyle=r?'#4a3322':'#5a3e28';q.beginPath();q.moveTo(cx,cy-8);q.lineTo(cx+9,cy);q.lineTo(cx,cy+8);q.lineTo(cx-9,cy);q.closePath();q.fill();q.fillStyle='#1a110a';q.fillRect(cx-1,cy-2,2,4)}
+ q.strokeStyle='#6b4a2f55';for(let i=0;i<14;i++){q.beginPath();const a=Math.random()*PW;q.moveTo(a,0);q.lineTo(a+Math.random()*6-3,36);q.stroke()}}
+const bark=x.createPattern(pt,'repeat');
 const kiwi=new Image();kiwi.src='kiwi.png';const bg=new Image();bg.src='forest.jpg';
-let b,pipes,score,lives,inv,best=+localStorage.fk||0,state='ready',t=0,bx=0;
+let b,pipes,score,lives,inv,best=0,state='ready',t=0,bx=0;
 // ---- sound (Web Audio, all synthesised) ----
 let ac,muted=false,musicT=null;
 function A(){if(!ac)ac=new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();return ac}
@@ -20,18 +27,21 @@ function music(){if(musicT)return;musicT=setInterval(()=>{if(state!=='play'||mut
 document.getElementById('m').onclick=e=>{e.stopPropagation();muted=!muted;e.target.textContent=muted?'🔇':'🔊'};
 // ---- game ----
 function reset(){b={x:90,y:H/2,v:0};pipes=[];score=0;t=0;lives=3;inv=0}
-function flap(){A();music();if(state==='ready')state='play';if(state==='over'){reset();state='ready';return}b.v=F;sFlap()}
-addEventListener('keydown',e=>{if(e.code==='Space'||e.code==='ArrowUp'){e.preventDefault();flap()}});
-c.addEventListener('pointerdown',e=>{e.preventDefault();flap()});
+function start(m){setMode(m);best=+localStorage['fk_'+m]||0;state='play';b.v=F;sFlap()}
+function flap(px){A();music();if(state==='ready'){if(px!==undefined)start(px<W/2?'easy':'hard');return}if(state==='over'){reset();state='ready';return}b.v=F;sFlap()}
+addEventListener('keydown',e=>{if(state==='ready'&&(e.key==='e'||e.key==='h')){A();music();start(e.key==='e'?'easy':'hard');return}if(e.code==='Space'||e.code==='ArrowUp'){e.preventDefault();if(state==='ready'){A();music();start(mode)}else flap()}});
+c.addEventListener('pointerdown',e=>{e.preventDefault();const r=c.getBoundingClientRect();flap((e.clientX-r.left)*W/r.width)});
 function update(){if(state!=='play')return;t++;bx=(bx+SP*.4)%W;if(inv>0)inv--;b.v+=G;b.y+=b.v;
- if(t%95===0)pipes.push({x:W,top:60+Math.random()*(H-GAP-180),passed:false});
+ if(t%EVERY===0)pipes.push({x:W,top:60+Math.random()*(H-GAP-180),passed:false});
  for(const p of pipes){p.x-=SP;if(!p.passed&&p.x+PW<b.x){p.passed=true;score++;sScore()}
   if(b.x+16>p.x&&b.x-16<p.x+PW&&(b.y-14<p.top||b.y+14>p.top+GAP))hit(b.y<p.top+GAP/2?4:-7)}
  pipes=pipes.filter(p=>p.x>-PW);if(b.y>H-74)hit(-8);if(b.y<14){b.y=14;b.v=Math.max(b.v,0)}}
 function hit(v){b.v=v;if(inv>0)return;lives--;inv=70;if(lives<=0)die();else sHit()}
-function die(){state='over';sOver();if(score>best){best=score;localStorage.fk=best}}
-function log(px,y,h,cap){const g=x.createLinearGradient(px,0,px+PW,0);g.addColorStop(0,'#4a3220');g.addColorStop(.5,'#7a5636');g.addColorStop(1,'#3b2716');
- x.fillStyle=g;x.fillRect(px,y,PW,h);x.fillStyle='#4f7d2a';x.fillRect(px-5,cap,PW+10,14);x.fillStyle='#6fa83a';x.fillRect(px-5,cap,PW+10,5)}
+function die(){state='over';sOver();if(score>best){best=score;localStorage['fk_'+mode]=best}}
+function log(px,y,h,cap){x.save();x.translate(px,0);x.fillStyle=bark;x.fillRect(0,y,PW,h);
+ const g=x.createLinearGradient(0,0,PW,0);g.addColorStop(0,'#000a');g.addColorStop(.35,'#0000');g.addColorStop(.7,'#0000');g.addColorStop(1,'#000b');x.fillStyle=g;x.fillRect(0,y,PW,h);
+ x.fillStyle='#c79a6a';x.beginPath();x.ellipse(PW/2,cap+7,PW/2+3,8,0,0,7);x.fill();x.strokeStyle='#7a5636';x.lineWidth=2;
+ for(const rr of[.75,.5,.25]){x.beginPath();x.ellipse(PW/2,cap+7,(PW/2+3)*rr,8*rr,0,0,7);x.stroke()}x.restore()}
 function draw(){if(bg.complete){x.drawImage(bg,-bx,-60,W,711);x.drawImage(bg,W-bx,-60,W,711)}else{x.fillStyle='#2e5a2e';x.fillRect(0,0,W,H)}
  for(const p of pipes){log(p.x,0,p.top,p.top-14);log(p.x,p.top+GAP,H,p.top+GAP)}
  x.fillStyle='#3d5e22';x.fillRect(0,H-60,W,60);x.fillStyle='#5c8a30';x.fillRect(0,H-60,W,8);
@@ -39,7 +49,8 @@ function draw(){if(bg.complete){x.drawImage(bg,-bx,-60,W,711);x.drawImage(bg,W-b
   if(kiwi.complete)x.drawImage(kiwi,-36,-27,72,54);x.restore()}
  x.shadowColor='#000';x.shadowBlur=6;x.font='24px sans-serif';x.textAlign='left';x.fillStyle='#e33';x.fillText('♥'.repeat(Math.max(lives,0)),12,34);
  x.fillStyle='#fff';x.textAlign='center';x.font='bold 44px sans-serif';x.fillText(score,W/2,70);x.font='20px sans-serif';
- if(state==='ready'){x.font='bold 36px sans-serif';x.fillText('Flappy Kiwi',W/2,H/2-40);x.font='20px sans-serif';x.fillText('Tap or press Space to flap',W/2,H/2+80)}
- if(state==='over'){x.font='bold 36px sans-serif';x.fillText('Game over',W/2,H/2-20);x.font='20px sans-serif';x.fillText('Best: '+best+'   Tap to retry',W/2,H/2+20)}x.shadowBlur=0}
+ if(state==='ready'){x.font='bold 36px sans-serif';x.fillText('Flappy Kiwi',W/2,H/2-40);x.font='20px sans-serif';const bt=(bx0,l,col,d)=>{x.fillStyle=col;x.fillRect(bx0,H/2+20,150,60);x.fillStyle='#fff';x.font='bold 24px sans-serif';x.fillText(l,bx0+75,H/2+52);x.font='14px sans-serif';x.fillText(d,bx0+75,H/2+72)};
+ x.shadowBlur=0;bt(35,'Easy','#3f7d2acc','tap left · E');bt(215,'Hard','#9c2f2fcc','tap right · H');x.shadowBlur=6;x.font='18px sans-serif';x.fillText('Then tap or press Space to flap',W/2,H/2+120)}
+ if(state==='over'){x.font='bold 36px sans-serif';x.fillText('Game over',W/2,H/2-20);x.font='20px sans-serif';x.fillText((mode==='easy'?'Easy':'Hard')+' best: '+best+'   Tap to retry',W/2,H/2+20)}x.shadowBlur=0}
 function loop(){update();draw();requestAnimationFrame(loop)}reset();loop();
 </script></body></html>
