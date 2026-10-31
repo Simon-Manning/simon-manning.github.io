@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>Flappy Kiwi</title>
+<style>html,body{margin:0;height:100%;background:#222;display:flex;align-items:center;justify-content:center;font-family:sans-serif}
+canvas{background:#7ec8e3;max-height:100vh;max-width:100vw;touch-action:none}</style></head><body>
+<canvas id="c" width="400" height="600"></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d'),W=400,H=600,G=0.45,F=-7.5,GAP=160,PW=60,SP=2.5;
+let b,pipes,score,best=+localStorage.fk||0,state='ready',t=0;
+function reset(){b={x:90,y:H/2,v:0};pipes=[];score=0;t=0}
+function flap(){if(state==='ready'){state='play'}if(state==='over'){reset();state='ready';return}b.v=F}
+addEventListener('keydown',e=>{if(e.code==='Space'||e.code==='ArrowUp'){e.preventDefault();flap()}});
+c.addEventListener('pointerdown',e=>{e.preventDefault();flap()});
+function update(){if(state!=='play')return;t++;b.v+=G;b.y+=b.v;
+ if(t%95===0)pipes.push({x:W,top:60+Math.random()*(H-GAP-180),passed:false});
+ for(const p of pipes){p.x-=SP;if(!p.passed&&p.x+PW<b.x){p.passed=true;score++}
+  if(b.x+14>p.x&&b.x-14<p.x+PW&&(b.y-14<p.top||b.y+14>p.top+GAP))die()}
+ pipes=pipes.filter(p=>p.x>-PW);if(b.y>H-60||b.y<0)die()}
+function die(){state='over';if(score>best){best=score;localStorage.fk=best}}
+function draw(){x.fillStyle='#7ec8e3';x.fillRect(0,0,W,H);
+ x.fillStyle='#3a9d3a';for(const p of pipes){x.fillRect(p.x,0,PW,p.top);x.fillRect(p.x,p.top+GAP,PW,H)}
+ x.fillStyle='#c9a66b';x.fillRect(0,H-60,W,60);
+ x.save();x.translate(b.x,b.y);x.rotate(Math.min(b.v/12,1));
+ x.fillStyle='#6b4f2a';x.beginPath();x.ellipse(0,0,18,14,0,0,7);x.fill();
+ x.strokeStyle='#e8d8a0';x.lineWidth=3;x.beginPath();x.moveTo(14,0);x.lineTo(32,6);x.stroke();
+ x.fillStyle='#000';x.beginPath();x.arc(8,-4,2,0,7);x.fill();x.restore();
+ x.fillStyle='#fff';x.textAlign='center';x.font='bold 44px sans-serif';x.fillText(score,W/2,70);
+ x.font='20px sans-serif';
+ if(state==='ready')x.fillText('Tap or press Space to flap',W/2,H/2+80);
+ if(state==='over'){x.font='bold 36px sans-serif';x.fillText('Game over',W/2,H/2-20);x.font='20px sans-serif';x.fillText('Best: '+best+'   Tap to retry',W/2,H/2+20)}}
+function loop(){update();draw();requestAnimationFrame(loop)}reset();loop();
+</script></body></html>
