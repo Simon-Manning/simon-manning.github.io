@@ -1,33 +1,45 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <title>Flappy Kiwi</title>
-<style>html,body{margin:0;height:100%;background:#222;display:flex;align-items:center;justify-content:center;font-family:sans-serif}
-canvas{background:#7ec8e3;max-height:100vh;max-width:100vw;touch-action:none}</style></head><body>
-<canvas id="c" width="400" height="600"></canvas>
+<style>html,body{margin:0;height:100%;background:#1c2b1c;display:flex;align-items:center;justify-content:center;font-family:sans-serif}
+canvas{max-height:100vh;max-width:100vw;touch-action:none}
+#m{position:fixed;top:10px;right:10px;background:#0006;color:#fff;border:0;border-radius:8px;padding:6px 10px;font-size:18px}</style></head><body>
+<canvas id="c" width="400" height="600"></canvas><button id="m">🔊</button>
 <script>
-const c=document.getElementById('c'),x=c.getContext('2d'),W=400,H=600,G=0.45,F=-7.5,GAP=160,PW=60,SP=2.5;
-let b,pipes,score,lives,inv,best=+localStorage.fk||0,state='ready',t=0;
+const c=document.getElementById('c'),x=c.getContext('2d'),W=400,H=600,G=0.45,F=-7.5,GAP=165,PW=62,SP=2.5;
+const kiwi=new Image();kiwi.src='kiwi.png';const bg=new Image();bg.src='forest.jpg';
+let b,pipes,score,lives,inv,best=+localStorage.fk||0,state='ready',t=0,bx=0;
+// ---- sound (Web Audio, all synthesised) ----
+let ac,muted=false,musicT=null;
+function A(){if(!ac)ac=new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();return ac}
+function tone(f,d,type='sine',v=.2,f2){if(muted)return;const a=A(),o=a.createOscillator(),g=a.createGain();o.type=type;o.frequency.setValueAtTime(f,a.currentTime);
+ if(f2)o.frequency.exponentialRampToValueAtTime(f2,a.currentTime+d);g.gain.setValueAtTime(v,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+d);o.connect(g).connect(a.destination);o.start();o.stop(a.currentTime+d)}
+const sFlap=()=>tone(500,.12,'triangle',.15,900),sScore=()=>{tone(880,.1,'square',.08);setTimeout(()=>tone(1320,.15,'square',.08),90)},
+ sHit=()=>tone(200,.3,'sawtooth',.2,60),sOver=()=>[523,392,330,262].forEach((f,i)=>setTimeout(()=>tone(f,.3,'triangle',.18),i*180));
+const mel=[392,440,523,587,523,440,392,330,392,440,523,659,587,523,440,523];let mi=0;
+function music(){if(musicT)return;musicT=setInterval(()=>{if(state!=='play'||muted)return;tone(mel[mi%16],.35,'sine',.06);if(mi%4===0)tone(mel[mi%16]/2,.6,'triangle',.05);mi++},260)}
+document.getElementById('m').onclick=e=>{e.stopPropagation();muted=!muted;e.target.textContent=muted?'🔇':'🔊'};
+// ---- game ----
 function reset(){b={x:90,y:H/2,v:0};pipes=[];score=0;t=0;lives=3;inv=0}
-function flap(){if(state==='ready'){state='play'}if(state==='over'){reset();state='ready';return}b.v=F}
+function flap(){A();music();if(state==='ready')state='play';if(state==='over'){reset();state='ready';return}b.v=F;sFlap()}
 addEventListener('keydown',e=>{if(e.code==='Space'||e.code==='ArrowUp'){e.preventDefault();flap()}});
 c.addEventListener('pointerdown',e=>{e.preventDefault();flap()});
-function update(){if(state!=='play')return;t++;if(inv>0)inv--;b.v+=G;b.y+=b.v;
+function update(){if(state!=='play')return;t++;bx=(bx+SP*.4)%W;if(inv>0)inv--;b.v+=G;b.y+=b.v;
  if(t%95===0)pipes.push({x:W,top:60+Math.random()*(H-GAP-180),passed:false});
- for(const p of pipes){p.x-=SP;if(!p.passed&&p.x+PW<b.x){p.passed=true;score++}
-  if(b.x+14>p.x&&b.x-14<p.x+PW&&(b.y-14<p.top||b.y+14>p.top+GAP))hit(b.y<p.top+GAP/2?4:-7)}
+ for(const p of pipes){p.x-=SP;if(!p.passed&&p.x+PW<b.x){p.passed=true;score++;sScore()}
+  if(b.x+16>p.x&&b.x-16<p.x+PW&&(b.y-14<p.top||b.y+14>p.top+GAP))hit(b.y<p.top+GAP/2?4:-7)}
  pipes=pipes.filter(p=>p.x>-PW);if(b.y>H-74)hit(-8);if(b.y<14){b.y=14;b.v=Math.max(b.v,0)}}
-function hit(v){b.v=v;if(inv>0)return;lives--;inv=70;if(lives<=0)die()}
-function die(){state='over';if(score>best){best=score;localStorage.fk=best}}
-function draw(){x.fillStyle='#7ec8e3';x.fillRect(0,0,W,H);
- x.fillStyle='#3a9d3a';for(const p of pipes){x.fillRect(p.x,0,PW,p.top);x.fillRect(p.x,p.top+GAP,PW,H)}
- x.fillStyle='#c9a66b';x.fillRect(0,H-60,W,60);
- if(!(inv>0&&Math.floor(inv/6)%2)){x.save();x.translate(b.x,b.y);x.rotate(Math.min(b.v/12,1));
- x.fillStyle='#6b4f2a';x.beginPath();x.ellipse(0,0,18,14,0,0,7);x.fill();
- x.strokeStyle='#e8d8a0';x.lineWidth=3;x.beginPath();x.moveTo(14,0);x.lineTo(32,6);x.stroke();
- x.fillStyle='#000';x.beginPath();x.arc(8,-4,2,0,7);x.fill();x.restore()}
- x.font='24px sans-serif';x.textAlign='left';x.fillStyle='#e33';x.fillText('♥'.repeat(Math.max(lives,0)),12,32);x.fillStyle='#fff';x.textAlign='center';
- x.fillStyle='#fff';x.textAlign='center';x.font='bold 44px sans-serif';x.fillText(score,W/2,70);
- x.font='20px sans-serif';
- if(state==='ready')x.fillText('Tap or press Space to flap',W/2,H/2+80);
- if(state==='over'){x.font='bold 36px sans-serif';x.fillText('Game over',W/2,H/2-20);x.font='20px sans-serif';x.fillText('Best: '+best+'   Tap to retry',W/2,H/2+20)}}
+function hit(v){b.v=v;if(inv>0)return;lives--;inv=70;if(lives<=0)die();else sHit()}
+function die(){state='over';sOver();if(score>best){best=score;localStorage.fk=best}}
+function log(px,y,h,cap){const g=x.createLinearGradient(px,0,px+PW,0);g.addColorStop(0,'#4a3220');g.addColorStop(.5,'#7a5636');g.addColorStop(1,'#3b2716');
+ x.fillStyle=g;x.fillRect(px,y,PW,h);x.fillStyle='#4f7d2a';x.fillRect(px-5,cap,PW+10,14);x.fillStyle='#6fa83a';x.fillRect(px-5,cap,PW+10,5)}
+function draw(){if(bg.complete){x.drawImage(bg,-bx,-60,W,711);x.drawImage(bg,W-bx,-60,W,711)}else{x.fillStyle='#2e5a2e';x.fillRect(0,0,W,H)}
+ for(const p of pipes){log(p.x,0,p.top,p.top-14);log(p.x,p.top+GAP,H,p.top+GAP)}
+ x.fillStyle='#3d5e22';x.fillRect(0,H-60,W,60);x.fillStyle='#5c8a30';x.fillRect(0,H-60,W,8);
+ if(!(inv>0&&Math.floor(inv/6)%2)){x.save();x.translate(b.x,b.y);x.rotate(Math.max(-.5,Math.min(b.v/12,1)));
+  if(kiwi.complete)x.drawImage(kiwi,-36,-27,72,54);x.restore()}
+ x.shadowColor='#000';x.shadowBlur=6;x.font='24px sans-serif';x.textAlign='left';x.fillStyle='#e33';x.fillText('♥'.repeat(Math.max(lives,0)),12,34);
+ x.fillStyle='#fff';x.textAlign='center';x.font='bold 44px sans-serif';x.fillText(score,W/2,70);x.font='20px sans-serif';
+ if(state==='ready'){x.font='bold 36px sans-serif';x.fillText('Flappy Kiwi',W/2,H/2-40);x.font='20px sans-serif';x.fillText('Tap or press Space to flap',W/2,H/2+80)}
+ if(state==='over'){x.font='bold 36px sans-serif';x.fillText('Game over',W/2,H/2-20);x.font='20px sans-serif';x.fillText('Best: '+best+'   Tap to retry',W/2,H/2+20)}x.shadowBlur=0}
 function loop(){update();draw();requestAnimationFrame(loop)}reset();loop();
 </script></body></html>
