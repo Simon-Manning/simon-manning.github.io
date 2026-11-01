@@ -12,7 +12,7 @@ a{color:#222}.card{background:#fff;border:1px solid #e3e3e3;border-radius:12px;p
 .dial{margin:0 0 12px}.dial label{display:flex;justify-content:space-between;font-size:.85rem}
 .dial label b{font-weight:600;font-variant-numeric:tabular-nums}.dial small{color:#999;font-size:.75rem}
 input[type=range]{width:100%;accent-color:#222}
-.grp{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#aaa;margin:14px 0 6px}
+.grp{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#111;font-weight:700;margin:14px 0 6px;padding-bottom:3px;border-bottom:1px solid #ddd}
 button{border:1px solid #222;background:#222;color:#fff;border-radius:20px;padding:6px 16px;cursor:pointer;font-size:.85rem}
 .charts{display:grid;grid-template-columns:1fr 1fr;gap:16px}.charts .card{height:270px;padding:12px 12px 28px}
 .charts h3{margin:0 0 6px;font-size:.9rem;font-weight:600}
@@ -21,6 +21,7 @@ td,th{padding:6px 8px;border-bottom:1px solid #eee;text-align:right}td:first-chi
 th{color:#999;font-weight:500}.m{color:#999;font-size:.8rem}.tw{overflow-x:auto}
 .xt{background:rgba(123,63,196,.06)}
 .note{font-size:.85rem;color:#555}.warn{background:#fff8e6;border-color:#f0dca0}
+@media(min-width:1200px){main{max-width:1400px}.grid.main{grid-template-columns:600px 1fr}.dcols{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}}
 @media(max-width:820px){.grid{grid-template-columns:1fr}.dials{position:static;max-height:none}.charts{grid-template-columns:1fr}}
 </style></head><body><main>
 <p class="m"><a href="../">← Simon Manning</a></p>
@@ -28,8 +29,8 @@ th{color:#999;font-weight:500}.m{color:#999;font-size:.8rem}.tw{overflow-x:auto}
 <p class="sub">An interactive reconstruction of Shaun Maguire's (Sequoia Capital) bottom-up SpaceX model, Q1'26 to Q4'28, which I have extended to 2033. It covers Starlink, then terrestrial compute (SpaceX Super Intelligence), then orbital compute. Solid lines are reported actuals (Q1 to Q3 2026). Dashed lines are projections. Figures in $ millions unless noted.</p>
 <div class="card warn note"><b>Disclaimer:</b> this is my own independent reconstruction of figures Shaun Maguire published on X. It is not his spreadsheet, Sequoia did not endorse it, and it is <b>not investment advice</b>. Maguire notes that Sequoia is a major SpaceX shareholder. The valuation dial and everything from 2029 to 2033 are my own assumptions and are not part of his model.</div>
 
-<div class="grid" style="margin-top:20px">
-<div class="card dials" id="dials"><div style="display:flex;justify-content:space-between;align-items:center"><b>Dials</b><button id="reset">Reset to Maguire</button></div></div>
+<div class="grid main" style="margin-top:20px">
+<div class="card dials" id="dials"><div style="display:flex;justify-content:space-between;align-items:center"><b>Dials</b><button id="reset">Reset to Maguire</button></div><div class="dcols"><div id="dcA"></div><div id="dcB"></div></div></div>
 <div>
 <div class="charts">
 <div class="card"><h3>Total revenue by segment</h3><canvas id="c1"></canvas></div>
@@ -139,7 +140,7 @@ function addDial(el,d){if(d.length==1){el.insertAdjacentHTML('beforeend',`<div c
 const[k,l,dv,mn,mx,st,u]=d;def[k]=dv;
 el.insertAdjacentHTML('beforeend',u=="bool"?`<div class="dial"><label><span>${l}</span><input type="checkbox" id="${k}"></label></div>`:
 `<div class="dial"><label><span>${l}</span><b id="${k}v"></b></label><input type="range" id="${k}" min="${mn}" max="${mx}" step="${st}"></div>`);}
-D.forEach(d=>addDial(box,d));SD.forEach(d=>addDial(sbox,d));const ALL=D.concat(SD);
+{let tgt=document.getElementById('dcA');D.forEach(d=>{if(d.length==1&&/^2029/.test(d[0]))tgt=document.getElementById('dcB');addDial(tgt,d)});}SD.forEach(d=>addDial(sbox,d));const ALL=D.concat(SD);
 function setDefaults(){for(const k in def){const e=document.getElementById(k);if(e.type=="checkbox")e.checked=!!def[k];else e.value=def[k]}}
 const sum=a=>a.reduce((x,y)=>x+y,0),fy=(a,y)=>sum(a.slice(y*4,y*4+4));
 function readDials(){for(const k in def){const e=document.getElementById(k);v[k]=e.type=="checkbox"?(e.checked?1:0):+e.value;
