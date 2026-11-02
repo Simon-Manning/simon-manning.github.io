@@ -147,11 +147,15 @@ function render(){const M=model();
 function slider(box,id,lab,v,mn,mx,st,hint,store){box.insertAdjacentHTML('beforeend',`<div class="dial"><label for="i_${id}"><span>${lab}</span><b id="o_${id}"></b></label><input type="range" id="i_${id}" min="${mn}" max="${mx}" step="${st}" value="${v}">${hint?`<small>${hint}</small>`:''}</div>`);
  document.getElementById('i_'+id).addEventListener('input',e=>{store[id.replace(/^e_/,'')]=+e.target.value;render()})}
 function buildControls(){const T=D.terms_of_trade,TS=T.series,tL=last(TS['Goods terms of trade']),tQ=last(TS['Quarterly % change']),TA=TS['Annual % change'],tY=last(TA),tY2=TA[TA.length-2];
- // ToT default: average of the y/y % changes of the latest two quarters, rounded to the 0.5 step and clamped to the slider range.
- const tAvg=(tY[1]+tY2[1])/2,totDef=Math.min(8,Math.max(-8,Math.round(tAvg/0.5)*0.5));
+ // ToT default (fuel-normalised): petroleum import prices (LL1) reset to their 1-year average via the fuel weight w implied by
+ // I91 = w·LL1 + (1−w)·MH1, reverting over 3 years, plus the 5-year geometric trend of ex-fuel ToT (SEA1E91/MH1).
+ const sv=k=>TS[k].map(p=>p[1]),XP=sv('Export prices (SEA1E91)'),IP=sv('Import prices (SIA1I91)'),MH=sv('Import prices ex fuels (SIA1MH1)'),LL=sv('Petroleum import prices (SIA1LL1)'),n=XP.length-1;
+ const w=(IP[n]-MH[n])/(LL[n]-MH[n]),LLa=LL.slice(-4).reduce((a,b)=>a+b)/4,In=IP[n]-w*(LL[n]-LLa),Tn=XP[n]/In*1000,Ta=tL[1];
+ const g=Math.pow((XP[n]/MH[n])/(XP[n-20]/MH[n-20]),1/5)-1,tF=(Math.pow((Tn/Ta)*Math.pow(1+g,3),1/3)-1)*100;
+ const totDef=Math.min(8,Math.max(-8,Math.round(tF/0.5)*0.5));
  const qn=p=>['Mar','Jun','Sep','Dec'][Math.floor((+p.slice(5,7)-1)/3)]+' '+p.slice(0,4)+' qtr';
  const rd=(([y,m,d])=>+d+' '+'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ')[m-1]+' '+y)(T.release_date.split('-'));
- const totNote=`default = 2-quarter average of goods ToT annual changes (${qn(tY2[0])} ${sg(tY2[1])}% y/y, ${qn(tY[0])} ${sg(tY[1])}% y/y → ${sg(tAvg,2)}%), rounded to the 0.5 step and clamped to ±8.<br><b>Latest goods ToT: ${qn(tL[0])} ${fmt(tL[1])}, ${sg(tQ[1])}% q/q, ${sg(tY[1])}% y/y</b> (provisional, <a href="${T.release_url}">Stats NZ</a>, released ${rd})`;
+ const totNote=`default = fuel-normalised: petroleum import prices at their 1-year average, reverting over 3 years, plus the 5-year ex-fuel ToT trend (${sg(g*100,1)}%/yr) → ${sg(tF,2)}%/yr, rounded to the 0.5 step and clamped to ±8.<br><b>Latest goods ToT: ${qn(tL[0])} ${fmt(tL[1])}, ${sg(tQ[1])}% q/q</b> (provisional, <a href="${T.release_url}">Stats NZ</a>, released ${rd})`;
  const dyn={mig:Math.round(last(D.migration.series['Net migration (12 months)'])[1]/2500)*2500,ocr:B.ocr,tot:totDef},dynNote={tot:totNote};
  const box=document.getElementById('drv');
  for(const d of DRV){const v=d[2]==null?dyn[d[0]]:d[2];DEF[d[0]]=V[d[0]]=v;slider(box,d[0],d[1],v,d[3],d[4],d[5],d[8]||dynNote[d[0]]||'default = latest published value',V)}

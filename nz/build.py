@@ -160,7 +160,11 @@ def build_tot():
           source='Stats NZ, Overseas trade indexes: goods terms of trade, all countries (OTPQ.STTZZ5); q/q % (OTPQ.STTZZ5PC)',
           **rel, series={'Goods terms of trade': trim(series(rows, 'OTPQ.STTZZ5')),
                          'Quarterly % change': trim(series(rows, 'OTPQ.STTZZ5PC')),
-                         'Annual % change': trim(yoy(series(rows, 'OTPQ.STTZZ5')))}))
+                         'Annual % change': trim(yoy(series(rows, 'OTPQ.STTZZ5'))),
+                         'Export prices (SEA1E91)': trim(series(rows, 'OTPQ.SEA1E91')),
+                         'Import prices (SIA1I91)': trim(series(rows, 'OTPQ.SIA1I91')),
+                         'Import prices ex fuels (SIA1MH1)': trim(series(rows, 'OTPQ.SIA1MH1')),
+                         'Petroleum import prices (SIA1LL1)': trim(series(rows, 'OTPQ.SIA1LL1'))}))
 
 
 def build_gdp():
