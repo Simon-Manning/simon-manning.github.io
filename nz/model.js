@@ -46,6 +46,7 @@ const EL=[
 ["fxT","NZD TWI %, per 1% terms-of-trade change",0.5,0,1.5,0.05,"Assumption (as above).","low"],
 ["fxC","NZD TWI %/yr, per 1pp current account below its long-run level",0.5,0,2,0.1,"Assumption: wider deficits weaken the NZD.","low"],
 ["pt","Import-price pass-through from the NZD",0.7,0,1,0.05,"Assumption (partial pass-through within a year).","low"],
+["rho","CPI persistence (weight on last year's inflation)",0.75,0,0.95,0.05,"Assumption. The RBNZ's Monetary Policy Statement, September 2026 (finalised 2 September 2026), (Table 6.1) projects annual CPI of 2.4% in Sep 2027 and 2.0% in Sep 2028 and Sep 2029. The actual figure for Sep 2026 was 3.7%. At 0.75 the model gives about 3.2% (2027) and 2.8% (2028), slower than the RBNZ path, which rho ≈ 0.5 roughly reproduces (2.6%, 2.1%). The default leans towards slower disinflation than the RBNZ expects.","low"],
 ["phi","CPI pp per 1pp unemployment below 4.5%",0.3,0,1,0.05,"Assumption (Phillips curve; the 4.5% level is my assumption, not an RBNZ figure).","low"],
 ["om","Wage growth pp per 1pp unemployment above 4.5%",0.5,0,1.5,0.05,"Assumption (wage Phillips curve). Note that 2015–26 real wages rose with population growth (+1.08 slope, R² 0.41), not against it.","low"],
 ["hh","People per additional dwelling",2.5,1.5,6,0.1,"Published: "+AN13+" (NZ has about 2.5 people per household; it found one new house per about six migrants in the short run).","medium"]];
@@ -82,7 +83,7 @@ function model(){const K=6,o=[];let s={pop:B.pop[1],debt:B.debt,u:B.u,ca:B.ca,oc
   const du=E.okun*(g-gp);const u=Math.max(2,s.u+du);     // unemployment
   const twi=E.fxR*(V.ocr-s.ocrPrev)+E.fxT*V.tot+E.fxC*(ca-E.caS); // NZD TWI % change
   const imp=2-E.pt*twi;                                  // import prices (2% foreign inflation)
-  const cpi=0.5*s.cpi+0.5*(2+E.mImp*(imp-2)+E.phi*(ustar-u)); // CPI (half persistence)
+  const cpi=E.rho*s.cpi+(1-E.rho)*(2+E.mImp*(imp-2)+E.phi*(ustar-u)); // CPI (persistence rho)
   const w=2+lp-E.om*(u-ustar);const rw=w-cpi;            // wages, real wages
   const ng=g+cpi;const debt=s.debt*(1+c/100)/(1+ng/100);
   const r={k,mr,pg,lp,gp,h,c,exD,X,g,gpc:g-pg,ca,du,u,twi,imp,cpi,w,rw,ng,debt,ddebt:debt-s.debt,pop:s.pop*(1+pg/100),dwell:s.pop*1e6*pg/100/E.hh};
@@ -92,14 +93,21 @@ function model(){const K=6,o=[];let s={pop:B.pop[1],debt:B.debt,u:B.u,ca:B.ca,oc
 // ---------- Charts ----------
 const shade={id:'shade',beforeDraw(ch){const s=ch.options.plugins.shade;if(!s)return;const{ctx,chartArea:a,scales:{x}}=ch;const x0=Math.max(a.left,x.getPixelForValue(s.from));ctx.save();ctx.fillStyle='rgba(123,63,196,.07)';ctx.fillRect(x0,a.top,a.right-x0,a.bottom-a.top);ctx.restore()}};
 Chart.register(shade);
-function ds(label,data,color,proj,extra={}){return Object.assign({label,data,borderColor:color,backgroundColor:color,borderWidth:proj?1.8:2,pointRadius:proj?2:0,borderDash:proj?[6,4]:[],tension:0,spanGaps:true},extra)}
+function ds(label,data,color,proj,extra={}){return Object.assign({label,data,borderColor:color,backgroundColor:color,borderWidth:proj?1.8:2,pointRadius:proj?(c=>c.raw&&c.raw.a?2:0):0,borderDash:proj?[6,4]:[],tension:0,spanGaps:true},extra)}
 const CH={};
 function mk(id,yLab,y2){const c=new Chart(document.getElementById(id),{type:'line',data:{datasets:[]},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false,axis:'x'},
  plugins:{legend:{labels:{boxWidth:12,font:{size:10}}},shade:{from:2100},tooltip:{callbacks:{label:i=>i.dataset.label+': '+fmt(i.parsed.y,Math.abs(i.parsed.y)>=100?0:2)}}},
  scales:Object.assign({x:{type:'linear',min:2015,max:END,ticks:{stepSize:1,callback:v=>Number.isInteger(v)&&v<2031&&(v%2==1)?"'"+String(v).slice(2):'',font:{size:10},maxRotation:0,autoSkip:false},grid:{color:'#f0f0f0'}},y:{title:{display:!!yLab,text:yLab,font:{size:10}},ticks:{font:{size:10}},grid:{color:'#f0f0f0'}}},y2?{y2:{position:'right',title:{display:true,text:y2,font:{size:10}},ticks:{font:{size:10}},grid:{display:false}}}:{})}});CH[id]=c}
 // projection helpers: rate path (model value each year) and level path (compound from last datum)
-function pr(s,M,f){const x0=t(last(s)[0]);const o=[{x:x0,y:last(s)[1]}];M.forEach(r=>{if(x0+r.k<=END+0.01)o.push({x:x0+r.k,y:f(r)})});return o}
-function pl(s,M,f){const x0=t(last(s)[0]);let v=last(s)[1];const o=[{x:x0,y:v}];M.forEach(r=>{v*=1+f(r)/100;if(x0+r.k<=END+0.01)o.push({x:x0+r.k,y:v})});return o}
+// Smooth bridge: cubic Hermite through the latest actual and the annual model points, sampled quarterly.
+// Start tangent blends the recent historical slope with the first projected step, so there is no sharp vertex at the join.
+function hslope(s){const n=s.length;if(n<3)return 0;const a=s[n-1],b=s[n-3];const dt=t(a[0])-t(b[0]);return dt>0?(a[1]-b[1])/dt:0}
+function smooth(P,m0){if(P.length<2)return P;const n=P.length,m=P.map((p,i)=>i==0?m0:i==n-1?(P[i].y-P[i-1].y)/(P[i].x-P[i-1].x):(P[i+1].y-P[i-1].y)/(P[i+1].x-P[i-1].x));
+ const o=[{x:P[0].x,y:P[0].y}];for(let i=0;i<n-1;i++){const h=P[i+1].x-P[i].x;for(let q=1;q<=4;q++){const u=q/4,h00=2*u**3-3*u*u+1,h10=u**3-2*u*u+u,h01=-2*u**3+3*u*u,h11=u**3-u*u;
+  o.push({x:P[i].x+u*h,y:h00*P[i].y+h10*h*m[i]+h01*P[i+1].y+h11*h*m[i+1],a:q==4})}}return o}
+function bridge(s,P){const seg=P.length>1?(P[1].y-P[0].y)/(P[1].x-P[0].x):0;return smooth(P,0.5*hslope(s)+0.5*seg)}
+function pr(s,M,f){const x0=t(last(s)[0]);const o=[{x:x0,y:last(s)[1]}];M.forEach(r=>{if(x0+r.k<=END+0.01)o.push({x:x0+r.k,y:f(r)})});return bridge(s,o)}
+function pl(s,M,f){const x0=t(last(s)[0]);let v=last(s)[1];const o=[{x:x0,y:v}];M.forEach(r=>{v*=1+f(r)/100;if(x0+r.k<=END+0.01)o.push({x:x0+r.k,y:v})});return bridge(s,o)}
 function cite(d){const r=d.release_date?new Date(d.release_date+'T00:00').toLocaleDateString('en-NZ',{day:'numeric',month:'short',year:'numeric'}):'n/a';
  let s=`Source: ${d.source}. Release: <a href="${d.release_url}">${d.release}</a>, ${r}`;
  if(d.release2){const r2=new Date(d.release2.release_date+'T00:00').toLocaleDateString('en-NZ',{day:'numeric',month:'short',year:'numeric'});s+=`; <a href="${d.release2.release_url}">${d.release2.release}</a>, ${r2}`}
@@ -148,7 +156,7 @@ function buildControls(){const dyn={mig:Math.round(last(D.migration.series['Net 
 House prices h = h0 + eHm·(m − 0.9) + eHo·(OCR − 3). Mortgage credit c = c0 + cH·h + cO·OCR + cP·(pg − 1.4). Excess borrowing = (c − baseline nominal income growth [pg + 0.8 + CPI₋₁]) × debt/GDP.<br>
 Demand impulse X = lam·excess borrowing + psi·(pg − 1.4) + 0.1·ToT + eY·(lp − 0.8). Investment impulse XI = AI investment − 3.8 (year 1). GDP growth = potential + (1 − mImp)·X + (1 − mInv)·XI.<br>
 Current account CA = CA₋₁ + caR·(caS − CA₋₁) − mImp·X − mInv·XI + caT·ToT. Unemployment Δu = okun·(GDP − potential).<br>
-TWI % = fxR·ΔOCR + fxT·ToT + fxC·(CA − caS). Import prices = 2 − pt·TWI%. CPI = ½·CPI₋₁ + ½·(2 + mImp·(import prices − 2) + phi·(4.5 − u)).<br>
+TWI % = fxR·ΔOCR + fxT·ToT + fxC·(CA − caS). Import prices = 2 − pt·TWI%. CPI = rho·CPI₋₁ + (1 − rho)·(2 + mImp·(import prices − 2) + phi·(4.5 − u)). Projection lines are drawn as a smooth cubic (Hermite) bridge from the latest actual through the annual model points, sampled quarterly.<br>
 Wages = 2 + lp − om·(u − 4.5). Real wages = wages − CPI. Debt/GDP grows by (1 + c)/(1 + nominal GDP growth).</p>`}
 
 function snapshot(){const r=[];const L=(k,s)=>last(D[k].series[s]);const fx=D.fx.latest_daily;const dh=last(debtHist());
