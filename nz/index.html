@@ -50,7 +50,7 @@ details.assm summary{cursor:pointer;font-weight:600;font-size:.88rem;margin:6px 
 details.box{background:#fff;border:1px solid #e3e3e3;border-radius:12px;padding:10px 16px;margin-top:14px}details.box>summary{cursor:pointer;font-weight:600;font-size:.9rem}
 #adjm td,#adjm th{padding:4px 6px}
 .lay{margin-top:10px}.lay .side{margin-bottom:14px}.tag{margin:0}
-@media(min-width:1100px){main{max-width:none;padding:10px 16px 40px}
+@media(min-width:1100px){main{max-width:none;width:80vw;margin:0 auto;padding:10px 0 40px}
  main>p.m:first-child{float:right;margin:4px 0 0}h1{font-size:1.25rem;margin:0}
  .lay{display:grid;grid-template-columns:280px minmax(0,1fr);gap:14px;align-items:start}
  .lay .side{position:sticky;top:10px;height:calc(100vh - 20px);overflow:auto;margin:0;padding:14px}
@@ -59,6 +59,9 @@ details.box{background:#fff;border:1px solid #e3e3e3;border-radius:12px;padding:
  .charts .card{padding:8px 10px}.charts h3{font-size:.82rem;margin:0 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
  .cw{height:calc(50vh - 105px);min-height:200px}
  .charts .cite{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;font-size:.68rem}}
+#asm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 20px}
+@media(max-width:1000px){#asm{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){#asm{grid-template-columns:minmax(0,1fr)}}
 </style></head><body><main>
 <p class="m"><a href="../">← Simon Manning</a></p>
 <h1>NZ Economy Explorer</h1>
