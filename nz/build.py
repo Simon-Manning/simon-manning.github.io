@@ -157,9 +157,13 @@ def build_tot():
 def build_gdp():
     rows, rel = stats_csv(r'^gross-domestic-product-.*-quarter\.csv$')
     s = trim(series(rows, 'SNEQ.SG09RSC00B01NZ', START - 1))
+    g = trim(series(rows, 'SNEQ.SG01RSC00B01', START - 1))  # real GDP, $m s.a.
+    pc = dict(s)
+    nom = trim(series(rows, 'SNEA.SG09NAC00B15NZJ', START - 1))  # nominal GDP per capita, rolling annual $
+    pop = [[p, round(v * 1e6 / pc[p] / 1e6, 4)] for p, v in g if p in pc]  # implied population, millions
     write('gdp_per_capita', dict(title='Real GDP per capita (production, chain-volume, seasonally adjusted, quarterly NZ$)', unit='NZ$ (2009/10 prices)', freq='quarterly',
-          source='Stats NZ, GDP: per capita chain-volume seasonally adjusted (SNEQ.SG09RSC00B01NZ)', **rel,
-          series={'Real GDP per capita': s, 'q/q % change': [[s[i][0], round((s[i][1]/s[i-1][1]-1)*100, 2)] for i in range(1, len(s))]}))
+          source='Stats NZ, GDP: per capita chain-volume seasonally adjusted (SNEQ.SG09RSC00B01NZ); total real GDP production s.a. (SNEQ.SG01RSC00B01); nominal GDP(E) per capita, rolling annual (SNEA.SG09NAC00B15NZJ). Population = GDP / GDP per capita (implied).', **rel,
+          series={'Real GDP per capita': s, 'Real GDP ($m, quarterly)': g, 'Implied population (m)': pop, 'Nominal GDP per capita, year ended ($)': nom, 'q/q % change': [[s[i][0], round((s[i][1]/s[i-1][1]-1)*100, 2)] for i in range(1, len(s))]}))
 
 
 def build_migration():
@@ -180,12 +184,15 @@ def build_migration():
 RBNZ_PAGES = {
     'b1': 'https://www.rbnz.govt.nz/statistics/series/exchange-and-interest-rates/exchange-rates-and-the-trade-weighted-index',
     'b20': 'https://www.rbnz.govt.nz/statistics/series/exchange-and-interest-rates/new-residential-mortgage-standard-interest-rates',
+    'b2': 'https://www.rbnz.govt.nz/statistics/series/exchange-and-interest-rates/wholesale-interest-rates',
+    'c5': 'https://www.rbnz.govt.nz/statistics/series/lending-and-monetary/registered-banks-and-non-bank-lending-institutions-sector-lending',
+    'm10': 'https://www.rbnz.govt.nz/statistics/series/economic-indicators/housing',
 }
 def rbnz_download():
     """RBNZ's site rejects scripted HTTP clients; fetch via a real browser session."""
     import asyncio
     from playwright.async_api import async_playwright
-    want = {'hb1-monthly.xlsx', 'hb1-daily.xlsx', 'hb20.xlsx'}
+    want = {'hb1-monthly.xlsx', 'hb1-daily.xlsx', 'hb20.xlsx', 'hb2-monthly-close.xlsx', 'hb2-daily-close-1985-2017.xlsx', 'hc5.xlsx', 'hm10.xlsx'}
     got = {}
     async def run():
         async with async_playwright() as p:
@@ -253,6 +260,37 @@ def build_rbnz():
           source='RBNZ statistics B20: floating (MTGE.MBI.F), 1-year fixed (MTGE.MBI.T09); carded standard rates, excl. specials',
           release='RBNZ B20 New residential mortgage standard interest rates', release_url=u20, release_date=pub, file_url=l20,
           series={'Floating': fl, '1-year fixed': f1}))
+    # OCR, housing credit, house prices
+    def cols(name, ids):
+        p, l, u = got[name]; rows, pub = xlsx_rows(p); ci = {v: i for i, v in enumerate(rows[4])}
+        out = {k: [] for k in ids}
+        for r in rows[5:]:
+            if isinstance(r[0], datetime.datetime) and r[0].year >= START - 1:
+                for k in ids:
+                    if r[ci[k]] is not None: out[k].append([r[0].strftime('%Y-%m'), r[ci[k]]])
+        return out, pub, l, u
+    o, pub, l, u = cols('hb2-monthly-close.xlsx', ['INM.MP1.N.nae'])
+    ocr = trim(o['INM.MP1.N.nae'])
+    if 'hb2-daily-close-1985-2017.xlsx' in got:  # monthly file starts 2018; month-end OCR from the historical daily file
+        rows, _ = xlsx_rows(got['hb2-daily-close-1985-2017.xlsx'][0])
+        ci = [i for i, v in enumerate(rows[4]) if str(v).startswith('INM.DP1')][0]
+        me = {}
+        for r in rows[5:]:
+            if isinstance(r[0], datetime.datetime) and r[0].year >= START and r[ci] is not None: me[r[0].strftime('%Y-%m')] = r[ci]
+        have = {p for p, _ in ocr}
+        ocr = sorted([[p, v] for p, v in me.items() if p not in have] + ocr)
+    write('ocr', dict(title='Official Cash Rate (month end)', unit='% p.a.', freq='monthly', source='RBNZ statistics B2: Official Cash Rate (INM.MP1.N.nae)',
+          release='RBNZ B2 Wholesale interest rates', release_url=u, release_date=pub, file_url=l, series={'OCR': ocr}))
+    o, pub, l, u = cols('hc5.xlsx', ['CRDS.MALP1', 'CRDS.MALP1.ay'])
+    write('housing_credit', dict(title='Housing lending by banks and NBLIs (household mortgage debt)', unit='NZ$ billion / annual %', freq='monthly',
+          source='RBNZ statistics C5 Sector lending: housing lending total (CRDS.MALP1, $m) and break-adjusted annual growth (CRDS.MALP1.ay)',
+          release='RBNZ C5 Sector lending (registered banks and NBLIs)', release_url=u, release_date=pub, file_url=l,
+          series={'Housing lending ($b)': trim([[p, round(v / 1000, 2)] for p, v in o['CRDS.MALP1']]), 'Annual growth (%)': trim(o['CRDS.MALP1.ay'])}))
+    o, pub, l, u = cols('hm10.xlsx', ['HPI.Q.H01T0.ia'])
+    h = o['HPI.Q.H01T0.ia']
+    write('house_prices', dict(title='House price index (CoreLogic, via RBNZ M10)', unit='index', freq='quarterly',
+          source='RBNZ statistics M10 Housing: house price index (HPI.Q.H01T0.ia), source CoreLogic', release='RBNZ M10 Housing',
+          release_url=u, release_date=pub, file_url=l, series={'House price index': trim(h), 'Annual % change': trim(yoy(h))}))
 
 
 # ---------------- Immigration NZ ----------------
@@ -300,7 +338,7 @@ def build_visas():
 
 
 STEPS = [('migration', build_migration), ('wages+unemployment', build_wages), ('bop', build_bop), ('terms_of_trade', build_tot),
-         ('gdp_per_capita', build_gdp), ('rbnz fx+mortgage', build_rbnz), ('work_visas', build_visas)]
+         ('gdp_per_capita', build_gdp), ('rbnz', build_rbnz), ('work_visas', build_visas)]
 
 if __name__ == '__main__':
     os.makedirs(OUT, exist_ok=True)
