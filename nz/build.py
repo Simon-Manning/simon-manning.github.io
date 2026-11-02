@@ -128,9 +128,17 @@ def build_wages():
     cpi, rel_c = build_cpi()
     cmap = dict(cpi)
     real = [[p, round(v - cmap[p], 2)] for p, v in qes if p in cmap]
+    # Latest real wage uses the latest CPI (the model baseline), even when CPI is a quarter ahead of QES.
+    real_note = None
+    if qes and cpi and cpi[-1][0] > qes[-1][0]:
+        import calendar
+        mq = lambda per: calendar.month_abbr[int(per[5:7])]
+        real = [r for r in real if r[0] != qes[-1][0]] + [[qes[-1][0], round(qes[-1][1] - cpi[-1][1], 2)]]
+        real_note = (f'{mq(qes[-1][0])}-qtr QES less {mq(cpi[-1][0])}-qtr CPI '
+                     f'({qes[-1][1]:.2f} - {cpi[-1][1]:.2f}), matching the CPI the model starts from')
     write('wages', dict(title='Wage growth vs CPI inflation (annual % change)', unit='%', freq='quarterly',
           source='Stats NZ: Labour Cost Index all salary & wage rates, annual % (LCIQ.SG53Z9AC), QES average ordinary-time hourly earnings (QEMQ.SAAZ9A), CPI all groups (CPIQ.SE9A). Annual % = same quarter previous year. Real = QES - CPI.',
-          **rel_l, release2=rel_c,
+          **rel_l, release2=rel_c, real_latest_note=real_note,
           series={'LCI wage rates': lci, 'QES avg hourly earnings': qes, 'CPI inflation': cpi, 'Real wage growth (QES - CPI)': real}))
 
 
@@ -151,7 +159,8 @@ def build_tot():
     write('terms_of_trade', dict(title='Goods terms of trade (index, June 2002 qtr = 1000)', unit='index', freq='quarterly',
           source='Stats NZ, Overseas trade indexes: goods terms of trade, all countries (OTPQ.STTZZ5); q/q % (OTPQ.STTZZ5PC)',
           **rel, series={'Goods terms of trade': trim(series(rows, 'OTPQ.STTZZ5')),
-                         'Quarterly % change': trim(series(rows, 'OTPQ.STTZZ5PC'))}))
+                         'Quarterly % change': trim(series(rows, 'OTPQ.STTZZ5PC')),
+                         'Annual % change': trim(yoy(series(rows, 'OTPQ.STTZZ5')))}))
 
 
 def build_gdp():

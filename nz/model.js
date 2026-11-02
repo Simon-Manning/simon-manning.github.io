@@ -16,7 +16,7 @@ const DRV=[["mig","Net migration (people/yr)",null,-40000,140000,2500,"",0],
  ["ocr","OCR",null,0.25,7,0.25,"%",2],
  ["prod","Productivity trend, real GDP per head",0.8,-1,6,0.1,"%/yr",1,"default = 2016–25 average"],
  ["ai","Investment in automation & AI",3.8,0,8,0.1,"% GDP",1,'default 3.8% = NZ ICT investment share, 2017 (<a href="https://www.oecd.org/content/dam/oecd/en/publications/reports/2019/04/ict-investments-in-oecd-countries-and-partner-economies_cd7935de/bcb82cff-en.pdf">OECD 2019</a>)'],
- ["tot","Terms of trade change",0,-8,8,0.5,"%/yr",1,"default = no change"]];
+ ["tot","Terms of trade change",null,-8,8,0.5,"%/yr",1,null]];
 // ---------- Elasticities ----------
 // [id,label,value,min,max,step,source/method,confidence]
 const AN13='<a href="https://www.rbnz.govt.nz/-/media/project/sites/rbnz/files/publications/analytical-notes/2013/an2013-10.pdf">RBNZ Analytical Note AN2013/10, "Migration and the housing market"</a>';
@@ -146,9 +146,15 @@ function render(){const M=model();
 
 function slider(box,id,lab,v,mn,mx,st,hint,store){box.insertAdjacentHTML('beforeend',`<div class="dial"><label for="i_${id}"><span>${lab}</span><b id="o_${id}"></b></label><input type="range" id="i_${id}" min="${mn}" max="${mx}" step="${st}" value="${v}">${hint?`<small>${hint}</small>`:''}</div>`);
  document.getElementById('i_'+id).addEventListener('input',e=>{store[id.replace(/^e_/,'')]=+e.target.value;render()})}
-function buildControls(){const dyn={mig:Math.round(last(D.migration.series['Net migration (12 months)'])[1]/2500)*2500,ocr:B.ocr};
+function buildControls(){const T=D.terms_of_trade,TS=T.series,tL=last(TS['Goods terms of trade']),tQ=last(TS['Quarterly % change']),TA=TS['Annual % change'],tY=last(TA),tY2=TA[TA.length-2];
+ // ToT default: average of the y/y % changes of the latest two quarters, rounded to the 0.5 step and clamped to the slider range.
+ const tAvg=(tY[1]+tY2[1])/2,totDef=Math.min(8,Math.max(-8,Math.round(tAvg/0.5)*0.5));
+ const qn=p=>['Mar','Jun','Sep','Dec'][Math.floor((+p.slice(5,7)-1)/3)]+' '+p.slice(0,4)+' qtr';
+ const rd=(([y,m,d])=>+d+' '+'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ')[m-1]+' '+y)(T.release_date.split('-'));
+ const totNote=`default = 2-quarter average of goods ToT annual changes (${qn(tY2[0])} ${sg(tY2[1])}% y/y, ${qn(tY[0])} ${sg(tY[1])}% y/y → ${sg(tAvg,2)}%), rounded to the 0.5 step and clamped to ±8.<br><b>Latest goods ToT: ${qn(tL[0])} ${fmt(tL[1])}, ${sg(tQ[1])}% q/q, ${sg(tY[1])}% y/y</b> (provisional, <a href="${T.release_url}">Stats NZ</a>, released ${rd})`;
+ const dyn={mig:Math.round(last(D.migration.series['Net migration (12 months)'])[1]/2500)*2500,ocr:B.ocr,tot:totDef},dynNote={tot:totNote};
  const box=document.getElementById('drv');
- for(const d of DRV){const v=d[2]==null?dyn[d[0]]:d[2];DEF[d[0]]=V[d[0]]=v;slider(box,d[0],d[1],v,d[3],d[4],d[5],d[8]||'default = latest published value',V)}
+ for(const d of DRV){const v=d[2]==null?dyn[d[0]]:d[2];DEF[d[0]]=V[d[0]]=v;slider(box,d[0],d[1],v,d[3],d[4],d[5],d[8]||dynNote[d[0]]||'default = latest published value',V)}
  const a=document.getElementById('asm');
  for(const e of EL){EDEF[e[0]]=E[e[0]]=e[2];a.insertAdjacentHTML('beforeend',`<div class="el"><div class="dial" style="margin:0"><label for="i_e_${e[0]}"><span>${e[1]} <span class="conf ${e[7]}">${e[7]}</span></span><b id="oe_${e[0]}"></b></label><input type="range" id="i_e_${e[0]}" min="${e[3]}" max="${e[4]}" step="${e[5]}" value="${e[2]}"></div><small>${e[6]}</small></div>`);
   document.getElementById('i_e_'+e[0]).addEventListener('input',ev=>{E[e[0]]=+ev.target.value;render()})}
@@ -164,6 +170,7 @@ function snapshot(){const r=[];const L=(k,s)=>last(D[k].series[s]);const fx=D.fx
  r.push(['Unemployment rate (s.a.)',L('unemployment','Unemployment rate')[0]+' qtr',fmt(L('unemployment','Unemployment rate')[1])+'%',D.unemployment]);
  r.push(['QES avg hourly earnings, annual',L('wages','QES avg hourly earnings')[0]+' qtr',sg(L('wages','QES avg hourly earnings')[1])+'%',D.wages]);
  r.push(['CPI inflation, annual',L('wages','CPI inflation')[0]+' qtr',fmt(L('wages','CPI inflation')[1])+'%',Object.assign({},D.wages,D.wages.release2)]);
+ r.push(['Real wage growth (QES − CPI), annual',D.wages.real_latest_note||(L('wages','Real wage growth (QES - CPI)')[0]+' qtr'),sg(L('wages','Real wage growth (QES - CPI)')[1],2)+'pp',D.wages]);
  r.push(['Housing lending (C5), annual growth',L('housing_credit','Annual growth (%)')[0],money(L('housing_credit','Housing lending ($b)')[1],1)+', '+sg(L('housing_credit','Annual growth (%)')[1])+'%',D.housing_credit]);
  r.push(['Mortgage debt / nominal GDP',dh[0]+' (yr)',fmt(dh[1])+'%',D.housing_credit]);
  r.push(['House prices (CoreLogic HPI), annual',L('house_prices','Annual % change')[0]+' qtr',sg(L('house_prices','Annual % change')[1])+'%',D.house_prices]);
