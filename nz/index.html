@@ -1,4 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
 <title>NZ Economy Explorer · Simon Manning</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
@@ -45,14 +46,16 @@ details.assm summary{cursor:pointer;font-weight:600;font-size:.88rem;margin:6px 
 <h1>NZ Economy Explorer</h1>
 <p class="sub">New Zealand macro data from 2015 to the latest release, taken only from official sources (Stats NZ, the Reserve Bank, Immigration NZ), plus <b>one small linked model to 2030</b>. Solid lines are published data. The <b>dashed lines in the shaded area</b> come from the model, so moving any driver moves every chart.</p>
 
-<h2>The causal chain (my Pettis balance-sheet lens)</h2>
+<h2>The causal chain: an accounting identity, two adjustment paths</h2>
 <div class="card note">
-<div class="flow"><span class="n">Net migration</span><span class="a">→</span><span class="n">Population</span><span class="a">→</span><span class="n">GDP ↑ (not per head)</span><span class="a">→</span><span class="n">Imports ↑ (≈25% of spending)</span><span class="a">→</span><span class="n r">Current-account deficit</span></div>
-<div class="flow"><span class="n">Population</span><span class="a">→</span><span class="n">Housing demand</span><span class="a">→</span><span class="n">House prices</span><span class="a">→</span><span class="n">Mortgage debt</span><span class="a">→</span><span class="n r">Offshore bank funding = how the deficit is financed</span></div>
+<p style="margin:0 0 8px"><b>The identity (true by definition):</b> internal and external accounts must balance. <b>Current account = national saving − investment.</b> A persistent trade deficit can therefore only be balanced in one of two ways. Either <b>(1) higher debt</b>, which in NZ means household housing and mortgage debt driven by high immigration, or <b>(2) higher national saving</b>, which means lower consumption demand and therefore higher unemployment. The identity itself is not in question. What the data tests is <b>which path the adjustment takes each year</b>.</p>
+<div class="flow"><span class="n">Net migration</span><span class="a">→</span><span class="n">Population</span><span class="a">→</span><span class="n">GDP ↑ (not per head)</span><span class="a">→</span><span class="n">Imports ↑ (≈25% of spending)</span><span class="a">→</span><span class="n r">Current-account deficit (saving &lt; investment)</span></div>
+<div class="flow"><span class="n">Path 1</span><span class="a">→</span><span class="n">Housing demand</span><span class="a">→</span><span class="n">House prices</span><span class="a">→</span><span class="n r">Household mortgage debt rises faster than income</span></div>
+<div class="flow"><span class="n">Path 2</span><span class="a">→</span><span class="n">Debt growth falls short</span><span class="a">→</span><span class="n">Consumption demand ↓ (saving ↑)</span><span class="a">→</span><span class="n r">Unemployment ↑</span></div>
 <div class="flow"><span class="n">Population growth</span><span class="a">→</span><span class="n">Capital dilution</span><span class="a">→</span><span class="n">Productivity per head ↓, real wages ↓</span></div>
 <div class="flow"><span class="n">OCR</span><span class="a">→</span><span class="n">House prices, credit, NZD</span><span class="a">→</span><span class="n">Import prices → CPI</span><span class="a">→</span><span class="n">Real wages</span></div>
-<p style="margin:6px 0 0">The deficit has to be absorbed somewhere. Either <b>household debt keeps rising faster than income</b> (the 2015–21 path), or, once migration and mortgage growth slow, <b>demand falls short and unemployment rises</b> (the 2023–26 path). The <a href="#adj">adjustment panel</a> shows which one your scenario implies.</p>
-<p class="m" style="margin:6px 0 0"><b>Market-oriented counterpoint:</b> a deficit is also a capital-account surplus. Foreign savers financing NZ investment is not a problem in itself. The housing link is strong mainly because supply is rationed by zoning, consenting and infrastructure funding. If supply responded freely, migration would bring more building rather than more leverage.</p>
+<p style="margin:6px 0 0">The facts: housing credit growth fell from 12.1% (Jul 2021) to 2.9% (Nov 2023) and has recovered to 5.4% (Sep 2026), while unemployment has also kept rising through 2025–26. The <a href="#adj">adjustment panel</a> shows which path the history and your scenario take.</p>
+<p class="m" style="margin:6px 0 0"><b>Market-oriented counterpoint:</b> the housing link is strong mainly because supply is rationed by zoning, consenting and infrastructure funding. If supply responded freely, migration would bring more building rather than more leverage, and a floating NZD would do part of the adjustment.</p>
 </div>
 
 <div class="card warn note" style="margin-top:14px"><b>This is a scenario model, not a forecast.</b> It uses simple, transparent equations with elasticities that are either estimated from 2015–26 annual data (about 10 points, so treat them as rough), taken from published RBNZ research, or plainly labelled as assumptions. You can change all of them under <i>Model assumptions</i>. This is not financial advice. <span id="built"></span></div>
@@ -71,10 +74,10 @@ details.assm summary{cursor:pointer;font-weight:600;font-size:.88rem;margin:6px 
 <p class="m">The shaded area marks model output, from the latest data point onward. The model runs in annual steps, and each dashed line starts from that series' latest published value.</p></div>
 </div>
 
-<h2 id="adj">Adjustment: who absorbs the deficit?</h2>
+<h2 id="adj">Adjustment: which path balances the identity?</h2>
 <div class="card note"><div class="two"><div><h3>History (June years, real data)</h3><div class="tw"><table id="adjh"></table></div></div>
 <div><h3>Your scenario (model)</h3><div class="tw"><table id="adjm"></table></div><p id="adjtxt"></p></div></div>
-<p class="m">Debt/GDP is RBNZ C5 housing lending divided by Stats NZ nominal GDP (year ended June). <b>Debt</b> means mortgage debt grew faster than GDP (+0.5pp or more of GDP) while unemployment was flat or falling. <b>Unemployment</b> means debt/GDP was flat or falling while unemployment rose (+0.2pp or more). <b>Both</b> means both rose, and <b>easing</b> means neither did. This classification is a simple heuristic of mine.</p></div>
+<p class="m">Debt/GDP is RBNZ C5 housing lending divided by Stats NZ nominal GDP (year ended June). <b>Path 1: debt</b> means mortgage debt grew faster than GDP (+0.5pp or more of GDP) while unemployment was flat or falling. <b>Path 2: unemployment</b> means debt/GDP was flat or falling while unemployment rose (+0.2pp or more), so saving rose through weaker demand. <b>Both</b> means both rose, and <b>neither</b> means the deficit narrowed without either. This classification is a simple heuristic of mine.</p></div>
 
 <h2>Household squeeze</h2>
 <div class="card note">
@@ -83,7 +86,7 @@ details.assm summary{cursor:pointer;font-weight:600;font-size:.88rem;margin:6px 
 <p class="m">The import effect is about 25% of household spending going on imports, multiplied by imported-price inflation above 2%. Import prices move with the NZD through the pass-through elasticity. Nominal wages follow 2% expected inflation, plus productivity per head, minus slack (unemployment above 4.5%).</p></div></div>
 </div>
 
-<h2>Thesis check: against real data</h2>
+<h2>Thesis check: which path, against real data</h2>
 <div class="card note" id="thesis"></div>
 
 <h2>Sources, release dates and gaps</h2>
