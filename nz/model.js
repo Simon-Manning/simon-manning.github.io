@@ -14,7 +14,8 @@ const yoy=(s,lag)=>s.slice(lag).map((p,i)=>[p[0],(p[1]/s[i][1]-1)*100]);
 // ---------- Drivers ----------
 const DRV=[["mig","Net migration (people/yr)",null,-40000,140000,2500,"",0],
  ["ocr","OCR",null,0.25,7,0.25,"%",2],
- ["prod","Productivity trend, real GDP per head",0.8,-1,3,0.1,"%/yr",1,"default = 2016–25 average"],
+ ["prod","Productivity trend, real GDP per head",0.8,-1,6,0.1,"%/yr",1,"default = 2016–25 average"],
+ ["ai","Investment in automation & AI",3.8,0,8,0.1,"% GDP",1,'default 3.8% = NZ ICT investment share, 2017 (<a href="https://www.oecd.org/content/dam/oecd/en/publications/reports/2019/04/ict-investments-in-oecd-countries-and-partner-economies_cd7935de/bcb82cff-en.pdf">OECD 2019</a>)'],
  ["tot","Terms of trade change",0,-8,8,0.5,"%/yr",1,"default = no change"]];
 // ---------- Elasticities ----------
 // [id,label,value,min,max,step,source/method,confidence]
@@ -30,6 +31,7 @@ const EL=[
 ["cO","Mortgage-credit growth per 1pp OCR",-0.60,-1.5,0,0.05,"Estimated from 2015–26 data (same regression).","high"],
 ["c0","Mortgage-credit growth intercept (%)",7.05,4,10,0.05,"Estimated from 2015–26 data (same regression).","high"],
 ["cP","Mortgage-credit growth per 1pp population growth above 1.4%",1.0,-0.5,2,0.05,"Assumption: new households borrow at about the average debt per head. The 2015–26 regression actually gives −0.3 (credit on migration and OCR, R² 0.68), because migration and credit booms did not coincide in this window.","low"],
+["eAI","Productivity growth, pp per 1% of GDP of automation/AI investment above 3.8%",0.15,0,0.6,0.01,"Assumption, from growth accounting: extra output growth ≈ net return on the capital × extra investment/GDP, with a net return on ICT/AI capital of about 15%. I did not use a published NZ estimate, because I didn't find one. The baseline 3.8% of GDP is NZ's ICT investment share (OECD 2019 report, 2017 data). AI-specific investment is not separately measured.","low"],
 ["dil","Capital dilution: productivity per head lost per 1pp population growth above 1.4%",0.3,0,1,0.05,"Assumption (Solow-style capital dilution with a capital share of about 0.3). The 2015–26 data do not show it: the slope of GDP-per-head growth on population growth is +0.13 (R² 0.01, excl. 2020–21).","low"],
 ["psi","Demand impulse (% of GDP) per 1pp population growth above 1.4%",0.8,0,2,0.1,"Published: "+AN13+": a 1%-of-population migration shock raises the output gap by about 0.8% at its peak.","medium"],
 ["lam","Share of excess mortgage borrowing (debt growth above nominal GDP) that is spent",0.5,0,1,0.05,"Assumption.","low"],
@@ -64,7 +66,7 @@ function model(){const K=6,o=[];let s={pop:B.pop[1],debt:B.debt,u:B.u,ca:B.ca,oc
  for(let k=1;k<=K;k++){
   const mr=V.mig/(s.pop*1e6)*100;                       // migration, % of population
   const pg=E.nat+E.ePop*mr;                              // population growth
-  const lp=V.prod-E.dil*(pg-pbar);                       // productivity per head (potential)
+  const lp=V.prod+E.eAI*(V.ai-3.8)-E.dil*(pg-pbar);                       // productivity per head (potential)
   const gp=pg+lp;                                        // potential GDP growth
   const h=E.h0+E.eHm*(mr-mbar)+E.eHo*(V.ocr-3);          // house prices
   const c=E.c0+E.cH*h+E.cO*V.ocr+E.cP*(pg-pbar);                        // mortgage-credit growth
@@ -103,6 +105,7 @@ function popYoy(){return yoy(D.gdp_per_capita.series['Implied population (m)'],4
 const CHARTS=[
  ['c_mig','Net migration, 12-month total (people)','people',['migration'],M=>{const s=D.migration.series['Net migration (12 months)'];return[ds('Net migration',xy(s),C.b),ds('Scenario',pr(s,M,()=>V.mig),C.b,1)]}],
  ['c_debt','Mortgage debt (% of GDP, left) and house prices (index, right)','% GDP',['housing_credit','house_prices'],M=>{const s=debtHist(),h=D.house_prices.series['House price index'];return[ds('Mortgage debt / GDP',xy(s),C.r),ds('House prices',xy(h),C.grey||'#999',0,{yAxisID:'y2',borderWidth:1.2}),ds('Debt scenario',pr(s,M,r=>r.debt),C.r,1),ds('HPI scenario',pl(h,M,r=>r.h),'#999',1,{yAxisID:'y2'})]},'HPI'],
+ ['c_gpc','Real GDP per head (quarterly, chain-volume NZ$)','NZ$',['gdp_per_capita'],M=>{const s=D.gdp_per_capita.series['Real GDP per capita'];return[ds('Real GDP per head',xy(s),C.g),ds('Scenario',pl(s,M,r=>r.gpc),C.g,1)]}],
  ['c_ca','Current account balance (% of GDP)','% GDP',['current_account'],M=>{const s=D.current_account.series['Current account % GDP'];return[ds('Current account',xy(s),C.k),ds('Scenario',pr(s,M,r=>r.ca),C.k,1)]}],
  ['c_un','Unemployment rate (%)','%',['unemployment'],M=>{const s=D.unemployment.series['Unemployment rate'];return[ds('Unemployment',xy(s),C.r),ds('Scenario',pr(s,M,r=>r.u),C.r,1)]}],
  ['c_rw','Wages vs CPI (annual %)','%',['wages'],M=>{const W=D.wages.series,w=W['QES avg hourly earnings'],c=W['CPI inflation'],r=W['Real wage growth (QES - CPI)'];return[ds('Wages (QES)',xy(w),C.b),ds('CPI',xy(c),C.o),ds('Real wage growth',xy(r),C.k,0,{borderWidth:2.5}),ds('Wages scen.',pr(w,M,q=>q.w),C.b,1),ds('CPI scen.',pr(c,M,q=>q.cpi),C.o,1),ds('Real scen.',pr(r,M,q=>q.rw),C.k,1)]},null,'wide']];
@@ -136,7 +139,7 @@ function buildControls(){const dyn={mig:Math.round(last(D.migration.series['Net 
  const a=document.getElementById('asm');
  for(const e of EL){EDEF[e[0]]=E[e[0]]=e[2];a.insertAdjacentHTML('beforeend',`<div class="el"><div class="dial" style="margin:0"><label for="i_e_${e[0]}"><span>${e[1]} <span class="conf ${e[7]}">${e[7]}</span></span><b id="oe_${e[0]}"></b></label><input type="range" id="i_e_${e[0]}" min="${e[3]}" max="${e[4]}" step="${e[5]}" value="${e[2]}"></div><small>${e[6]}</small></div>`);
   document.getElementById('i_e_'+e[0]).addEventListener('input',ev=>{E[e[0]]=+ev.target.value;render()})}
- document.getElementById('eqs').innerHTML=`<p>m = net migration ÷ population (%). Population growth pg = nat + ePop·m. Productivity per head lp = trend − dil·(pg − 1.4). Potential growth = pg + lp.<br>
+ document.getElementById('eqs').innerHTML=`<p>m = net migration ÷ population (%). Population growth pg = nat + ePop·m. Productivity per head lp = trend + eAI·(AI investment − 3.8) − dil·(pg − 1.4). Potential growth = pg + lp.<br>
 House prices h = h0 + eHm·(m − 0.9) + eHo·(OCR − 3). Mortgage credit c = c0 + cH·h + cO·OCR + cP·(pg − 1.4). Excess borrowing = (c − nominal GDP growth) × debt/GDP.<br>
 Demand impulse X = lam·excess borrowing + psi·(pg − 1.4) + 0.1·ToT. GDP growth = potential + (1 − mImp)·X.<br>
 Current account CA = CA₋₁ + caR·(caS − CA₋₁) − mImp·X + caT·ToT. Unemployment Δu = okun·(GDP − potential).<br>
