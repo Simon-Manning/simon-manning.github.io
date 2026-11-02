@@ -32,6 +32,8 @@ const EL=[
 ["c0","Mortgage-credit growth intercept (%)",7.05,4,10,0.05,"Estimated from 2015–26 data (same regression).","high"],
 ["cP","Mortgage-credit growth per 1pp population growth above 1.4%",1.0,-0.5,2,0.05,"Assumption: new households borrow at about the average debt per head. The 2015–26 regression actually gives −0.3 (credit on migration and OCR, R² 0.68), because migration and credit booms did not coincide in this window.","low"],
 ["eAI","Productivity growth, pp per 1% of GDP of automation/AI investment above 3.8%",0.15,0,0.6,0.01,"Assumption, from growth accounting: extra output growth ≈ net return on the capital × extra investment/GDP, with a net return on ICT/AI capital of about 15%. I did not use a published NZ estimate, because I didn't find one. The baseline 3.8% of GDP is NZ's ICT investment share (OECD 2019 report, 2017 data). AI-specific investment is not separately measured.","low"],
+["eY","Demand impulse (% of GDP) per 1pp productivity growth above 0.8%",0.5,0,1,0.05,"Assumption: higher productivity raises real incomes and wages. Households and firms spend part of the expected gain ahead of the extra supply, the permanent-income effect, so demand runs above potential and unemployment falls through the Okun link. I have no published NZ estimate for this.","low"],
+["mInv","Import share of automation/AI investment spending",0.5,0,1,0.05,"Assumption: much ICT and automation equipment is imported. I did not find a published Stats NZ import share of ICT investment, so I haven't cited one.","low"],
 ["dil","Capital dilution: productivity per head lost per 1pp population growth above 1.4%",0.3,0,1,0.05,"Assumption (Solow-style capital dilution with a capital share of about 0.3). The 2015–26 data do not show it: the slope of GDP-per-head growth on population growth is +0.13 (R² 0.01, excl. 2020–21).","low"],
 ["psi","Demand impulse (% of GDP) per 1pp population growth above 1.4%",0.8,0,2,0.1,"Published: "+AN13+": a 1%-of-population migration shock raises the output gap by about 0.8% at its peak.","medium"],
 ["lam","Share of excess mortgage borrowing (debt growth above nominal GDP) that is spent",0.5,0,1,0.05,"Assumption.","low"],
@@ -70,10 +72,13 @@ function model(){const K=6,o=[];let s={pop:B.pop[1],debt:B.debt,u:B.u,ca:B.ca,oc
   const gp=pg+lp;                                        // potential GDP growth
   const h=E.h0+E.eHm*(mr-mbar)+E.eHo*(V.ocr-3);          // house prices
   const c=E.c0+E.cH*h+E.cO*V.ocr+E.cP*(pg-pbar);                        // mortgage-credit growth
-  const exD=(c-s.ng)/100*s.debt;                         // borrowing above income growth, % of GDP
-  const X=E.lam*exD+E.psi*(pg-pbar)+0.1*V.tot;            // demand impulse, % of GDP (ToT income effect 0.1, assumption)
-  const g=gp+(1-E.mImp)*X;                               // real GDP growth
-  const ca=s.ca+E.caR*(E.caS-s.ca)-E.mImp*X+E.caT*V.tot;  // current account % GDP
+  const ngRef=pg+0.8+s.cpi;                              // nominal income growth at baseline productivity (0.8%)
+  const exD=(c-ngRef)/100*s.debt;                        // borrowing above baseline income growth, % of GDP
+  const XY=E.eY*(lp-0.8);                                // income/wage channel: productivity gains lift consumption demand
+  const XI=k==1?(V.ai-3.8):0;                            // automation/AI investment spending (level step, felt in year 1)
+  const X=E.lam*exD+E.psi*(pg-pbar)+0.1*V.tot+XY;        // domestic demand impulse, % of GDP
+  const g=gp+(1-E.mImp)*X+(1-E.mInv)*XI;                 // real GDP growth
+  const ca=s.ca+E.caR*(E.caS-s.ca)-E.mImp*X-E.mInv*XI+E.caT*V.tot; // current account % GDP
   const du=E.okun*(g-gp);const u=Math.max(2,s.u+du);     // unemployment
   const twi=E.fxR*(V.ocr-s.ocrPrev)+E.fxT*V.tot+E.fxC*(ca-E.caS); // NZD TWI % change
   const imp=2-E.pt*twi;                                  // import prices (2% foreign inflation)
@@ -140,9 +145,9 @@ function buildControls(){const dyn={mig:Math.round(last(D.migration.series['Net 
  for(const e of EL){EDEF[e[0]]=E[e[0]]=e[2];a.insertAdjacentHTML('beforeend',`<div class="el"><div class="dial" style="margin:0"><label for="i_e_${e[0]}"><span>${e[1]} <span class="conf ${e[7]}">${e[7]}</span></span><b id="oe_${e[0]}"></b></label><input type="range" id="i_e_${e[0]}" min="${e[3]}" max="${e[4]}" step="${e[5]}" value="${e[2]}"></div><small>${e[6]}</small></div>`);
   document.getElementById('i_e_'+e[0]).addEventListener('input',ev=>{E[e[0]]=+ev.target.value;render()})}
  document.getElementById('eqs').innerHTML=`<p>m = net migration ÷ population (%). Population growth pg = nat + ePop·m. Productivity per head lp = trend + eAI·(AI investment − 3.8) − dil·(pg − 1.4). Potential growth = pg + lp.<br>
-House prices h = h0 + eHm·(m − 0.9) + eHo·(OCR − 3). Mortgage credit c = c0 + cH·h + cO·OCR + cP·(pg − 1.4). Excess borrowing = (c − nominal GDP growth) × debt/GDP.<br>
-Demand impulse X = lam·excess borrowing + psi·(pg − 1.4) + 0.1·ToT. GDP growth = potential + (1 − mImp)·X.<br>
-Current account CA = CA₋₁ + caR·(caS − CA₋₁) − mImp·X + caT·ToT. Unemployment Δu = okun·(GDP − potential).<br>
+House prices h = h0 + eHm·(m − 0.9) + eHo·(OCR − 3). Mortgage credit c = c0 + cH·h + cO·OCR + cP·(pg − 1.4). Excess borrowing = (c − baseline nominal income growth [pg + 0.8 + CPI₋₁]) × debt/GDP.<br>
+Demand impulse X = lam·excess borrowing + psi·(pg − 1.4) + 0.1·ToT + eY·(lp − 0.8). Investment impulse XI = AI investment − 3.8 (year 1). GDP growth = potential + (1 − mImp)·X + (1 − mInv)·XI.<br>
+Current account CA = CA₋₁ + caR·(caS − CA₋₁) − mImp·X − mInv·XI + caT·ToT. Unemployment Δu = okun·(GDP − potential).<br>
 TWI % = fxR·ΔOCR + fxT·ToT + fxC·(CA − caS). Import prices = 2 − pt·TWI%. CPI = ½·CPI₋₁ + ½·(2 + mImp·(import prices − 2) + phi·(4.5 − u)).<br>
 Wages = 2 + lp − om·(u − 4.5). Real wages = wages − CPI. Debt/GDP grows by (1 + c)/(1 + nominal GDP growth).</p>`}
 
