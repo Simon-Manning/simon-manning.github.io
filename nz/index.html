@@ -49,14 +49,23 @@ details.assm summary{cursor:pointer;font-weight:600;font-size:.88rem;margin:6px 
 @media(max-width:820px){.charts{grid-template-columns:minmax(0,1fr)}.charts .wide{grid-column:auto}}
 details.box{background:#fff;border:1px solid #e3e3e3;border-radius:12px;padding:10px 16px;margin-top:14px}details.box>summary{cursor:pointer;font-weight:600;font-size:.9rem}
 #adjm td,#adjm th{padding:4px 6px}
+.lay{margin-top:10px}.lay .side{margin-bottom:14px}.tag{margin:0}
+@media(min-width:1100px){main{max-width:none;padding:10px 16px 40px}
+ main>p.m:first-child{float:right;margin:4px 0 0}h1{font-size:1.25rem;margin:0}
+ .lay{display:grid;grid-template-columns:280px minmax(0,1fr);gap:14px;align-items:start}
+ .lay .side{position:sticky;top:10px;height:calc(100vh - 20px);overflow:auto;margin:0;padding:14px}
+ #drv{grid-template-columns:minmax(0,1fr);gap:6px}
+ .charts{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.charts .wide{grid-column:auto}
+ .charts .card{padding:8px 10px}.charts h3{font-size:.82rem;margin:0 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .cw{height:calc(50vh - 105px);min-height:200px}
+ .charts .cite{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;font-size:.68rem}}
 </style></head><body><main>
 <p class="m"><a href="../">← Simon Manning</a></p>
 <h1>NZ Economy Explorer</h1>
-<div class="card note"><p style="margin:0"><b>Current account = national saving − investment</b>, by definition. A persistent deficit is balanced either by <b>(1) higher household mortgage debt</b>, driven in NZ by high immigration, or by <b>(2) higher saving</b>, meaning weaker demand and higher unemployment. The charts show which path NZ has taken since 2015 (solid lines) and which one your scenario implies to 2030 (dashed lines). Housing credit growth fell from 12.1% (Jul 2021) to 2.9% (Nov 2023) and is back at 5.4% (Sep 2026). Unemployment has kept rising through 2025–26. <span class="m" id="built"></span></p></div>
-
-<div class="card" style="margin-top:14px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b>Your scenario (drivers held constant to 2030)</b><button id="reset">Reset</button></div><div id="drv"></div></div>
-
-<div class="charts" id="charts" style="margin-top:14px"></div>
+<p class="m tag">CA = saving − investment: solid lines are 2015–26 history, dashed lines are your scenario to 2030. Details below the charts.</p>
+<div class="lay"><aside class="card side"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b>Your scenario (drivers held constant to 2030)</b><button id="reset">Reset</button></div><div id="drv"></div></aside>
+<div class="charts" id="charts"></div></div>
+<div class="card note" style="margin-top:14px"><p style="margin:0"><b>Current account = national saving − investment</b>, by definition. A persistent deficit is balanced either by <b>(1) higher household mortgage debt</b>, driven in NZ by high immigration, or by <b>(2) higher saving</b>, meaning weaker demand and higher unemployment. The charts show which path NZ has taken since 2015 (solid lines) and which one your scenario implies to 2030 (dashed lines). Housing credit growth fell from 12.1% (Jul 2021) to 2.9% (Nov 2023) and is back at 5.4% (Sep 2026). Unemployment has kept rising through 2025–26. <span class="m" id="built"></span></p></div>
 
 <h2 id="adj">Which path balances the identity?</h2>
 <div class="card note"><div class="two"><div><b>Your scenario</b><div class="tw"><table id="adjm"></table></div><p id="adjtxt" style="margin:6px 0 0"></p></div>
