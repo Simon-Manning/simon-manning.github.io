@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NZ Economy Explorer · Simon Manning</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{overflow-x:hidden}
+body{margin:0;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#222;background:#fafafa;line-height:1.5}
+main{max-width:1100px;margin:0 auto;padding:40px 20px}
+h1{font-weight:600;font-size:1.9rem;margin:0 0 4px}.sub{color:#777;margin:0 0 20px}
+h2{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:#111;font-weight:700;margin:32px 0 10px}
+a{color:#222;overflow-wrap:anywhere}.card{background:#fff;border:1px solid #e3e3e3;border-radius:12px;padding:16px;min-width:0}
+.grid{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;align-items:start}
+.grid>*{min-width:0}
+.dials{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+.dial{margin:0 0 12px}.dial label{display:flex;justify-content:space-between;gap:8px;font-size:.85rem}
+.dial label b{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}.dial small{color:#999;font-size:.75rem}
+input[type=range]{width:100%;accent-color:#222}
+.grp{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#111;font-weight:700;margin:14px 0 6px;padding-bottom:3px;border-bottom:1px solid #ddd}
+button{border:1px solid #222;background:#222;color:#fff;border-radius:20px;padding:6px 16px;cursor:pointer;font-size:.85rem}
+.charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.charts .card{padding:12px}
+.cw{position:relative;height:230px}
+.charts h3,.card h3{margin:0 0 6px;font-size:.9rem;font-weight:600}
+.cite{font-size:.72rem;color:#888;margin:6px 0 0;line-height:1.35}
+table{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}
+td,th{padding:6px 8px;border-bottom:1px solid #eee;text-align:right}td:first-child,th:first-child{text-align:left}
+th{color:#999;font-weight:500}.m{color:#999;font-size:.8rem}.tw{overflow-x:auto}
+.note{font-size:.88rem;color:#444}.warn{background:#fff8e6;border-color:#f0dca0}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.neg{color:#b3261e}.pos{color:#1b7f3b}
+@media(min-width:1200px){main{max-width:1400px}.grid.main{grid-template-columns:600px minmax(0,1fr)}.dcols{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}}
+@media(max-width:820px){.grid,.grid.main{grid-template-columns:minmax(0,1fr)}.dials{position:static;max-height:none}.charts,.two{grid-template-columns:minmax(0,1fr)}main{padding:24px 14px}h1{font-size:1.6rem}}
+</style></head><body><main>
+<p class="m"><a href="../">← Simon Manning</a></p>
+<h1>NZ Economy Explorer</h1>
+<p class="sub">About ten years of New Zealand macro data (2015 to the latest release), taken only from official sources: Stats NZ, the Reserve Bank (RBNZ) and Immigration NZ. Solid lines are published data. The <b>dashed lines in the shaded area run to 2030 and are driven by the dials</b>.</p>
+<div class="card warn note"><b>Projections are assumptions, not forecasts.</b> Each dashed line simply carries the latest published value forward along the path you set with the dials. They are not predictions by me or by any agency, and nothing here is financial advice. <span id="built"></span></div>
+
+<h2>Latest snapshot</h2>
+<div class="card tw"><table id="snap"></table></div>
+
+<div class="grid main" style="margin-top:20px">
+<div class="card dials"><div style="display:flex;justify-content:space-between;align-items:center"><b>Dials (my assumptions to 2030)</b><button id="reset">Reset</button></div><div class="dcols"><div id="dcA"></div><div id="dcB"></div></div></div>
+<div><div class="charts" id="charts"></div>
+<p class="m">The shaded area marks projections, from the latest data point to the end of 2030. "Glide" dials move the series in a straight line from the latest value to the level you set, reached after one year, then hold it flat. "Per year" dials compound or trend from the latest value.</p></div>
+</div>
+
+<h2>Household squeeze</h2>
+<div class="card note">
+<div class="two"><div><h3>Real wage growth = wage growth − CPI inflation</h3><div class="cw"><canvas id="sq"></canvas></div><p class="cite" id="sqcite"></p></div>
+<div><h3>What your dials imply</h3><div class="tw"><table id="sqt"></table></div>
+<p class="m">The imported-goods effect is a rough rule of thumb: about 25% of household spending goes on imported goods and services, multiplied by the % fall in the NZD, assuming full pass-through within the year. A weaker NZD adds to prices and a stronger one subtracts. It sits <i>on top of</i> the CPI dial, as if your CPI dial excluded currency moves. This is a simplification, not a Stats NZ measure.</p></div></div>
+</div>
+
+<h2>Thesis check</h2>
+<div class="card note" id="thesis"></div>
+
+<h2>Sources, release dates and gaps</h2>
+<div class="card note"><ul id="srcs" style="padding-left:18px;margin:0"></ul><p><b>Gaps</b> (I did not fetch these or they are not available as data, so they are omitted rather than estimated):</p><ul id="gaps" style="padding-left:18px;margin:0"></ul>
+<p class="m">The data is refreshed by <code>nz/build.py</code>, which downloads the official files again. Stats NZ quarterly series are labelled by the last month of the quarter, for example 2026-06 is the June quarter.</p></div>
+<footer class="m" style="margin-top:30px">© 2026 Simon Manning</footer>
+</main>
+<script>
+const IDS=['migration','unemployment','wages','work_visas','current_account','trade_balance','terms_of_trade','fx','gdp_per_capita','mortgage','meta'];
+const END=2031.0, D={};
+const t=p=>{if(/^\d{4}\/\d{2}$/.test(p))return +p.slice(0,4)+1.0-0.5/12*0; const[y,m]=p.split('-').map(Number);return y+(m-0.5)/12};
+const last=a=>a[a.length-1];
+const fmt=(v,d=1)=>v==null?'–':(+v).toLocaleString('en-NZ',{minimumFractionDigits:d,maximumFractionDigits:d});
+const C={k:'#111',b:'#2f6fb5',r:'#c0392b',g:'#2e8b57',o:'#d98c1f',p:'#7b3fc4',grey:'#999'};
+// dial: [id,label,default,min,max,step,unit,group]
+const DIALS=[
+["Population & labour"],
+["mig","Net migration, glide to (people/yr)",null,-40000,140000,2500,""],
+["unT","Unemployment trend (pp per year)",0,-1,1,0.1,"pp/yr"],
+["visa","Work-visa approvals per year",null,100000,300000,5000,""],
+["Wages & prices"],
+["wage","Wage growth (QES), glide to",null,0,8,0.1,"%"],
+["lci","LCI wage rates, glide to",null,0,6,0.1,"%"],
+["cpi","CPI inflation, glide to",null,0,8,0.1,"%"],
+["mort","Mortgage rates change (both)",0,-0.75,0.75,0.05,"pp/yr"],
+["External"],
+["ca","Current account, glide to",null,-10,2,0.1,"% GDP"],
+["tb","Goods & services balance change",0,-5,5,0.25,"$b/yr"],
+["tot","Goods terms of trade change",0,-8,8,0.5,"%/yr"],
+["fx","NZD drift (TWI and USD)",0,-10,10,0.5,"%/yr"],
+["Output"],
+["gdp","Real GDP per capita growth",0,-3,4,0.1,"%/yr"]];
+const V={},DEF={};
+function glide(pts,target){const[t0,v0]=[t(last(pts)[0]),last(pts)[1]];const o=[{x:t0,y:v0}];for(let x=t0+0.25;x<=END+1e-9;x+=0.25){const f=Math.min(1,(x-t0)/1);o.push({x:+x.toFixed(3),y:v0+(target-v0)*f})}return o}
+function trend(pts,r,lo,hi){const[t0,v0]=[t(last(pts)[0]),last(pts)[1]];const o=[];for(let x=t0;x<=END+1e-9;x+=0.25){let y=v0+r*(x-t0);if(lo!=null)y=Math.max(lo,y);if(hi!=null)y=Math.min(hi,y);o.push({x:+x.toFixed(3),y})}return o}
+function comp(pts,r){const[t0,v0]=[t(last(pts)[0]),last(pts)[1]];const o=[];for(let x=t0;x<=END+1e-9;x+=0.25)o.push({x:+x.toFixed(3),y:v0*Math.pow(1+r/100,x-t0)});return o}
+const xy=pts=>pts.map(p=>({x:t(p[0]),y:p[1]}));
+const shade={id:'shade',beforeDraw(ch){const s=ch.options.plugins.shade;if(!s)return;const{ctx,chartArea:a,scales:{x}}=ch;const x0=Math.max(a.left,x.getPixelForValue(s.from));ctx.save();ctx.fillStyle='rgba(123,63,196,.07)';ctx.fillRect(x0,a.top,a.right-x0,a.bottom-a.top);ctx.restore()}};
+Chart.register(shade);
+function ds(label,data,color,proj,extra={}){return Object.assign({label,data,borderColor:color,backgroundColor:color,borderWidth:proj?1.6:2,pointRadius:0,borderDash:proj?[6,4]:[],tension:0,spanGaps:true},extra)}
+function chart(id,title,dsets,opts={}){return{id,title,dsets,opts}}
+const CH={};
+function mk(id,cfgFn,yLab,y2){const el=document.getElementById(id);const c=new Chart(el,{type:'line',data:{datasets:[]},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false,axis:'x'},
+ plugins:{legend:{labels:{boxWidth:12,font:{size:10}}},shade:{from:2100},tooltip:{callbacks:{title:i=>{const x=i[0].parsed.x;const y=Math.floor(x),m=Math.round((x-y)*12+0.5);return y+'-'+String(m).padStart(2,'0')}}}},
+ scales:Object.assign({x:{type:'linear',min:2015,max:END,ticks:{stepSize:1,callback:v=>Number.isInteger(v)&&v<2031&&(v%2==1)?"'"+String(v).slice(2):'',font:{size:10},maxRotation:0,autoSkip:false},grid:{color:'#f0f0f0'}},y:{title:{display:!!yLab,text:yLab,font:{size:10}},ticks:{font:{size:10}},grid:{color:'#f0f0f0'}}},y2?{y2:{position:'right',title:{display:true,text:y2,font:{size:10}},ticks:{font:{size:10}},grid:{display:false}}}:{})}});
+ CH[id]={c,cfgFn}}
+function cite(d){const r=d.release_date?new Date(d.release_date+'T00:00').toLocaleDateString('en-NZ',{day:'numeric',month:'short',year:'numeric'}):'n/a';
+ let s=`Source: ${d.source}. Release: <a href="${d.release_url}">${d.release}</a>, ${r}`;
+ if(d.release2){const r2=new Date(d.release2.release_date+'T00:00').toLocaleDateString('en-NZ',{day:'numeric',month:'short',year:'numeric'});s+=`; <a href="${d.release2.release_url}">${d.release2.release}</a>, ${r2}`}
+ return s+'. Data: <a href="'+d.file_url+'">file</a>.'}
+const CHARTS=[
+ ['c_mig','migration','Net migration, 12-month total (people)','people',d=>{const s=d.series['Net migration (12 months)'];return[ds('Net migration (12 mo)',xy(s),C.b),ds('Projection',glide(s,V.mig),C.b,1)]}],
+ ['c_un','unemployment','Unemployment rate (%, s.a., quarterly)','%',d=>{const s=d.series['Unemployment rate'];return[ds('Unemployment',xy(s),C.r),ds('Projection',trend(s,V.unT,2,15),C.r,1)]}],
+ ['c_wage','wages','Wage growth vs CPI (annual %)','%',d=>{const S=d.series;return[ds('LCI',xy(S['LCI wage rates']),C.g),ds('QES hourly earnings',xy(S['QES avg hourly earnings']),C.b),ds('CPI',xy(S['CPI inflation']),C.r),
+   ds('LCI proj.',glide(S['LCI wage rates'],V.lci),C.g,1,{label:'LCI proj.'}),ds('QES proj.',glide(S['QES avg hourly earnings'],V.wage),C.b,1),ds('CPI proj.',glide(S['CPI inflation'],V.cpi),C.r,1)]}],
+ ['c_visa','work_visas','Work-visa applications approved (financial year to June)','applications',d=>{const fy=d.series['Approved, financial year'].filter(p=>!/2026\/27/.test(p[0]));const done=fy.map(p=>({x:+p[0].slice(0,4)+1+5.5/12,y:p[1]}));
+   const lastx=last(done).x;const pr=[{x:lastx,y:last(done).y}];for(let y=1;lastx+y<=END+0.2;y++)pr.push({x:lastx+y,y:V.visa});
+   const mon=d.series['Approved, month (current FY)'];const ytd=mon.reduce((a,p)=>a+p[1],0);
+   return[ds('Approved (FY, plotted at June)',done,C.p,0,{pointRadius:3}),ds('Projection',pr,C.p,1,{pointRadius:2}),ds(`2026/27 so far (${mon.length} mo, ${fmt(ytd,0)})`,[{x:t(last(mon)[0]),y:ytd}],C.o,0,{pointRadius:5,showLine:false})]},''],
+ ['c_ca','current_account','Current account balance (% of GDP, year ended)','% GDP',d=>{const s=d.series['Current account % GDP'];return[ds('Current account % GDP',xy(s),C.k),ds('Projection',glide(s,V.ca),C.k,1)]}],
+ ['c_tb','trade_balance','Trade balance, year ended (NZ$ billion)','$b',d=>{const S=d.series;const s=S['Goods & services'];return[ds('Goods & services',xy(s),C.k),ds('Goods',xy(S['Goods']),C.o,0,{borderWidth:1}),ds('Services',xy(S['Services']),C.g,0,{borderWidth:1}),ds('G&S projection',trend(s,V.tb),C.k,1)]}],
+ ['c_tot','terms_of_trade','Goods terms of trade (index, Jun 2002 qtr = 1000)','index',d=>{const s=d.series['Goods terms of trade'];return[ds('Goods ToT',xy(s),C.g),ds('Projection',comp(s,V.tot),C.g,1)]}],
+ ['c_fx','fx','NZD: trade-weighted index (left) and NZD/USD (right)','TWI',d=>{const S=d.series;const a=S['TWI (17 currency)'],b=S['NZD/USD'];return[ds('TWI',xy(a),C.b),ds('NZD/USD',xy(b),C.o,0,{yAxisID:'y2'}),ds('TWI proj.',comp(a,V.fx),C.b,1),ds('USD proj.',comp(b,V.fx),C.o,1,{yAxisID:'y2'})]},'USD'],
+ ['c_gdp','gdp_per_capita','Real GDP per capita (quarterly, chain-volume NZ$, s.a.)','NZ$',d=>{const s=d.series['Real GDP per capita'];return[ds('Real GDP per capita',xy(s),C.k),ds('Projection',comp(s,V.gdp/1),C.k,1)]}],
+ ['c_mort','mortgage','Mortgage rates, new standard (% p.a., end of month)','%',d=>{const S=d.series;return[ds('Floating',xy(S['Floating']),C.r),ds('1-year fixed',xy(S['1-year fixed']),C.b),ds('Floating proj.',trend(S['Floating'],V.mort,1),C.r,1),ds('1-yr proj.',trend(S['1-year fixed'],V.mort,1),C.b,1)]}]];
+function sqData(){const W=D.wages.series;const real=W['Real wage growth (QES - CPI)'];const wp=glide(W['QES avg hourly earnings'],V.wage),cp=glide(W['CPI inflation'],V.cpi);
+ const imp=-0.25*(Math.pow(1+V.fx/100,1)-1)*100; // pp per year from NZD drift
+ const proj=wp.map(p=>{const c=cp.reduce((b,q)=>Math.abs(q.x-p.x)<Math.abs(b.x-p.x)?q:b);return{x:p.x,y:p.y-c.y}});
+ const projImp=proj.map((p,i)=>({x:p.x,y:i==0?p.y:p.y-imp}));
+ return{real,proj,projImp,imp,wp,cp}}
+function render(){
+ for(const[id,key,,,fn]of CHARTS){const c=CH[id].c;c.data.datasets=fn(D[key]);const lp=c.data.datasets.find(x=>x.borderDash.length);c.options.plugins.shade.from=lp?lp.data[0].x:2100;c.update()}
+ const s=sqData();const c=CH.sq.c;c.data.datasets=[ds('Real wage growth (QES − CPI)',xy(s.real),C.k),ds('Projection (your wage & CPI dials)',s.proj,C.k,1),ds('…incl. NZD import effect',s.projImp,C.r,1)];c.options.plugins.shade.from=s.proj[0].x;c.update();
+ const rows=[];for(const yr of[2027,2028,2029,2030]){const x=yr+0.5/12+0.75;const pick=a=>a.reduce((b,q)=>Math.abs(q.x-x)<Math.abs(b.x-x)?q:b).y;const w=pick(s.wp),cc=pick(s.cp);rows.push([yr,w,cc,w-cc,s.imp,w-cc-s.imp])}
+ document.getElementById('sqt').innerHTML='<tr><th>Year (Q4)</th><th>Wages</th><th>CPI</th><th>Real wage</th><th>Import effect</th><th>Real after FX</th></tr>'+rows.map(r=>`<tr><td>${r[0]}</td><td>${fmt(r[1])}%</td><td>${fmt(r[2])}%</td><td class="${r[3]<0?'neg':'pos'}">${fmt(r[3])} pp</td><td>${r[4]>0.0049?'+':''}${fmt(Math.abs(r[4])<0.005?0:r[4],2)} pp</td><td class="${r[5]<0?'neg':'pos'}">${fmt(r[5])} pp</td></tr>`).join('');
+ for(const d of DIALS)if(d.length>1){const u=d[6];const v=V[d[0]];document.getElementById('o_'+d[0]).textContent=(u=='%'||u=='% GDP'?fmt(v):Math.abs(d[5])>=1?fmt(v,0):fmt(v,d[5]<0.1?2:1))+(u?' '+u:'')}
+}
+function buildDials(){const A=document.getElementById('dcA'),B=document.getElementById('dcB');let tgt=A,n=0;
+ for(const d of DIALS){if(d.length==1){n++;tgt=n<=2?A:B;tgt.insertAdjacentHTML('beforeend',`<div class="grp">${d[0]}</div>`);continue}
+  const[id,lab,def,mn,mx,st]=d;tgt.insertAdjacentHTML('beforeend',`<div class="dial"><label for="i_${id}"><span>${lab}</span><b id="o_${id}"></b></label><input type="range" id="i_${id}" min="${mn}" max="${mx}" step="${st}" value="${def}"><small id="h_${id}"></small></div>`);
+  document.getElementById('i_'+id).addEventListener('input',e=>{V[id]=+e.target.value;render()})}}
+function setDefaults(){const L=(k,s)=>last(D[k].series[s])[1];
+ const dyn={mig:Math.round(L('migration','Net migration (12 months)')/2500)*2500,visa:Math.round(D.work_visas.series['Approved, financial year'].filter(p=>!/2026\/27/.test(p[0])).slice(-1)[0][1]/5000)*5000,
+  wage:L('wages','QES avg hourly earnings'),lci:L('wages','LCI wage rates'),cpi:L('wages','CPI inflation'),ca:L('current_account','Current account % GDP')};
+ for(const d of DIALS)if(d.length>1){let v=d[2]==null?dyn[d[0]]:d[2];v=Math.round(v/d[5])*d[5];v=+v.toFixed(3);DEF[d[0]]=v;V[d[0]]=v;document.getElementById('i_'+d[0]).value=v;
+  document.getElementById('h_'+d[0]).textContent=d[2]==null?'default = latest published value (flat)':'default = no change'}}
+function snapshot(){const r=[];const L=(k,s)=>last(D[k].series[s]);const per=p=>p;
+ const fx=D.fx.latest_daily;
+ const W=D.work_visas.series;
+ r.push(['Net migration, 12 months to',per(L('migration','Net migration (12 months)')[0]),fmt(L('migration','Net migration (12 months)')[1],0),D.migration]);
+ r.push(['Unemployment rate (s.a.)',L('unemployment','Unemployment rate')[0]+' qtr',fmt(L('unemployment','Unemployment rate')[1])+'%',D.unemployment]);
+ r.push(['LCI wage rates, annual',L('wages','LCI wage rates')[0]+' qtr','+'+fmt(L('wages','LCI wage rates')[1])+'%',D.wages]);
+ r.push(['QES avg hourly earnings, annual',L('wages','QES avg hourly earnings')[0]+' qtr','+'+fmt(L('wages','QES avg hourly earnings')[1])+'%',D.wages]);
+ r.push(['CPI inflation, annual',L('wages','CPI inflation')[0]+' qtr',fmt(L('wages','CPI inflation')[1])+'%',Object.assign({},D.wages,D.wages.release2,{source:'Stats NZ CPI'})]);
+ r.push(['Work-visa applications approved',last(W['Approved, month (current FY)'])[0]+' (month)',fmt(last(W['Approved, month (current FY)'])[1],0)+' · FY '+W['Approved, financial year'].slice(-2)[0][0]+': '+fmt(W['Approved, financial year'].slice(-2)[0][1],0),D.work_visas]);
+ r.push(['Current account, year ended',L('current_account','Current account % GDP')[0]+' qtr','$'+fmt(L('current_account','Current account, $b (yr ended)')[1])+'b ('+fmt(L('current_account','Current account % GDP')[1])+'% GDP)',D.current_account]);
+ r.push(['Goods & services balance, year ended',L('trade_balance','Goods & services')[0]+' qtr','$'+fmt(L('trade_balance','Goods & services')[1],2)+'b',D.trade_balance]);
+ r.push(['Goods terms of trade, q/q',L('terms_of_trade','Quarterly % change')[0]+' qtr',fmt(L('terms_of_trade','Quarterly % change')[1])+'%',D.terms_of_trade]);
+ if(fx)r.push(['NZD TWI / NZD/USD (daily)',fx.date,fmt(fx.TWI,2)+' / '+fmt(fx['NZD/USD'],3),D.fx]);
+ r.push(['Real GDP per capita, q/q',L('gdp_per_capita','q/q % change')[0]+' qtr',fmt(L('gdp_per_capita','q/q % change')[1])+'%',D.gdp_per_capita]);
+ r.push(['Mortgage: floating / 1-yr fixed',L('mortgage','Floating')[0],fmt(L('mortgage','Floating')[1],2)+'% / '+fmt(L('mortgage','1-year fixed')[1],2)+'%',D.mortgage]);
+ document.getElementById('snap').innerHTML='<tr><th>Indicator</th><th>Period</th><th>Value</th><th>Source</th></tr>'+r.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td><td>${x[2]}</td><td class="m"><a href="${x[3].release_url}">${x[3].release||'source'}</a></td></tr>`).join('')}
+function thesis(){const M=D.migration.series['Net migration (12 months)'];const pk=M.reduce((a,b)=>b[1]>a[1]?b:a);const CA=D.current_account.series['Current account % GDP'];const caMin=CA.reduce((a,b)=>b[1]<a[1]?b:a);
+ const mo=D.mortgage.series['1-year fixed'];const moPk=mo.reduce((a,b)=>b[1]>a[1]?b:a);const moLo=mo.reduce((a,b)=>b[1]<a[1]?b:a);const tb=D.trade_balance.series['Goods & services'];const tbMin=tb.reduce((a,b)=>b[1]<a[1]?b:a);
+ const gdp=D.gdp_per_capita.series['Real GDP per capita'];const g0=gdp.find(p=>p[0]==pk[0].slice(0,4)+'-'+['03','06','09','12'][Math.floor((+pk[0].slice(5)-1)/3)])||gdp[0];
+ document.getElementById('thesis').innerHTML=`<p><b>My view:</b> high net migration pushes up housing demand and mortgage debt. That borrowing is funded largely from offshore through the banks, which shows up as a persistent current-account deficit.</p>
+<p><b>What the data on this page shows:</b> net migration peaked at <b>${fmt(pk[1],0)}</b> in the 12 months to ${pk[0]} and is now ${fmt(last(M)[1],0)}. The current-account deficit was widest at <b>${fmt(caMin[1])}% of GDP</b> (year to ${caMin[0]}) and is now ${fmt(last(CA)[1])}%. The goods & services balance was weakest at −$${fmt(-tbMin[1],2)}b (year to ${tbMin[0]}) and is now ${last(tb)[1]<0?'−':''}$${fmt(Math.abs(last(tb)[1]),2)}b against a current-account deficit of $${fmt(-last(D.current_account.series['Current account, $b (yr ended)'])[1])}b. So today most of the deficit is the primary-income gap (returns paid to foreign owners and lenders of NZ assets), not trade. 1-year fixed mortgage rates ran from a low of ${fmt(moLo[1],2)}% (${moLo[0]}) to a peak of ${fmt(moPk[1],2)}% (${moPk[0]}). The migration surge, the widest deficits and the rate peak all happened around 2022–24, so the timing fits the thesis. But these are correlations over one cycle, and the same period also had post-COVID reopening, an import and fiscal boom, and a terms-of-trade swing. <i>This page does not include household mortgage-debt or house-price series</i> (see gaps), so the debt link itself is not tested here.</p>
+<p><b>Market-oriented counterpoint:</b> a current-account deficit is the mirror image of a capital-account surplus. Foreigners choosing to invest in or lend to NZ can mean investment and population growth being financed efficiently, not just consumption. Migrants also add labour supply (unemployment rose from its 2022 low as the migration surge arrived, and wage growth cooled) and they pay tax. The binding constraint on housing is arguably supply: zoning, consenting and infrastructure funding. If supply responded freely, extra people would mean more building rather than higher prices and more leverage. On that view, the fix is to free up supply and keep fiscal policy tight, not to cap migration. A floating NZD (TWI ${fmt(last(D.fx.series['TWI (17 currency)'])[1])}) also does some of the adjustment by making imports dearer and exports more competitive.</p>`}
+function sources(){const ul=document.getElementById('srcs');for(const k of IDS.slice(0,-1)){const d=D[k];ul.insertAdjacentHTML('beforeend',`<li><b>${d.title}</b>: ${cite(d)} Retrieved ${d.fetched}.</li>`)}
+ const g=(D.meta.gaps||[]).concat(['Household mortgage debt / housing credit (RBNZ C5/C6) and house prices: not fetched, so the debt side of the thesis is not charted.','Work-visa approvals use INZ application counts; people-included counts and per-month history before Jul 2026 are not in the published pack.']);
+ for(const f of (D.meta.failed_last_run||[]))g.push('Last refresh failed for '+f.step+' (kept previous data): '+f.error);
+ document.getElementById('gaps').innerHTML=g.map(x=>`<li>${x}</li>`).join('');document.getElementById('built').textContent='Data last refreshed '+D.meta.built+'.'}
+Promise.all(IDS.map(k=>fetch('data/'+k+'.json').then(r=>r.json()).then(j=>D[k]=j))).then(()=>{
+ const box=document.getElementById('charts');for(const[id,key,title]of CHARTS)box.insertAdjacentHTML('beforeend',`<div class="card"><h3>${title}</h3><div class="cw"><canvas id="${id}"></canvas></div><p class="cite">${cite(D[key])}</p></div>`);
+ for(const[id,,,yl,,y2]of CHARTS)mk(id,null,yl,y2);mk('sq',null,'pp');document.getElementById('sqcite').innerHTML=cite(D.wages);
+ buildDials();setDefaults();snapshot();thesis();sources();render();
+ document.getElementById('reset').onclick=()=>{for(const k in DEF){V[k]=DEF[k];document.getElementById('i_'+k).value=DEF[k]}render()};
+}).catch(e=>{document.getElementById('charts').textContent='Failed to load data: '+e;console.error(e)});
+</script></body></html>
