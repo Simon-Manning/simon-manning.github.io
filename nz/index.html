@@ -28,6 +28,7 @@ th{color:#999;font-weight:500}.m{color:#999;font-size:.8rem}.tw{overflow-x:auto}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .neg{color:#b3261e}.pos{color:#1b7f3b}
 @media(min-width:1200px){main{max-width:1400px}.grid.main{grid-template-columns:600px minmax(0,1fr)}.dcols{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}}
+@media(max-width:600px){#snap td:nth-child(4),#snap th:nth-child(4){display:none}}
 @media(max-width:820px){.grid,.grid.main{grid-template-columns:minmax(0,1fr)}.dials{position:static;max-height:none}.charts,.two{grid-template-columns:minmax(0,1fr)}main{padding:24px 14px}h1{font-size:1.6rem}}
 </style></head><body><main>
 <p class="m"><a href="../">← Simon Manning</a></p>
@@ -36,7 +37,7 @@ th{color:#999;font-weight:500}.m{color:#999;font-size:.8rem}.tw{overflow-x:auto}
 <div class="card warn note"><b>Projections are assumptions, not forecasts.</b> Each dashed line simply carries the latest published value forward along the path you set with the dials. They are not predictions by me or by any agency, and nothing here is financial advice. <span id="built"></span></div>
 
 <h2>Latest snapshot</h2>
-<div class="card tw"><table id="snap"></table></div>
+<div class="card tw"><table id="snap"></table><p class="m">Full citations for each figure are in the chart footnotes and under Sources below.</p></div>
 
 <div class="grid main" style="margin-top:20px">
 <div class="card dials"><div style="display:flex;justify-content:space-between;align-items:center"><b>Dials (my assumptions to 2030)</b><button id="reset">Reset</button></div><div class="dcols"><div id="dcA"></div><div id="dcB"></div></div></div>
@@ -63,6 +64,7 @@ th{color:#999;font-weight:500}.m{color:#999;font-size:.8rem}.tw{overflow-x:auto}
 const IDS=['migration','unemployment','wages','work_visas','current_account','trade_balance','terms_of_trade','fx','gdp_per_capita','mortgage','meta'];
 const END=2031.0, D={};
 const t=p=>{if(/^\d{4}\/\d{2}$/.test(p))return +p.slice(0,4)+1.0-0.5/12*0; const[y,m]=p.split('-').map(Number);return y+(m-0.5)/12};
+const money=(v,d)=>(v<0?'−':'')+'$'+fmt(Math.abs(v),d)+'b';
 const last=a=>a[a.length-1];
 const fmt=(v,d=1)=>v==null?'–':(+v).toLocaleString('en-NZ',{minimumFractionDigits:d,maximumFractionDigits:d});
 const C={k:'#111',b:'#2f6fb5',r:'#c0392b',g:'#2e8b57',o:'#d98c1f',p:'#7b3fc4',grey:'#999'};
@@ -147,8 +149,8 @@ function snapshot(){const r=[];const L=(k,s)=>last(D[k].series[s]);const per=p=>
  r.push(['QES avg hourly earnings, annual',L('wages','QES avg hourly earnings')[0]+' qtr','+'+fmt(L('wages','QES avg hourly earnings')[1])+'%',D.wages]);
  r.push(['CPI inflation, annual',L('wages','CPI inflation')[0]+' qtr',fmt(L('wages','CPI inflation')[1])+'%',Object.assign({},D.wages,D.wages.release2,{source:'Stats NZ CPI'})]);
  r.push(['Work-visa applications approved',last(W['Approved, month (current FY)'])[0]+' (month)',fmt(last(W['Approved, month (current FY)'])[1],0)+' · FY '+W['Approved, financial year'].slice(-2)[0][0]+': '+fmt(W['Approved, financial year'].slice(-2)[0][1],0),D.work_visas]);
- r.push(['Current account, year ended',L('current_account','Current account % GDP')[0]+' qtr','$'+fmt(L('current_account','Current account, $b (yr ended)')[1])+'b ('+fmt(L('current_account','Current account % GDP')[1])+'% GDP)',D.current_account]);
- r.push(['Goods & services balance, year ended',L('trade_balance','Goods & services')[0]+' qtr','$'+fmt(L('trade_balance','Goods & services')[1],2)+'b',D.trade_balance]);
+ r.push(['Current account, year ended',L('current_account','Current account % GDP')[0]+' qtr',money(L('current_account','Current account, $b (yr ended)')[1],1)+' ('+fmt(L('current_account','Current account % GDP')[1])+'% GDP)',D.current_account]);
+ r.push(['Goods & services balance, year ended',L('trade_balance','Goods & services')[0]+' qtr',money(L('trade_balance','Goods & services')[1],2),D.trade_balance]);
  r.push(['Goods terms of trade, q/q',L('terms_of_trade','Quarterly % change')[0]+' qtr',fmt(L('terms_of_trade','Quarterly % change')[1])+'%',D.terms_of_trade]);
  if(fx)r.push(['NZD TWI / NZD/USD (daily)',fx.date,fmt(fx.TWI,2)+' / '+fmt(fx['NZD/USD'],3),D.fx]);
  r.push(['Real GDP per capita, q/q',L('gdp_per_capita','q/q % change')[0]+' qtr',fmt(L('gdp_per_capita','q/q % change')[1])+'%',D.gdp_per_capita]);
