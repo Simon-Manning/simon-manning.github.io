@@ -101,26 +101,11 @@ function debtHist(){const G=D.gdp_per_capita.series,hc=D.housing_credit.series['
  return G['Nominal GDP per capita, year ended ($)'].map(([p,v])=>{const c=at(hc,p),pp=at(G['Implied population (m)'],p);return c&&pp?[p,c/(v*pp/1000)*100]:null}).filter(Boolean)}
 function popYoy(){return yoy(D.gdp_per_capita.series['Implied population (m)'],4)}
 const CHARTS=[
- ['c_mig','Net migration, 12-month total (people)','people',['migration'],M=>{const s=D.migration.series['Net migration (12 months)'];return[ds('Net migration',xy(s),C.b),ds('Driver',pr(s,M,()=>V.mig),C.b,1)]}],
- ['c_pop','Population (millions, implied from GDP ÷ GDP per head)','m',['gdp_per_capita'],M=>{const s=D.gdp_per_capita.series['Implied population (m)'];return[ds('Population',xy(s),C.k),ds('Model',pl(s,M,r=>r.pg),C.k,1)]}],
- ['c_gdp','Real GDP growth and real GDP per head growth (annual %)','%',['gdp_per_capita'],M=>{const G=D.gdp_per_capita.series;const a=yoy(G['Real GDP ($m, quarterly)'],4),b=yoy(G['Real GDP per capita'],4);
-   return[ds('Real GDP',xy(a),C.b),ds('Per head',xy(b),C.o),ds('GDP model',pr(a,M,r=>r.g),C.b,1),ds('Per head model',pr(b,M,r=>r.gpc),C.o,1)]}],
- ['c_gpc','Real GDP per head (quarterly, chain-volume NZ$, s.a.)','NZ$',['gdp_per_capita'],M=>{const s=D.gdp_per_capita.series['Real GDP per capita'];return[ds('Real GDP per head',xy(s),C.k),ds('Model',pl(s,M,r=>r.gpc),C.k,1)]}],
- ['c_dw','Housing demand: dwellings needed per year (population change ÷ people per dwelling)','dwellings',['gdp_per_capita'],M=>{const P=D.gdp_per_capita.series['Implied population (m)'];const s=P.slice(4).map((p,i)=>[p[0],(p[1]-P[i][1])*1e6/E.hh]);
-   return[ds('Implied by population growth',xy(s),C.p),ds('Model',pr(s,M,r=>r.dwell),C.p,1)]}],
- ['c_hpi','House price index (CoreLogic via RBNZ M10)','index',['house_prices'],M=>{const s=D.house_prices.series['House price index'];return[ds('HPI',xy(s),C.r),ds('Model',pl(s,M,r=>r.h),C.r,1)]}],
- ['c_hc','Housing lending: annual growth % (left) and stock $b (right)','%',['housing_credit'],M=>{const S=D.housing_credit.series;const a=S['Annual growth (%)'],b=S['Housing lending ($b)'];
-   return[ds('Growth %',xy(a),C.r),ds('Stock $b',xy(b),C.k,0,{yAxisID:'y2',borderWidth:1.2}),ds('Growth model',pr(a,M,r=>r.c),C.r,1),ds('Stock model',pl(b,M,r=>r.c),C.k,1,{yAxisID:'y2'})]},'$b'],
- ['c_debt','Household mortgage debt (% of nominal GDP, June years)','% GDP',['housing_credit','gdp_per_capita'],M=>{const s=debtHist();return[ds('Housing lending / GDP',xy(s),C.r),ds('Model',pr(s,M,r=>r.debt),C.r,1)]}],
- ['c_ca','Current account balance (% of GDP, year ended)','% GDP',['current_account'],M=>{const s=D.current_account.series['Current account % GDP'];return[ds('Current account',xy(s),C.k),ds('Model',pr(s,M,r=>r.ca),C.k,1)]}],
- ['c_fx','NZD trade-weighted index (TWI-17, monthly average)','index',['fx'],M=>{const s=D.fx.series['TWI (17 currency)'];return[ds('TWI',xy(s),C.b),ds('Model',pl(s,M,r=>r.twi),C.b,1)]}],
- ['c_cpi','CPI inflation and import prices (annual %)','%',['wages'],M=>{const s=D.wages.series['CPI inflation'];return[ds('CPI',xy(s),C.r),ds('CPI model',pr(s,M,r=>r.cpi),C.r,1),ds('Import prices (model only)',pr([[last(s)[0],2]],M,r=>r.imp),C.o,1)]}],
- ['c_un','Unemployment rate (%, s.a.)','%',['unemployment'],M=>{const s=D.unemployment.series['Unemployment rate'];return[ds('Unemployment',xy(s),C.r),ds('Model',pr(s,M,r=>r.u),C.r,1)]}],
- ['c_rw','Real wage growth (QES hourly earnings − CPI, annual %)','pp',['wages'],M=>{const s=D.wages.series['Real wage growth (QES - CPI)'];return[ds('Real wage growth',xy(s),C.k),ds('Model',pr(s,M,r=>r.rw),C.k,1)]}],
- ['c_ocr','OCR and 1-year fixed mortgage rate (%)','%',['ocr','mortgage'],M=>{const o=D.ocr.series.OCR,m=D.mortgage.series['1-year fixed'];const sp=last(m)[1]-at(o,last(m)[0]);
-   return[ds('OCR',xy(o),C.k),ds('1-yr fixed',xy(m),C.b),ds('OCR driver',pr(o,M,()=>V.ocr),C.k,1),ds('1-yr (OCR + current spread)',pr(m,M,()=>V.ocr+sp),C.b,1)]}],
- ['c_tot','Goods terms of trade (index, Jun 2002 qtr = 1000)','index',['terms_of_trade'],M=>{const s=D.terms_of_trade.series['Goods terms of trade'];return[ds('Goods ToT',xy(s),C.g),ds('Driver',pl(s,M,()=>V.tot),C.g,1)]}]];
-
+ ['c_mig','Net migration, 12-month total (people)','people',['migration'],M=>{const s=D.migration.series['Net migration (12 months)'];return[ds('Net migration',xy(s),C.b),ds('Scenario',pr(s,M,()=>V.mig),C.b,1)]}],
+ ['c_debt','Mortgage debt (% of GDP, left) and house prices (index, right)','% GDP',['housing_credit','house_prices'],M=>{const s=debtHist(),h=D.house_prices.series['House price index'];return[ds('Mortgage debt / GDP',xy(s),C.r),ds('House prices',xy(h),C.grey||'#999',0,{yAxisID:'y2',borderWidth:1.2}),ds('Debt scenario',pr(s,M,r=>r.debt),C.r,1),ds('HPI scenario',pl(h,M,r=>r.h),'#999',1,{yAxisID:'y2'})]},'HPI'],
+ ['c_ca','Current account balance (% of GDP)','% GDP',['current_account'],M=>{const s=D.current_account.series['Current account % GDP'];return[ds('Current account',xy(s),C.k),ds('Scenario',pr(s,M,r=>r.ca),C.k,1)]}],
+ ['c_un','Unemployment rate (%)','%',['unemployment'],M=>{const s=D.unemployment.series['Unemployment rate'];return[ds('Unemployment',xy(s),C.r),ds('Scenario',pr(s,M,r=>r.u),C.r,1)]}],
+ ['c_rw','Wages vs CPI (annual %)','%',['wages'],M=>{const W=D.wages.series,w=W['QES avg hourly earnings'],c=W['CPI inflation'],r=W['Real wage growth (QES - CPI)'];return[ds('Wages (QES)',xy(w),C.b),ds('CPI',xy(c),C.o),ds('Real wage growth',xy(r),C.k,0,{borderWidth:2.5}),ds('Wages scen.',pr(w,M,q=>q.w),C.b,1),ds('CPI scen.',pr(c,M,q=>q.cpi),C.o,1),ds('Real scen.',pr(r,M,q=>q.rw),C.k,1)]},null,'wide']];
 // ---------- Annual history (June years) ----------
 function hist(){const J=(s,y)=>at(s,y+'-06');const dh=debtHist();const out=[];
  for(let y=2016;y<=2026;y++){const d=J(dh,y),d0=J(dh,y-1),u=J(D.unemployment.series['Unemployment rate'],y),u0=J(D.unemployment.series['Unemployment rate'],y-1);
@@ -128,18 +113,15 @@ function hist(){const J=(s,y)=>at(s,y+'-06');const dh=debtHist();const out=[];
   if(d==null||u==null)continue;out.push({y,ca:J(D.current_account.series['Current account % GDP'],y),debt:d,ddebt:d-d0,du:u-u0,u,
    mig:J(D.migration.series['Net migration (12 months)'],y),mr:J(D.migration.series['Net migration (12 months)'],y)/(J(P,y-1)*1e6)*100,c:J(D.housing_credit.series['Annual growth (%)'],y),h:J(D.house_prices.series['Annual % change'],y)})}
  return out}
-function verdict(dd,du,ca){if(dd>=0.5&&du<0.2)return['Path 1: debt','vd'];if(dd<0.5&&du>=0.2)return['Path 2: unemployment','vu'];if(dd>=0.5&&du>=0.2)return['Both','vb'];return['Neither','vc']}
+function verdict(dd,du,ca){if(dd>=0.5&&du<0.2)return['1: debt','vd'];if(dd<0.5&&du>=0.2)return['2: unemp.','vu'];if(dd>=0.5&&du>=0.2)return['Both','vb'];return['Neither','vc']}
 function corr(a,b){const n=a.length,ma=a.reduce((x,y)=>x+y)/n,mb=b.reduce((x,y)=>x+y)/n;let s=0,sa=0,sb=0;for(let i=0;i<n;i++){s+=(a[i]-ma)*(b[i]-mb);sa+=(a[i]-ma)**2;sb+=(b[i]-mb)**2}return s/Math.sqrt(sa*sb)}
 
 // ---------- Render ----------
 function render(){const M=model();
  for(const[id,,,,fn]of CHARTS){const c=CH[id];c.data.datasets=fn(M);const p=c.data.datasets.find(x=>x.borderDash.length);c.options.plugins.shade.from=p?p.data[0].x:2100;c.update()}
- // squeeze
- const rw=D.wages.series['Real wage growth (QES - CPI)'];const c=CH.sq;c.data.datasets=[ds('Real wage growth (QES − CPI)',xy(rw),C.k),ds('Model',pr(rw,M,r=>r.rw),C.r,1)];c.options.plugins.shade.from=t(last(rw)[0]);c.update();
  const y0=Math.floor(t(last(D.unemployment.series['Unemployment rate'])[0]));
- document.getElementById('sqt').innerHTML='<tr><th>Year</th><th>Wages</th><th>CPI</th><th>of which imports</th><th>Real wage</th></tr>'+M.slice(0,4).map(r=>`<tr><td>${y0+r.k}</td><td>${fmt(r.w)}%</td><td>${fmt(r.cpi)}%</td><td>${sg(E.mImp*(r.imp-2),2)} pp</td><td class="${r.rw<0?'neg':'pos'}">${sg(r.rw)} pp</td></tr>`).join('');
  // adjustment (model)
- document.getElementById('adjm').innerHTML='<tr><th>Year</th><th>CA % GDP</th><th>Δ debt/GDP</th><th>Δ unemp.</th><th>Path</th></tr>'+M.slice(0,4).map(r=>{const v=verdict(r.ddebt,r.du,r.ca);return`<tr><td>${y0+r.k}</td><td>${fmt(r.ca)}</td><td>${sg(r.ddebt)} pp</td><td>${sg(r.du,2)} pp</td><td class="verdict ${v[1]}">${v[0]}</td></tr>`}).join('');
+ document.getElementById('adjm').innerHTML='<tr><th>Year</th><th>CA</th><th>Δ debt</th><th>Δ unemp.</th><th>Path</th></tr>'+M.slice(0,4).map(r=>{const v=verdict(r.ddebt,r.du,r.ca);return`<tr><td>${y0+r.k}</td><td>${fmt(r.ca)}</td><td>${sg(r.ddebt)}</td><td>${sg(r.du,2)}</td><td class="verdict ${v[1]}">${v[0]}</td></tr>`}).join('');
  const L=M[3];const cum=M.slice(0,4).reduce((a,r)=>[a[0]+r.ddebt,a[1]+r.du],[0,0]);
  document.getElementById('adjtxt').innerHTML=`By ${y0+4}: current account <b>${fmt(L.ca)}% of GDP</b>, mortgage debt/GDP <b>${sg(cum[0])}pp</b> to ${fmt(L.debt,0)}%, unemployment <b>${sg(cum[1])}pp</b> to ${fmt(L.u)}%. `+
   (cum[0]>2&&cum[1]<0.5?'In this scenario the identity balances mainly through <b>path 1, more household debt</b>.':cum[1]>=0.5&&cum[0]<2?'In this scenario the identity balances mainly through <b>path 2, higher saving and unemployment</b>.':cum[0]>2&&cum[1]>=0.5?'In this scenario <b>both paths</b> operate: debt and unemployment both rise.':'In this scenario the deficit narrows <b>without much of either path</b>, through the model’s NZD and mean-reversion terms.');
@@ -180,7 +162,7 @@ function snapshot(){const r=[];const L=(k,s)=>last(D[k].series[s]);const fx=D.fx
  document.getElementById('snap').innerHTML='<tr><th>Indicator</th><th>Period</th><th>Value</th><th>Source</th></tr>'+r.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td><td>${x[2]}</td><td class="m"><a href="${x[3].release_url}">${x[3].release||'source'}</a></td></tr>`).join('')}
 
 function thesis(){const H=hist();
- document.getElementById('adjh').innerHTML='<tr><th>June yr</th><th>CA % GDP</th><th>Debt/GDP</th><th>Δ debt/GDP</th><th>Δ unemp.</th><th>Path</th></tr>'+H.map(r=>{const v=verdict(r.ddebt,r.du,r.ca);return`<tr><td>${r.y}</td><td>${fmt(r.ca)}</td><td>${fmt(r.debt,0)}%</td><td>${sg(r.ddebt)} pp</td><td>${sg(r.du)} pp</td><td class="verdict ${v[1]}">${v[0]}</td></tr>`}).join('');
+ document.getElementById('adjh').innerHTML='<tr><th>June</th><th>CA</th><th>Debt/GDP</th><th>Δ unemp.</th><th>Path</th></tr>'+H.map(r=>{const v=verdict(r.ddebt,r.du,r.ca);return`<tr><td>${r.y}</td><td>${fmt(r.ca)}</td><td>${fmt(r.debt,0)}% (${sg(r.ddebt)})</td><td>${sg(r.du)}</td><td class="verdict ${v[1]}">${v[0]}</td></tr>`}).join('');
  const K=H.filter(r=>r.y!=2020&&r.y!=2021);const k=(f)=>K.map(f);const A=(f)=>H.map(f);
  const cMH=corr(A(r=>r.mr),A(r=>r.h)),cMH2=corr(k(r=>r.mr),k(r=>r.h)),cHC=corr(A(r=>r.h),A(r=>r.c)),cCC=corr(A(r=>r.c),A(r=>-r.ca)),cDU=corr(A(r=>r.ddebt),A(r=>r.du));
  const pk=H.reduce((a,b)=>b.debt>a.debt?b:a),lt=last(H),hc=D.housing_credit.series['Annual growth (%)'];const hcPk=hc.filter(p=>p[0]>='2020').reduce((a,b)=>b[1]>a[1]?b:a),hcLo=hc.filter(p=>p[0]>='2022').reduce((a,b)=>b[1]<a[1]?b:a);
@@ -201,8 +183,8 @@ function sources(){const ul=document.getElementById('srcs');for(const k of IDS.s
 
 Promise.all(IDS.map(k=>fetch('data/'+k+'.json').then(r=>r.json()).then(j=>D[k]=j))).then(()=>{
  base();const box=document.getElementById('charts');
- for(const[id,title,,keys]of CHARTS)box.insertAdjacentHTML('beforeend',`<div class="card"><h3>${title}</h3><div class="cw"><canvas id="${id}"></canvas></div><p class="cite">${keys.map(k=>cite(D[k])).join(' ')}</p></div>`);
- for(const[id,,yl,,,y2]of CHARTS)mk(id,yl,y2);mk('sq','pp');document.getElementById('sqcite').innerHTML=cite(D.wages);
+ for(const[id,title,,keys,,,cls]of CHARTS)box.insertAdjacentHTML('beforeend',`<div class="card ${cls||''}"><h3>${title}</h3><div class="cw"><canvas id="${id}"></canvas></div><p class="cite">Source: ${keys.map(k=>`<a href="${D[k].release_url}">${D[k].release}</a>`).join('; ')}</p></div>`);
+ for(const[id,,yl,,,y2]of CHARTS)mk(id,yl,y2);
  buildControls();snapshot();thesis();sources();render();
  document.getElementById('reset').onclick=()=>{for(const k in DEF){V[k]=DEF[k];document.getElementById('i_'+k).value=DEF[k]}for(const k in EDEF){E[k]=EDEF[k];document.getElementById('i_e_'+k).value=EDEF[k]}render()};
 }).catch(e=>{document.getElementById('charts').textContent='Failed to load data: '+e;console.error(e)});
