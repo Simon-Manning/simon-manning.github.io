@@ -1,7 +1,177 @@
-<cursor_untrusted_data_1337 source="CallDynamicTool">
-
-{"data":[{"article":{"title":"🇺🇸 WHAT TO WATCH TODAY — U.S. MARKETS"},"author_id":"2704294333","created_at":"2026-10-29T12:23:47.000Z","edit_history_tweet_ids":["2115781643877101718"],"id":"2115781643877101718","public_metrics":{"bookmark_count":6,"impression_count":119828,"like_count":101,"quote_count":1,"reply_count":10,"retweet_count":11},"text":"https://t.co/gOluzzsBkr","url":"https://x.com/DeItaone/status/2115781643877101718"},{"article":{"title":"🇺🇸 WHAT TO WATCH TODAY — U.S. MARKETS"},"author_id":"2704294333","created_at":"2026-10-28T12:03:12.000Z","edit_history_tweet_ids":["2115414076155220392"],"id":"2115414076155220392","public_metrics":{"bookmark_count":9,"impression_count":128541,"like_count":144,"quote_count":4,"reply_count":22,"retweet_count":19},"text":"https://t.co/WEW9XXFLBi","url":"https://x.com/DeItaone/status/2115414076155220392"},{"article":{"title":"🇺🇸 WHAT TO WATCH TODAY — U.S. MARKETS"},"author_id":"2704294333","created_at":"2026-10-26T10:34:22.000Z","edit_history_tweet_ids":["2114666943567294701"],"id":"2114666943567294701","public_metrics":{"bookmark_count":10,"impression_count":109483,"like_count":62,"quote_count":1,"reply_count":7,"retweet_count":10},"text":"https://t.co/Vvps5EQhll","url":"https://x.com/DeItaone/status/2114666943567294701"},{"author_id":"3316376038","created_at":"2026-10-30T18:45:24.000Z","edit_history_tweet_ids":["2116240066142154894"],"id":"2116240066142154894","public_metrics":{"bookmark_count":712,"impression_count":601618,"like_count":6501,"quote_count":61,"reply_count":259,"retweet_count":515},"text":"The timing of today's market crash is noteworthy.\n\nAs selling pressure spreads, the Nasdaq 100 is now down nearly -5% on the day.\n\nMeanwhile, the market-implied odds of a Democrat \"sweep\" in the Midterms next week has surged from 65% to 72% today, a record high.\n\nThat's +7","url":"https://x.com/KobeissiLetter/status/2116240066142154894"},{"article":{"title":"🇺🇸 WHAT TO WATCH TODAY — U.S. MARKETS"},"author_id":"2704294333","created_at":"2026-10-27T10:27:34.000Z","edit_history_tweet_ids":["2115027618835714247"],"id":"2115027618835714247","public_metrics":{"bookmark_count":12,"impression_count":128378,"like_count":102,"quote_count":1,"reply_count":9,"retweet_count":14},"text":"https://t.co/E8QCduj1h4","url":"https://x.com/DeItaone/status/2115027618835714247"},{"author_id":"40129171","created_at":"2026-10-29T14:53:40.000Z","edit_history_tweet_ids":["2115819361004916894"],"id":"2115819361004916894","public_metrics":{"bookmark_count":30,"impression_count":20512,"like_count":312,"quote_count":5,"reply_count":29,"retweet_count":78},"text":"ECB holds rates steady at 2.50%, setting the stage for a possible final hike in December. The dovish message: little evidence that the energy shock is feeding into wages or underlying inflation, while rising bond yields are already doing some of the ECB’s tightening. Bloomberg https://t.co/4wpk9WeDTT","url":"https://x.com/Schuldensuehner/status/2115819361004916894"},{"author_id":"2704294333","created_at":"2026-10-26T10:18:59.000Z","edit_history_tweet_ids":["2114663072073707749"],"id":"2114663072073707749","public_metrics":{"bookmark_count":19,"impression_count":149428,"like_count":252,"quote_count":8,"reply_count":41,"retweet_count":34},"text":"FED EXPECTED TO HOLD RATES AS DECEMBER HIKE LOOMS\n\nThe Federal Reserve is expected to hold rates this week, with markets heavily favoring another hike in December.\n\nChair Kevin Warsh faces a key communication challenge: explaining the pause despite persistent inflation driven by","url":"https://x.com/DeItaone/status/2114663072073707749"},{"author_id":"18856867","created_at":"2026-10-27T12:23:10.000Z","edit_history_tweet_ids":["2115056710486237472"],"id":"2115056710486237472","public_metrics":{"bookmark_count":54,"impression_count":128062,"like_count":397,"quote_count":2,"reply_count":15,"retweet_count":40},"text":"Top Overnight News\n\nMojtaba Khamenei called for pursuing the conditions set out by Iranian officials with the aim of ending the war during a meeting with Iran’s Supreme National Security Council Secretary Mohsen Rezaee; the meeting also covered Iran’s management of the Strait of","url":"https://x.com/zerohedge/status/2115056710486237472"},{"author_id":"2704294333","created_at":"2026-10-30T16:31:07.000Z","edit_history_tweet_ids":["2116206274903769390"],"id":"2116206274903769390","public_metrics":{"bookmark_count":14,"impression_count":136057,"like_count":161,"quote_count":12,"reply_count":35,"retweet_count":27},"text":"FED'S MUSALEM CALLS FOR INTEREST RATE HIKE SOON AS INFLATION RISKS PERSIST\n\nFed official Alberto Musalem says the Federal Reserve will need to raise interest rates again \"soon\" to restore price stability.\n\n🔸 Inflation remains too high, with risks still tilted toward further","url":"https://x.com/DeItaone/status/2116206274903769390"},{"author_id":"3316376038","created_at":"2026-10-28T12:44:53.000Z","edit_history_tweet_ids":["2115424565086093615"],"id":"2115424565086093615","public_metrics":{"bookmark_count":166,"impression_count":325981,"like_count":3037,"quote_count":41,"reply_count":244,"retweet_count":233},"text":"It's officially Fed day.\n\nWe expect a \"hawkish pause\" today.\n\nThe Fed will hold interest rates unchanged but lay the groundwork for a December rate hike, bringing total rate hikes in 2026 to +50 basis points.\n\nWhy?\n\nBecause the US economy is now facing both supply-side and rising","url":"https://x.com/KobeissiLetter/status/2115424565086093615"},{"author_id":"59603406","created_at":"2026-10-26T13:23:06.000Z","edit_history_tweet_ids":["2114709406537355693"],"id":"2114709406537355693","public_metrics":{"bookmark_count":88,"impression_count":110261,"like_count":581,"quote_count":28,"reply_count":82,"retweet_count":128},"text":"The Fed is expected to hold rates steady Wednesday, but it is a closer call on the data than the market-implied probabilities suggest.\n\nThe case for hiking: \n1) The hot September CPI and PPI underscore a second straight lost year for getting inflation down\n2) With a Dec hike","url":"https://x.com/NickTimiraos/status/2114709406537355693"},{"article":{"title":"FED PREVIEW: No Rush, But Not Done"},"author_id":"2704294333","created_at":"2026-10-26T18:30:41.000Z","edit_history_tweet_ids":["2114786813197926457"],"id":"2114786813197926457","public_metrics":{"bookmark_count":24,"impression_count":132693,"like_count":131,"quote_count":6,"reply_count":28,"retweet_count":19},"text":"https://t.co/iwCKDcy8os","url":"https://x.com/DeItaone/status/2114786813197926457"},{"author_id":"28164923","created_at":"2026-10-29T07:30:46.000Z","edit_history_tweet_ids":["2115707901729718455"],"id":"2115707901729718455","public_metrics":{"bookmark_count":1,"impression_count":6527,"like_count":9,"quote_count":0,"reply_count":4,"retweet_count":0},"text":"U.S. Treasury Yields Fall as Investors Digest Fed Meet, Focus Shifts to ECB https://t.co/fPTNwKmYiE","url":"https://x.com/WSJmarkets/status/2115707901729718455"},{"author_id":"2704294333","created_at":"2026-10-29T10:38:25.000Z","edit_history_tweet_ids":["2115755126468010326"],"id":"2115755126468010326","public_metrics":{"bookmark_count":15,"impression_count":126921,"like_count":202,"quote_count":5,"reply_count":44,"retweet_count":38},"text":"ECB PRESIDENT LAGARDE TO STEP DOWN EARLY IN FEBRUARY 2027\n\nEuropean Central Bank President Christine Lagarde announced she will resign on February 7, 2027, eight months before her term expires.\n\nHer departure triggers a major leadership contest as the ECB confronts elevated","url":"https://x.com/DeItaone/status/2115755126468010326"},{"author_id":"2704294333","created_at":"2026-10-29T15:33:26.000Z","edit_history_tweet_ids":["2115829371311202382"],"id":"2115829371311202382","public_metrics":{"bookmark_count":13,"impression_count":113719,"like_count":127,"quote_count":3,"reply_count":26,"retweet_count":9},"text":"ECB OFFICIALS EXPECT DECEMBER RATE HIKE, THEN PAUSE\n\nECB policymakers expect a 25-basis-point rate hike on December 17, lifting the deposit rate from 2.50% to 2.75%, according to three sources cited by Reuters.\n\nThe hike is considered nearly certain unless energy prices fall","url":"https://x.com/DeItaone/status/2115829371311202382"},{"author_id":"2704294333","created_at":"2026-10-29T13:16:15.000Z","edit_history_tweet_ids":["2115794847994892576"],"id":"2115794847994892576","public_metrics":{"bookmark_count":14,"impression_count":109457,"like_count":131,"quote_count":6,"reply_count":25,"retweet_count":29},"text":"🇪🇺 ECB HOLDS INTEREST RATES STEADY, WARNS OF RISING INFLATION RISKS\n\nThe European Central Bank kept all three key interest rates unchanged, in line with expectations.\n\n🔸 Deposit Facility: 2.50%\n🔸 Main Refinancing Rate: 2.65%\n🔸Marginal Lending Facility: 2.90%\n\nThe ECB warned","url":"https://x.com/DeItaone/status/2115794847994892576"},{"author_id":"917189052545196032","created_at":"2026-10-28T19:44:20.000Z","edit_history_tweet_ids":["2115530123235770549"],"id":"2115530123235770549","public_metrics":{"bookmark_count":0,"impression_count":871,"like_count":11,"quote_count":0,"reply_count":2,"retweet_count":2},"text":"Rereading RB OCR press releases since the war on Iran began, it is striking how much attention they pay to oil prices and how little to actual core inflation, or to why - with an (RB-estimated) large output gap - core inflation is not yet back to 2%, 5yrs on. \n1/2 https://t.co/2pAae7xzuB","url":"https://x.com/MHReddell/status/2115530123235770549"},{"author_id":"28164923","created_at":"2026-10-28T21:14:28.000Z","edit_history_tweet_ids":["2115552804127322236"],"id":"2115552804127322236","public_metrics":{"bookmark_count":1,"impression_count":6722,"like_count":7,"quote_count":0,"reply_count":7,"retweet_count":0},"text":"U.S. stocks and longer-term bond yields ticked higher after the Fed held interest rates steady as expected, and Fed Chairman Kevin Warsh made comments that investors interpreted as slightly dovish https://t.co/uQsS7D60VN","url":"https://x.com/WSJmarkets/status/2115552804127322236"},{"author_id":"1200616796295847936","created_at":"2026-10-29T13:52:00.000Z","edit_history_tweet_ids":["2115803841518338469"],"id":"2115803841518338469","public_metrics":{"bookmark_count":13,"impression_count":162020,"like_count":243,"quote_count":2,"reply_count":46,"retweet_count":19},"text":"The ECB has officially held interest rates, but has said inflation is rising.","url":"https://x.com/unusual_whales/status/2115803841518338469"},{"author_id":"2704294333","created_at":"2026-10-30T13:01:59.000Z","edit_history_tweet_ids":["2116153643720167727"],"id":"2116153643720167727","public_metrics":{"bookmark_count":9,"impression_count":117470,"like_count":168,"quote_count":1,"reply_count":19,"retweet_count":17},"text":"GERMAN INFLATION FALLS BELOW EXPECTATIONS IN OCTOBER\n\nGermany's preliminary October CPI rose 2.8% year over year, below the 3.0% forecast.\n\nInflation declined 0.2% month over month, compared with expectations for a 0.1% increase.\n\nHarmonized CPI (HICP) rose 2.8% annually, also","url":"https://x.com/DeItaone/status/2116153643720167727"},{"author_id":"3316376038","created_at":"2026-10-25T13:12:49.000Z","edit_history_tweet_ids":["2114344429557305453"],"id":"2114344429557305453","public_metrics":{"bookmark_count":438,"impression_count":298998,"like_count":2317,"quote_count":48,"reply_count":188,"retweet_count":303},"text":"Key Events This Week:\n\n1. September New Home Sales data - Tuesday\n\n2. October Fed Meeting and Rate Decision - Wednesday\n\n3. Microsoft, $MSFT, and Alphabet, $GOOGL, Report Earnings - Wednesday\n\n4. September PCE Inflation data - Thursday\n\n5. US Q3 2026 GDP Data - Thursday\n\n6.","url":"https://x.com/KobeissiLetter/status/2114344429557305453"},{"author_id":"1200616796295847936","created_at":"2026-10-30T02:01:17.000Z","edit_history_tweet_ids":["2115987373544866067"],"id":"2115987373544866067","public_metrics":{"bookmark_count":10,"impression_count":127312,"like_count":142,"quote_count":6,"reply_count":62,"retweet_count":19},"text":"There is a 77% chance the Fed will increase interest rates in December, per Polymarket⁠.com.\n\nLast meeting, the Fed did not increase interest rates, but inflation continues to climb. https://t.co/hIVrXlhVYe","url":"https://x.com/unusual_whales/status/2115987373544866067"},{"author_id":"18856867","created_at":"2026-10-29T12:15:00.000Z","edit_history_tweet_ids":["2115779432677769224"],"id":"2115779432677769224","public_metrics":{"bookmark_count":46,"impression_count":106218,"like_count":332,"quote_count":4,"reply_count":16,"retweet_count":37},"text":"Top Overnight News\n\nA global rally in technology shares stalled after disappointing earnings from two industry heavyweights revived doubts over whether billions of dollars in artificial intelligence spending will deliver sufficient returns. (BBG)\n\nAlphabet fell 10% in postmarket","url":"https://x.com/zerohedge/status/2115779432677769224"},{"author_id":"59603406","created_at":"2026-10-30T16:31:41.000Z","edit_history_tweet_ids":["2116206415534563715"],"id":"2116206415534563715","public_metrics":{"bookmark_count":29,"impression_count":63874,"like_count":167,"quote_count":7,"reply_count":26,"retweet_count":35},"text":"St. Louis Fed President Alberto Musalem: \"I judge that additional firming of monetary policy will be necessary, and soon.\"\n\nHe outlines two scenarios for inflation.\n\nScenario 1, which he says is more likely: Inflation stays too high unless the Fed raises rates further.\n\nScenario","url":"https://x.com/NickTimiraos/status/2116206415534563715"},{"author_id":"3316376038","created_at":"2026-10-30T20:12:28.000Z","edit_history_tweet_ids":["2116261977559544282"],"id":"2116261977559544282","public_metrics":{"bookmark_count":96,"impression_count":182501,"like_count":1521,"quote_count":31,"reply_count":116,"retweet_count":170},"text":"BREAKING: Markets now see a 75% chance of the Fed hiking interest rates again in December as CPI, PPI, and PCE inflation are all back on the rise.\n\nExactly 12 months ago, markets saw at least 3 rate cuts in 2026.\n\n\"Higher for longer\" continues. https://t.co/usth9jOS7g","url":"https://x.com/KobeissiLetter/status/2116261977559544282"}],"includes":{"users":[{"id":"2704294333","name":"*Walter Bloomberg","username":"DeItaone"},{"id":"3316376038","name":"The Kobeissi Letter","username":"KobeissiLetter"},{"id":"40129171","name":"Holger Zschaepitz","username":"Schuldensuehner"},{"id":"18856867","name":"zerohedge","username":"zerohedge"},{"id":"59603406","name":"Nick Timiraos","username":"NickTimiraos"},{"id":"28164923","name":"WSJ Markets","username":"WSJmarkets"},{"id":"917189052545196032","name":"Michael Reddell","username":"MHReddell"},{"id":"1200616796295847936","name":"unusual_whales","username":"unusual_whales"}]},"meta":{"newest_id":"2116261977559544282","next_token":"b26v89c19zqg8o3juzlx8unbjbu7jdlllvhchnoo050n1","oldest_id":"2114344429557305453","result_count":25}}
-max_results was lowered from 60 to 25, the most results one call can return.
-X reads left for this user: 25 of 30 this minute (resets at 2026-11-01T00:48:00.000Z), 995 of 1000 today (resets at 2026-11-02T00:00:00.000Z).
-
-</cursor_untrusted_data_1337>
+{
+  "data": [
+    {
+      "author_id": "3316376038",
+      "conversation_id": "2118379488971043055",
+      "created_at": "2026-11-05T16:26:42.000Z",
+      "edit_history_tweet_ids": [
+        "2118379488971043055"
+      ],
+      "id": "2118379488971043055",
+      "lang": "en",
+      "public_metrics": {
+        "bookmark_count": 5069,
+        "impression_count": 3163950,
+        "like_count": 23128,
+        "quote_count": 420,
+        "reply_count": 912,
+        "retweet_count": 2328
+      },
+      "text": "On today's stock market crash:\n\nAs an investor, on days like today, you have to ask yourself one question: What fundamentally changed over the last 24 hours?\n\nThe shift in the fundamental backdrop cannot be attributed solely to the Midterm Election results; markets had already",
+      "url": "https://x.com/KobeissiLetter/status/2118379488971043055"
+    },
+    {
+      "author_id": "3316376038",
+      "conversation_id": "2118455887413285205",
+      "created_at": "2026-11-05T21:30:17.000Z",
+      "edit_history_tweet_ids": [
+        "2118455887413285205"
+      ],
+      "id": "2118455887413285205",
+      "lang": "en",
+      "public_metrics": {
+        "bookmark_count": 3041,
+        "impression_count": 2024624,
+        "like_count": 8148,
+        "quote_count": 189,
+        "reply_count": 276,
+        "retweet_count": 1183
+      },
+      "text": "What just happened?\n\nThe Nasdaq 100 just posted its largest daily drop since the 2020 Pandemic, with the S&amp;P 500 erasing -$3 trillion today.\n\nJust 24 hours ago, the Dow surged +1,600 points after the Democrats \"swept\" the Midterms.\n\nSo, what changed? Let us explain.\n\n(a thread) https://t.co/pf5ZW1Q9Qd",
+      "url": "https://x.com/KobeissiLetter/status/2118455887413285205"
+    },
+    {
+      "author_id": "3316376038",
+      "conversation_id": "2118698893210763689",
+      "created_at": "2026-11-06T13:35:54.000Z",
+      "edit_history_tweet_ids": [
+        "2118697776049443152",
+        "2118698893210763689"
+      ],
+      "id": "2118698893210763689",
+      "lang": "en",
+      "public_metrics": {
+        "bookmark_count": 172,
+        "impression_count": 329811,
+        "like_count": 3397,
+        "quote_count": 66,
+        "reply_count": 188,
+        "retweet_count": 275
+      },
+      "text": "BREAKING: The US economy adds +165,000 jobs in October, well above expectations of +64,000.\n\nThe unemployment rate fell to 4.1%, below expectations of 4.2%.\n\nSeptember's job number was also revised higher by +31,000 jobs.\n\nExpectations for a December rate hike are rising on the",
+      "url": "https://x.com/KobeissiLetter/status/2118698893210763689"
+    },
+    {
+      "author_id": "3316376038",
+      "conversation_id": "2118147600847118353",
+      "created_at": "2026-11-05T01:05:15.000Z",
+      "edit_history_tweet_ids": [
+        "2118147600847118353"
+      ],
+      "id": "2118147600847118353",
+      "lang": "en",
+      "public_metrics": {
+        "bookmark_count": 331,
+        "impression_count": 239908,
+        "like_count": 2603,
+        "quote_count": 71,
+        "reply_count": 190,
+        "retweet_count": 455
+      },
+      "text": "Inflation has more than wiped out all US consumer wage gains since the 2020 Pandemic:\n\nUS consumer prices have risen +31.3% since April 2020, to an all-time high in September.\n\nOver the same period, average hourly earnings have increased just +25.9%.\n\nThis comes as CPI inflation https://t.co/HSQqVjEl13",
+      "url": "https://x.com/KobeissiLetter/status/2118147600847118353"
+    },
+    {
+      "author_id": "3316376038",
+      "conversation_id": "2119181497529684135",
+      "created_at": "2026-11-07T21:33:36.000Z",
+      "edit_history_tweet_ids": [
+        "2119181497529684135"
+      ],
+      "id": "2119181497529684135",
+      "lang": "en",
+      "public_metrics": {
+        "bookmark_count": 162,
+        "impression_count": 221136,
+        "like_count": 1691,
+        "quote_count": 41,
+        "reply_count": 125,
+        "retweet_count": 189
+      },
+      "text": "BREAKING: The Fed\u2019s balance sheet expanded +$3 billion in the week ending November 4th, to $6.75 trillion, its 3rd-highest level since mid-March 2025.\n\nTotal assets have surged +$212 billion since the December 2025 low.\n\nOver this period, Treasury holdings have risen +$390 https://t.co/06S9jSRX1n",
+      "url": "https://x.com/KobeissiLetter/status/2119181497529684135"
+    },
+    {
+      "author_id": "3316376038",
+      "conversation_id": "2119249539873886436",
+      "created_at": "2026-11-08T02:03:58.000Z",
+      "edit_history_tweet_ids": [
+        "2119249539873886436"
+      ],
+      "id": "2119249539873886436",
+      "lang": "en",
+      "public_metrics": {
+        "bookmark_count": 144,
+        "impression_count": 188582,
+        "like_count": 1350,
+        "quote_count": 33,
+        "reply_count": 151,
+        "retweet_count": 143
+      },
+      "text": "CapEx in the US is skyrocketing:\n\nThe value of US nondefense capital goods shipments, excluding aircraft, jumped +11.6% YoY in September, reaching a record $86 billion.\n\nThis marks the fastest annual growth rate since July 2021.\n\nEven more impressive, shipments have risen at a https://t.co/LHH37scGu0",
+      "url": "https://x.com/KobeissiLetter/status/2119249539873886436"
+    },
+    {
+      "author_id": "3316376038",
+      "conversation_id": "2119116014478565476",
+      "created_at": "2026-11-07T17:13:23.000Z",
+      "edit_history_tweet_ids": [
+        "2119116014478565476"
+      ],
+      "id": "2119116014478565476",
+      "lang": "en",
+      "public_metrics": {
+        "bookmark_count": 65,
+        "impression_count": 153575,
+        "like_count": 833,
+        "quote_count": 22,
+        "reply_count": 113,
+        "retweet_count": 90
+      },
+      "text": "BREAKING: US nonfarm labor productivity rose at a +3.5% annualized in Q3 2026, its largest increase since Q3 2025.\n\nThis also marks its 3rd consecutive quarterly improvement.\n\nNonfarm business output, which excludes the impact of government spending, surged at a +3.7% annualized https://t.co/6hEABj29XK",
+      "url": "https://x.com/KobeissiLetter/status/2119116014478565476"
+    },
+    {
+      "author_id": "40129171",
+      "conversation_id": "2118370577924899272",
+      "created_at": "2026-11-05T15:51:17.000Z",
+      "edit_history_tweet_ids": [
+        "2118370577924899272"
+      ],
+      "id": "2118370577924899272",
+      "lang": "en",
+      "public_metrics": {
+        "bookmark_count": 21,
+        "impression_count": 21730,
+        "like_count": 287,
+        "quote_count": 4,
+        "reply_count": 27,
+        "retweet_count": 55
+      },
+      "text": "OUCH! Blue-Nami hits the AI trade: Nasdaq 100 sinks ~5% amid fears of tighter AI regulation after Democrats sweep Congress. Chip stocks plunge 10%, putting the Sox 37% below its peak. Nvidia drops 7%. AI spending and funding fears fuel the selloff. https://t.co/Xq9woCzU5g",
+      "url": "https://x.com/Schuldensuehner/status/2118370577924899272"
+    }
+  ],
+  "includes": {
+    "users": [
+      {
+        "id": "40129171",
+        "username": "Schuldensuehner"
+      },
+      {
+        "id": "3316376038",
+        "username": "KobeissiLetter"
+      }
+    ]
+  }
+}
