@@ -15,15 +15,15 @@ const yoy=(s,lag)=>s.slice(lag).map((p,i)=>[p[0],(p[1]/s[i][1]-1)*100]);
 const DRV=[["mig","Net migration (people/yr)",null,-40000,140000,2500,"",0],
  ["ocr","OCR",null,0.25,7,0.25,"%",2],
  ["prod","Productivity trend, real GDP per head",0.8,-1,6,0.1,"%/yr",1,"default = 2016–25 average"],
- ["ai","Investment in automation & AI",3.8,0,8,0.1,"% GDP",1,'default 3.8% = NZ ICT investment share, 2017 (<a href="https://www.oecd.org/content/dam/oecd/en/publications/reports/2019/04/ict-investments-in-oecd-countries-and-partner-economies_cd7935de/bcb82cff-en.pdf">OECD 2019</a>)'],
+ ["ai","Investment in automation & AI",2.4,0,8,0.1,"% GDP",1,'default 2.4% = computer software investment (GFCF), 2.40% of GDP, year ended Mar 2025 (<a href="https://www.stats.govt.nz/information-releases/national-accounts-income-and-expenditure-year-ended-march-2025/">Stats NZ national accounts, year ended March 2025</a>). No official AI-specific investment measure exists. Year ended Mar 2026 figures are due 20 Nov 2026.'],
  ["tot","Terms of trade change",null,-8,8,0.5,"%/yr",1,null]];
 // ---------- Elasticities ----------
 // [id,label,value,min,max,step,source/method,confidence]
 const AN13='<a href="https://www.rbnz.govt.nz/-/media/project/sites/rbnz/files/publications/analytical-notes/2013/an2013-10.pdf">RBNZ Analytical Note AN2013/10, "Migration and the housing market"</a>';
 const CLL='<a href="https://www.rbnz.govt.nz/-/media/project/sites/rbnz/files/publications/discussion-papers/2007/dp07-12.pdf">Coleman &amp; Landon-Lane (2007), RBNZ DP2007/12</a>';
 const EL=[
-["ePop","Population growth per 1% of population net migration",1.05,0.5,1.5,0.05,"Estimated from 2015–26 data: regression of annual population growth on net migration/population, 2016–25 (R² 0.89). The intercept, 0.44%, is natural increase.","high"],
-["nat","Natural increase (% of population per year)",0.44,0,1,0.02,"Estimated from 2015–26 data (intercept of the regression above).","high"],
+["ePop","Population growth per 1% of population net migration",1.0,0.5,1.5,0.05,"Identity: population growth = natural increase + net migration (% of population), so the coefficient is 1. (A 2016–25 regression gave 1.05 with a 0.44% intercept.)","high"],
+["nat","Natural increase (% of population per year)",0.36,0,1,0.02,"Published: "+'<a href="https://www.stats.govt.nz/information-releases/national-population-estimates-at-30-june-2026/">Stats NZ, National population estimates: At 30 June 2026</a>'+": natural increase of 18,700 in the year ended June 2026 on a starting population of 5,320,900 = 0.35% (the lowest since the early 1940s), rounded to the 0.02 step.","high"],
 ["eHm","House prices, % per 1% of population migration above the 2016–25 average (0.9%)",8,0,15,0.5,"Published: "+AN13+" finds a 1%-of-population inflow raises real house prices about 8% (over about 3 years). "+CLL+" find 8–12% after one year. The 2015–26 annual data alone show no stable link (R² 0.07), because the 2020–21 boom came with zero migration.","medium"],
 ["eHo","House prices, % per 1pp OCR above 3%",-3.95,-8,0,0.05,"Estimated from 2015–26 data: house-price growth on migration rate and OCR, 2016–25 (R² 0.40).","medium"],
 ["h0","Baseline house-price growth at average migration and 3% OCR (%/yr)",3,-2,6,0.25,"Estimated from 2015–26 data: the fitted value of the same regression at a 3% OCR (3.1%).","low"],
@@ -31,25 +31,25 @@ const EL=[
 ["cO","Mortgage-credit growth per 1pp OCR",-0.60,-1.5,0,0.05,"Estimated from 2015–26 data (same regression).","high"],
 ["c0","Mortgage-credit growth intercept (%)",7.05,4,10,0.05,"Estimated from 2015–26 data (same regression).","high"],
 ["cP","Mortgage-credit growth per 1pp population growth above 1.4%",1.0,-0.5,2,0.05,"Assumption: new households borrow at about the average debt per head. The 2015–26 regression actually gives −0.3 (credit on migration and OCR, R² 0.68), because migration and credit booms did not coincide in this window.","low"],
-["eAI","Productivity growth, pp per 1% of GDP of automation/AI investment above 3.8%",0.15,0,0.6,0.01,"Assumption, from growth accounting: extra output growth ≈ net return on the capital × extra investment/GDP, with a net return on ICT/AI capital of about 15%. I did not use a published NZ estimate, because I didn't find one. The baseline 3.8% of GDP is NZ's ICT investment share (OECD 2019 report, 2017 data). AI-specific investment is not separately measured.","low"],
+["eAI","Productivity growth, pp per 1% of GDP of automation/AI investment above 2.4%",0.15,0,0.6,0.01,"Assumption, from growth accounting: extra output growth ≈ net return on the capital × extra investment/GDP, with a net return on ICT/AI capital of about 15%. I did not use a published NZ estimate, because I didn't find one. The baseline 2.4% of GDP is NZ's computer software investment share (Stats NZ, year ended Mar 2025). AI-specific investment is not separately measured.","low"],
 ["eY","Demand impulse (% of GDP) per 1pp productivity growth above 0.8%",0.5,0,1,0.05,"Assumption: higher productivity raises real incomes and wages. Households and firms spend part of the expected gain ahead of the extra supply, the permanent-income effect, so demand runs above potential and unemployment falls through the Okun link. I have no published NZ estimate for this.","low"],
 ["mInv","Import share of automation/AI investment spending",0.5,0,1,0.05,"Assumption: much ICT and automation equipment is imported. I did not find a published Stats NZ import share of ICT investment, so I haven't cited one.","low"],
 ["dil","Capital dilution: productivity per head lost per 1pp population growth above 1.4%",0.3,0,1,0.05,"Assumption (Solow-style capital dilution with a capital share of about 0.3). The 2015–26 data do not show it: the slope of GDP-per-head growth on population growth is +0.13 (R² 0.01, excl. 2020–21).","low"],
 ["psi","Demand impulse (% of GDP) per 1pp population growth above 1.4%",0.8,0,2,0.1,"Published: "+AN13+": a 1%-of-population migration shock raises the output gap by about 0.8% at its peak.","medium"],
 ["lam","Share of excess mortgage borrowing (debt growth above nominal GDP) that is spent",0.5,0,1,0.05,"Assumption.","low"],
-["mImp","Import share of extra spending",0.25,0.1,0.4,0.01,"Your framing: households spend about 25% of income on imports. This is close to imports' share of NZ GDP (Stats NZ BoP), but I have not checked it against a published input-output table.","medium"],
+["mImp","Import share of extra spending",0.26,0.1,0.4,0.01,"Published: imports of goods and services were $119,321m on GDP of $451,543m = 26.4% of GDP, year ended Mar 2026 (<a href=\"https://www.stats.govt.nz/information-releases/gross-domestic-product-june-2026-quarter/\">Stats NZ GDP, June 2026 quarter</a>). The share of extra spending that goes on imports is assumed equal to this average share; I have not checked it against a published input-output table.","medium"],
 ["caR","Current-account mean reversion per year",0.2,0,0.6,0.05,"Assumption (reflects the NZD and other adjustment).","low"],
 ["caS","Long-run current account (% of GDP)",-4.0,-7,-1,0.1,"Estimated from 2015–26 data (average 2015–26 is about −4%).","medium"],
-["caT","Current account, pp of GDP per 1% terms-of-trade gain",0.2,0,0.5,0.01,"Assumption (goods exports are about 20% of GDP). The 2015–26 data give +0.21 jointly with credit (weak, R² 0.37).","low"],
+["caT","Current account, pp of GDP per 1% terms-of-trade gain",0.2,0,0.5,0.01,"Assumption (goods exports are 18.1% of GDP, year ended Mar 2026, Stats NZ GDP June 2026 quarter; all exports 25.9%). The 2015–26 data give +0.21 jointly with credit (weak, R² 0.37).","low"],
 ["okun","Okun: unemployment pp per 1% demand above potential",-0.25,-0.6,0,0.01,"Estimated from 2015–26 data: annual change in unemployment on real GDP growth, 2016–25 excl. 2020–21 (slope −0.25, R² 0.45).","medium"],
 ["fxR","NZD TWI %, per 1pp OCR change",2,0,5,0.25,"Assumption. The 2015–26 annual data show no stable TWI link to the OCR or ToT (R² ≤ 0.05).","low"],
 ["fxT","NZD TWI %, per 1% terms-of-trade change",0.5,0,1.5,0.05,"Assumption (as above).","low"],
 ["fxC","NZD TWI %/yr, per 1pp current account below its long-run level",0.5,0,2,0.1,"Assumption: wider deficits weaken the NZD.","low"],
-["pt","Import-price pass-through from the NZD",0.7,0,1,0.05,"Assumption (partial pass-through within a year).","low"],
+["pt","Import-price pass-through from the NZD",0.7,0,1,0.05,"Published: <a href=\"https://www.rbnz.govt.nz/research-and-publications/research/our-research-and-analysis/analytical-notes/2025/estimating-exchange-rate-pass-through\">RBNZ Analytical Note AN2025/03</a> finds a 1% TWI move changes ex-oil import prices by 0.71–0.75% within a quarter (0.72–1.1% in the long run). The model's effective CPI pass-through, pt × mImp ≈ 0.18, is close to the RBNZ's long-run estimate of 0.16 for headline CPI.","medium"],
 ["rho","CPI persistence (weight on last year's inflation)",0.75,0,0.95,0.05,"Assumption. The RBNZ's Monetary Policy Statement, September 2026 (finalised 2 September 2026), (Table 6.1) projects annual CPI of 2.4% in Sep 2027 and 2.0% in Sep 2028 and Sep 2029. The actual figure for Sep 2026 was 3.7%. At 0.75 the model gives about 3.2% (2027) and 2.8% (2028), slower than the RBNZ path, which rho ≈ 0.5 roughly reproduces (2.6%, 2.1%). The default leans towards slower disinflation than the RBNZ expects.","low"],
-["phi","CPI pp per 1pp unemployment below 4.5%",0.3,0,1,0.05,"Assumption (Phillips curve; the 4.5% level is my assumption, not an RBNZ figure).","low"],
-["om","Wage growth pp per 1pp unemployment above 4.5%",0.5,0,1.5,0.05,"Assumption (wage Phillips curve). Note that 2015–26 real wages rose with population growth (+1.08 slope, R² 0.41), not against it.","low"],
-["hh","People per additional dwelling",2.5,1.5,6,0.1,"Published: "+AN13+" (NZ has about 2.5 people per household; it found one new house per about six migrants in the short run).","medium"]];
+["phi","CPI pp per 1pp unemployment below 4.5%",0.3,0,1,0.05,"Assumption (Phillips curve). The 4.5% unemployment level is an assumption: the RBNZ publishes no single NAIRU or maximum-sustainable-employment figure (<a href=\"https://www.rbnz.govt.nz/-/media/project/sites/rbnz/files/publications/oias/2026/mar-2026/oia2526_120-information-about-mse-and-nairu-estimates.pdf\">RBNZ OIA2526_120</a>); the Treasury's long-run unemployment assumption is 4.25% (<a href=\"https://budget.govt.nz/budget/pdfs/fsm/fsm-projections-sep26.pdf\">PREFU 2026 Fiscal Strategy Model</a>); ANZ estimates 4.7% (bank estimate, not official).","low"],
+["om","Wage growth pp per 1pp unemployment above 4.5%",0.5,0,1.5,0.05,"Assumption (wage Phillips curve). The 4.5% unemployment level is an assumption: the RBNZ publishes no single NAIRU or maximum-sustainable-employment figure (<a href=\"https://www.rbnz.govt.nz/-/media/project/sites/rbnz/files/publications/oias/2026/mar-2026/oia2526_120-information-about-mse-and-nairu-estimates.pdf\">RBNZ OIA2526_120</a>); the Treasury's long-run unemployment assumption is 4.25% (<a href=\"https://budget.govt.nz/budget/pdfs/fsm/fsm-projections-sep26.pdf\">PREFU 2026 Fiscal Strategy Model</a>); ANZ estimates 4.7% (bank estimate, not official). Note that 2015–26 real wages rose with population growth (+1.08 slope, R² 0.41), not against it.","low"],
+["hh","People per additional dwelling",2.7,1.5,6,0.1,"Published: <a href=\"https://www.stats.govt.nz/infographics/families-and-households-in-aotearoa-new-zealand/\">Stats NZ 2023 Census</a>: 2.7 people per household on average. "+AN13+" found one new house per about six migrants in the short run.","medium"]];
 const V={},DEF={},E={},EDEF={};
 
 // ---------- Base state from data ----------
@@ -69,14 +69,14 @@ function model(){const K=6,o=[];let s={pop:B.pop[1],debt:B.debt,u:B.u,ca:B.ca,oc
  for(let k=1;k<=K;k++){
   const mr=V.mig/(s.pop*1e6)*100;                       // migration, % of population
   const pg=E.nat+E.ePop*mr;                              // population growth
-  const lp=V.prod+E.eAI*(V.ai-3.8)-E.dil*(pg-pbar);                       // productivity per head (potential)
+  const lp=V.prod+E.eAI*(V.ai-2.4)-E.dil*(pg-pbar);                       // productivity per head (potential)
   const gp=pg+lp;                                        // potential GDP growth
   const h=E.h0+E.eHm*(mr-mbar)+E.eHo*(V.ocr-3);          // house prices
   const c=E.c0+E.cH*h+E.cO*V.ocr+E.cP*(pg-pbar);                        // mortgage-credit growth
   const ngRef=pg+0.8+s.cpi;                              // nominal income growth at baseline productivity (0.8%)
   const exD=(c-ngRef)/100*s.debt;                        // borrowing above baseline income growth, % of GDP
   const XY=E.eY*(lp-0.8);                                // income/wage channel: productivity gains lift consumption demand
-  const XI=k==1?(V.ai-3.8):0;                            // automation/AI investment spending (level step, felt in year 1)
+  const XI=k==1?(V.ai-2.4):0;                            // automation/AI investment spending (level step, felt in year 1)
   const X=E.lam*exD+E.psi*(pg-pbar)+0.1*V.tot+XY;        // domestic demand impulse, % of GDP
   const g=gp+(1-E.mImp)*X+(1-E.mInv)*XI;                 // real GDP growth
   const ca=s.ca+E.caR*(E.caS-s.ca)-E.mImp*X-E.mInv*XI+E.caT*V.tot; // current account % GDP
@@ -162,9 +162,9 @@ function buildControls(){const T=D.terms_of_trade,TS=T.series,tL=last(TS['Goods 
  const a=document.getElementById('asm');
  for(const e of EL){EDEF[e[0]]=E[e[0]]=e[2];a.insertAdjacentHTML('beforeend',`<div class="el"><div class="dial" style="margin:0"><label for="i_e_${e[0]}"><span>${e[1]} <span class="conf ${e[7]}">${e[7]}</span></span><b id="oe_${e[0]}"></b></label><input type="range" id="i_e_${e[0]}" min="${e[3]}" max="${e[4]}" step="${e[5]}" value="${e[2]}"></div><small>${e[6]}</small></div>`);
   document.getElementById('i_e_'+e[0]).addEventListener('input',ev=>{E[e[0]]=+ev.target.value;render()})}
- document.getElementById('eqs').innerHTML=`<p>m = net migration ÷ population (%). Population growth pg = nat + ePop·m. Productivity per head lp = trend + eAI·(AI investment − 3.8) − dil·(pg − 1.4). Potential growth = pg + lp.<br>
+ document.getElementById('eqs').innerHTML=`<p>m = net migration ÷ population (%). Population growth pg = nat + ePop·m. Productivity per head lp = trend + eAI·(AI investment − 2.4) − dil·(pg − 1.4). Potential growth = pg + lp.<br>
 House prices h = h0 + eHm·(m − 0.9) + eHo·(OCR − 3). Mortgage credit c = c0 + cH·h + cO·OCR + cP·(pg − 1.4). Excess borrowing = (c − baseline nominal income growth [pg + 0.8 + CPI₋₁]) × debt/GDP.<br>
-Demand impulse X = lam·excess borrowing + psi·(pg − 1.4) + 0.1·ToT + eY·(lp − 0.8). Investment impulse XI = AI investment − 3.8 (year 1). GDP growth = potential + (1 − mImp)·X + (1 − mInv)·XI.<br>
+Demand impulse X = lam·excess borrowing + psi·(pg − 1.4) + 0.1·ToT + eY·(lp − 0.8). Investment impulse XI = AI investment − 2.4 (year 1). GDP growth = potential + (1 − mImp)·X + (1 − mInv)·XI.<br>
 Current account CA = CA₋₁ + caR·(caS − CA₋₁) − mImp·X − mInv·XI + caT·ToT. Unemployment Δu = okun·(GDP − potential).<br>
 TWI % = fxR·ΔOCR + fxT·ToT + fxC·(CA − caS). Import prices = 2 − pt·TWI%. CPI = rho·CPI₋₁ + (1 − rho)·(2 + mImp·(import prices − 2) + phi·(4.5 − u)). Projection lines are drawn as a smooth cubic (Hermite) bridge from the latest actual through the annual model points, sampled quarterly.<br>
 Wages = 2 + lp − om·(u − 4.5). Real wages = wages − CPI. Debt/GDP grows by (1 + c)/(1 + nominal GDP growth).</p>`}
