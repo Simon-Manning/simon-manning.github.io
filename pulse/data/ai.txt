@@ -1,167 +1,192 @@
 {
-  "data": [
-    {
-      "author_id": "1353836358901501952",
-      "created_at": "2026-11-02T19:51:45.000Z",
-      "edit_history_tweet_ids": [
-        "2117343929960112486"
-      ],
-      "id": "2117343929960112486",
-      "public_metrics": {
-        "bookmark_count": 62305,
-        "impression_count": 14809113,
-        "like_count": 40503,
-        "quote_count": 929,
-        "reply_count": 1231,
-        "retweet_count": 3205
-      },
-      "text": "Applications are now open for the Anthropic Residency, a paid, fixed-term research program for academics, technical founders, and staff-level engineers who want to make AI safe and beneficial for everyone. No ML background is required.\n\nApply by November 22:",
-      "url": "https://x.com/AnthropicAI/status/2117343929960112486"
-    },
-    {
-      "author_id": "44196397",
-      "conversation_id": "2119419126045454531",
-      "created_at": "2026-11-08T13:17:51.000Z",
-      "edit_history_tweet_ids": [
-        "2119419126045454531"
-      ],
-      "id": "2119419126045454531",
-      "lang": "en",
-      "public_metrics": {
-        "bookmark_count": 760,
-        "impression_count": 2716702,
-        "like_count": 25682,
-        "quote_count": 999,
-        "reply_count": 3588,
-        "retweet_count": 1673
-      },
-      "text": "Grok Bot fixes for improved token efficiency and smarter behavior are underway",
-      "url": "https://x.com/elonmusk/status/2119419126045454531"
-    },
-    {
-      "author_id": "4398626122",
-      "created_at": "2026-11-04T23:35:14.000Z",
-      "edit_history_tweet_ids": [
-        "2118124944928432327"
-      ],
-      "id": "2118124944928432327",
-      "public_metrics": {
-        "bookmark_count": 4442,
-        "impression_count": 3645272,
-        "like_count": 21925,
-        "quote_count": 1965,
-        "reply_count": 1193,
-        "retweet_count": 1888
-      },
-      "text": "Images, upgraded\u2014introducing ChatGPT Images 2.6.\n\nNow with GIFs and reference images.\n\nPlus, two new models are coming to the API with 50% faster image generation. https://t.co/kcuOhTipYR",
-      "url": "https://x.com/OpenAI/status/2118124944928432327"
-    },
-    {
-      "author_id": "4398626122",
-      "created_at": "2026-11-05T17:09:13.000Z",
-      "edit_history_tweet_ids": [
-        "2118390190246879554"
-      ],
-      "id": "2118390190246879554",
-      "public_metrics": {
-        "bookmark_count": 4204,
-        "impression_count": 4024549,
-        "like_count": 21353,
-        "quote_count": 1427,
-        "reply_count": 1291,
-        "retweet_count": 1986
-      },
-      "text": "Introducing GPT\u20116 Cyber: a major advance in security research that pairs stronger capabilities with better model alignment.\n\nThe model powered the Linux kernel research we announced yesterday, and security teams at companies like Mozilla, Palo Alto Networks, Calif, and https://t.co/34uAeNnhwP",
-      "url": "https://x.com/OpenAI/status/2118390190246879554"
-    },
-    {
-      "author_id": "1353836358901501952",
-      "created_at": "2026-11-06T21:16:17.000Z",
-      "edit_history_tweet_ids": [
-        "2118814753154064501"
-      ],
-      "id": "2118814753154064501",
-      "public_metrics": {
-        "bookmark_count": 12399,
-        "impression_count": 1861810,
-        "like_count": 13663,
-        "quote_count": 840,
-        "reply_count": 973,
-        "retweet_count": 1236
-      },
-      "text": "Memory is what allows Claude to learn from experience. In a new Engineering Blog post, we share how \u201cdreaming\u201d helps Claude organize what it\u2019s learned, correct its mistakes, and find what it needs more easily the next time. https://t.co/uUEN4bNkr9",
-      "url": "https://x.com/AnthropicAI/status/2118814753154064501"
-    },
-    {
-      "author_id": "4398626122",
-      "created_at": "2026-11-04T23:13:24.000Z",
-      "edit_history_tweet_ids": [
-        "2118119451401048497"
-      ],
-      "id": "2118119451401048497",
-      "public_metrics": {
-        "bookmark_count": 4443,
-        "impression_count": 2284247,
-        "like_count": 12814,
-        "quote_count": 909,
-        "reply_count": 679,
-        "retweet_count": 1339
-      },
-      "text": "Our security researchers built an autonomous cyber vulnerability discovery, exploitation, and patching pipeline.\n\nIn a single run with an upcoming cyber model, it validated and generated patches for 948 local privilege escalation vulnerabilities in the Linux kernel at a total API https://t.co/Nu2I0n2ayI",
-      "url": "https://x.com/OpenAI/status/2118119451401048497"
-    },
-    {
-      "author_id": "4398626122",
-      "created_at": "2026-11-02T17:27:26.000Z",
-      "edit_history_tweet_ids": [
-        "2117307611338997846"
-      ],
-      "id": "2117307611338997846",
-      "public_metrics": {
-        "bookmark_count": 1546,
-        "impression_count": 815134,
-        "like_count": 6601,
-        "quote_count": 376,
-        "reply_count": 691,
-        "retweet_count": 472
-      },
-      "text": "For AGI to benefit all of humanity, it should help people with the everyday tasks that matter most to them. So we built LifeVal, a new benchmark shaped by feedback from thousands of ChatGPT users on where they most want help from a personal assistant\u2014from finding childcare to https://t.co/Q2EfGvHJpA",
-      "url": "https://x.com/OpenAI/status/2117307611338997846"
-    },
-    {
-      "author_id": "1353836358901501952",
-      "created_at": "2026-11-03T20:10:08.000Z",
-      "edit_history_tweet_ids": [
-        "2117707052948898271",
-        "2117710942826123294"
-      ],
-      "id": "2117710942826123294",
-      "public_metrics": {
-        "bookmark_count": 2209,
-        "impression_count": 710382,
-        "like_count": 5260,
-        "quote_count": 497,
-        "reply_count": 654,
-        "retweet_count": 541
-      },
-      "text": "New Anthropic research: progress on provable inference for large language models.\n\nHere, we introduce FlashProve. Building on established cryptographic techniques, FlashProve allows developers to verify whether a given response came from a given AI model. It\u2019s substantially more",
-      "url": "https://x.com/AnthropicAI/status/2117710942826123294"
-    }
-  ],
-  "includes": {
-    "users": [
-      {
-        "id": "1353836358901501952",
-        "username": "AnthropicAI"
-      },
-      {
-        "id": "4398626122",
-        "username": "OpenAI"
-      },
-      {
-        "id": "44196397",
-        "username": "elonmusk"
-      }
-    ]
+ "data": [
+  {
+   "author_id": "1943306828697550848",
+   "created_at": "2026-11-09T18:57:59.000Z",
+   "edit_history_tweet_ids": [
+    "2119867114450268322"
+   ],
+   "id": "2119867114450268322",
+   "public_metrics": {
+    "bookmark_count": 15770,
+    "impression_count": 19366039,
+    "like_count": 96099,
+    "quote_count": 6946,
+    "reply_count": 3129,
+    "retweet_count": 9236
+   },
+   "text": "Introducing Claude Fable 5.2 and Claude Mythos 5.2, designed to tackle the most daunting technical challenges.\n\nThey\u2019re capable collaborators on ambitious projects in many fields, and show improvements in areas like coding, reasoning, and vision. https://t.co/jP0AutLxXb",
+   "url": "https://x.com/claudeai/status/2119867114450268322"
+  },
+  {
+   "author_id": "1943306828697550848",
+   "created_at": "2026-11-12T20:16:20.000Z",
+   "edit_history_tweet_ids": [
+    "2120973994191094179"
+   ],
+   "id": "2120973994191094179",
+   "public_metrics": {
+    "bookmark_count": 20505,
+    "impression_count": 9974418,
+    "like_count": 81133,
+    "quote_count": 5368,
+    "reply_count": 2269,
+    "retweet_count": 5145
+   },
+   "text": "Introducing Claude Meetings: add Claude to your team\u2019s video call and it builds docs, whiteboards, and other artifacts with you while you\u2019re still talking.\n\nStarting to roll out in beta on Team and Enterprise plans. https://t.co/qlZYTcXBsC",
+   "url": "https://x.com/claudeai/status/2120973994191094179"
+  },
+  {
+   "author_id": "1943306828697550848",
+   "created_at": "2026-11-10T17:26:03.000Z",
+   "edit_history_tweet_ids": [
+    "2120206365759094857"
+   ],
+   "id": "2120206365759094857",
+   "public_metrics": {
+    "bookmark_count": 29434,
+    "impression_count": 12333838,
+    "like_count": 64322,
+    "quote_count": 3851,
+    "reply_count": 1543,
+    "retweet_count": 5274
+   },
+   "text": "Starting to roll out today: Claude Whiteboards, Claude Sheets and Claude Data.\n\nThink a plan through on a board, build a tracker in a sheet, and tell a story with your data. https://t.co/S8M32FMrce",
+   "url": "https://x.com/claudeai/status/2120206365759094857"
+  },
+  {
+   "author_id": "4398626122",
+   "created_at": "2026-11-10T18:06:42.000Z",
+   "edit_history_tweet_ids": [
+    "2120216592395174382"
+   ],
+   "id": "2120216592395174382",
+   "public_metrics": {
+    "bookmark_count": 19212,
+    "impression_count": 6160118,
+    "like_count": 17797,
+    "quote_count": 1559,
+    "reply_count": 1477,
+    "retweet_count": 1444
+   },
+   "text": "Now in beta: Businesses in ChatGPT.\n\nClaim your business, manage your information, and get insights on how people engage with you.\n\nEligible businesses can also build a Business Agent to answer customers\u2019 questions and help them explore what you offer.\n\nhttps://t.co/N2GEZX0mFT https://t.co/lYj2Z48fhQ",
+   "url": "https://x.com/OpenAI/status/2120216592395174382"
+  },
+  {
+   "author_id": "1353836358901501952",
+   "created_at": "2026-11-12T11:30:46.000Z",
+   "edit_history_tweet_ids": [
+    "2120841731302154708"
+   ],
+   "id": "2120841731302154708",
+   "public_metrics": {
+    "bookmark_count": 2797,
+    "impression_count": 3231621,
+    "like_count": 10410,
+    "quote_count": 898,
+    "reply_count": 1049,
+    "retweet_count": 1019
+   },
+   "text": "Our initial public offering: https://t.co/wPZ1LteuQv\n\nLegal disclaimer: Anthropic has filed a registration statement (including a prospectus) with the SEC for the offering to which this communication relates. Before you invest, you should read the prospectus in that registration",
+   "url": "https://x.com/AnthropicAI/status/2120841731302154708"
+  },
+  {
+   "author_id": "1806359170830172162",
+   "created_at": "2026-11-12T18:03:39.000Z",
+   "edit_history_tweet_ids": [
+    "2120940601319260164"
+   ],
+   "id": "2120940601319260164",
+   "public_metrics": {
+    "bookmark_count": 862,
+    "impression_count": 4040314,
+    "like_count": 7562,
+    "quote_count": 407,
+    "reply_count": 433,
+    "retweet_count": 767
+   },
+   "text": "Gemini 4 Hydrogen is here, bringing cutting-edge intelligence to everyone for fast, everyday help.\n\nIt makes it easier to get things done, following your instructions more closely, calling the right tools, and getting you to a reliable output with less back-and-forth. \ud83e\uddf5",
+   "url": "https://x.com/GeminiApp/status/2120940601319260164"
+  },
+  {
+   "author_id": "4398626122",
+   "created_at": "2026-11-09T22:01:00.000Z",
+   "edit_history_tweet_ids": [
+    "2119913172039868579"
+   ],
+   "id": "2119913172039868579",
+   "public_metrics": {
+    "bookmark_count": 1348,
+    "impression_count": 994600,
+    "like_count": 4869,
+    "quote_count": 348,
+    "reply_count": 836,
+    "retweet_count": 367
+   },
+   "text": "We built Control Room, a central system to track model workloads across our research infrastructure and stop them quickly when safety or security concerns arise.\n\nIt connects every research inference workload, including agentic sampling for model training and evaluation, data",
+   "url": "https://x.com/OpenAI/status/2119913172039868579"
+  },
+  {
+   "author_id": "4783690002",
+   "created_at": "2026-11-10T15:00:42.000Z",
+   "edit_history_tweet_ids": [
+    "2120169787896525104"
+   ],
+   "id": "2120169787896525104",
+   "public_metrics": {
+    "bookmark_count": 1142,
+    "impression_count": 488656,
+    "like_count": 4654,
+    "quote_count": 402,
+    "reply_count": 373,
+    "retweet_count": 572
+   },
+   "text": "Gemini Robotics 2.5 is here. \ud83e\udd16\n\nOur latest physical AI is able to learn hundreds of everyday skills - from folding laundry and serving pastries to autonomously sorting car parts on the factory floor.\n\nHere\u2019s a snapshot of its capabilities \ud83e\uddf5 https://t.co/50WwnDudsH",
+   "url": "https://x.com/GoogleDeepMind/status/2120169787896525104"
   }
+ ],
+ "includes": {
+  "users": [
+   {
+    "id": "1943306828697550848",
+    "name": "Claude",
+    "username": "claudeai"
+   },
+   {
+    "id": "1943306828697550848",
+    "name": "Claude",
+    "username": "claudeai"
+   },
+   {
+    "id": "1943306828697550848",
+    "name": "Claude",
+    "username": "claudeai"
+   },
+   {
+    "id": "4398626122",
+    "name": "OpenAI",
+    "username": "OpenAI"
+   },
+   {
+    "id": "1353836358901501952",
+    "name": "Anthropic",
+    "username": "AnthropicAI"
+   },
+   {
+    "id": "1806359170830172162",
+    "name": "Google Gemini",
+    "username": "GeminiApp"
+   },
+   {
+    "id": "4398626122",
+    "name": "OpenAI",
+    "username": "OpenAI"
+   },
+   {
+    "id": "4783690002",
+    "name": "Google DeepMind",
+    "username": "GoogleDeepMind"
+   }
+  ]
+ }
 }

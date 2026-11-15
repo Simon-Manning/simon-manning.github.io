@@ -17,86 +17,82 @@ def load_nz(name):
 POSTS = {**load("ai.txt"), **load("macro.txt"), **load("pettis.txt")}
 
 AI_SUM = (
-    "A cybersecurity week at the frontier. OpenAI launched GPT-6 Cyber and said an autonomous "
-    "pipeline patched 948 Linux-kernel privilege-escalation bugs in a single run; it also shipped "
-    "ChatGPT Images 2.6 and LifeVal, a benchmark of everyday assistant tasks. Anthropic opened "
-    "applications for its AI-safety residency, described how Claude “dreams” to organise memory, "
-    "and released FlashProve so developers can cryptographically check that an answer came from a "
-    "given model. Elon Musk said Grok Bot fixes for token efficiency and smarter behaviour are underway."
+    "A launch-heavy week for Anthropic. It released Claude Fable 5.2 and Claude Mythos 5.2 (the most-liked "
+    "AI post of the week, at about 96,000 likes), rolled out Claude Whiteboards, Sheets and Data, and put "
+    "Claude into live video calls with Claude Meetings. It also launched the roadshow for its initial public "
+    "offering; Reuters reported a range of $70–80 a share. Google answered with Gemini 4 Hydrogen, a fast "
+    "everyday model, and Gemini Robotics 2.5 for physical tasks. OpenAI opened a beta that lets businesses "
+    "claim a profile and build an agent inside ChatGPT, and described Control Room, a system that can stop "
+    "research workloads quickly when safety or security concerns arise. Meta released Muse Ember, its "
+    "smallest reasoning and agent model."
 )
 MAC_SUM = (
-    "US tech had its sharpest one-day drop since 2020: on 5 November the Nasdaq 100 fell about 5–6% "
-    "and the S&P 500 erased about $3 trillion, as investors priced tighter AI regulation after the "
-    "Democratic midterm sweep. The real economy looked firmer. October payrolls rose 165,000 and "
-    "unemployment fell to 4.1%; US productivity rose at a 3.5% annualised pace in the September "
-    "quarter; and core capital-goods shipments jumped 11.6% year on year to a record $86 billion. "
-    "Inflation is still eating real wages — prices are up 31.3% since April 2020, versus 25.9% for "
-    "hourly earnings — and Cleveland Fed president Beth Hammack again called for gradual rate hikes. "
-    "December hike odds fell after the crash, then the jobs report pushed them back up."
+    "Inflation is back at the centre. US consumer prices rose 0.4% in October (core 0.3%), both above "
+    "forecasts, and producer prices were up 6.5% on the year, the highest since November 2022. Markets moved "
+    "to near-certain odds of a December Fed hike, with a small chance of 50 basis points, and Goldman added a "
+    "third hike to its forecast. The US 10-year Treasury yield went back above 5% and ended the week at about "
+    "5.15%. Nvidia’s chief executive Jensen Huang resigned amid a scandal, which knocked AI stocks before "
+    "dip-buyers stepped in. Trade policy stayed noisy: President Trump threatened to double tariffs on Mexico, "
+    "and Charlie Bilello pointed out that $128 billion of tariffs were refunded to companies without any "
+    "refund to consumers. China’s October exports rose 35.2% on the year and its imports 41.6%."
 )
 PETTIS_SUM = (
-    "China’s planning chief, Zheng Shanjie, this week described the problem as “strong supply and "
-    "weak demand” — official language for Pettis’s household-underconsumption diagnosis. The "
-    "People’s Bank of China will raise the foreign-exchange reserve requirement by two percentage "
-    "points, to 6%, from 15 November, a move reported to pull about $24 billion of dollars out of "
-    "the market and slow the yuan’s rise. In Pettis’s terms that is a choice to protect producers: "
-    "an appreciating currency would cheapen imports (a hidden subsidy to households) and tax "
-    "exporters. China’s 10-year government bond yield hit a record low of 1.565%, consistent with "
-    "excess savings seeking safety rather than households absorbing what the country produces. "
-    "Pascal Lamy, a long-time free-trader, told Caixin that China’s industrial subsidies, weak "
-    "domestic consumption and supply-chain price power have distorted open trade — and Pettis "
-    "called it a good sign that even free-trade advocates now distinguish comparative from "
-    "competitive advantage. On his Substack he argued that hopes of a technological breakthrough "
-    "are more an excuse to postpone rebalancing than a reason it can wait, and he repeated that "
-    "the household share of GDP can rise only if the business or government share falls. In the "
-    "United States, the absorber of last resort, real household wages are still being squeezed "
-    "while capital-goods shipments and labour productivity jumped — so some of this year’s "
-    "investment may be creating real value, not only recycling surplus-country savings into "
-    "asset prices. The midterm-week tech sell-off tightened financial conditions through markets "
-    "rather than through a rise in US unemployment (which fell to 4.1%). Elsewhere, energy-driven "
-    "inflation prompted the Reserve Bank of Australia to raise its cash rate to 4.85% and the "
-    "Bank of England to 4%, another round of adjustment that lands on mortgagors in deficit countries."
+    "China’s October numbers read like a page from Pettis’s notes. Consumer prices rose just 0.7% on the year "
+    "and were flat on the month — “given weak consumption… this doesn’t come as a surprise,” he wrote — while "
+    "producer prices rose 5.7%, a four-year high, so the gap keeps widening: firms are passing on higher input costs but households "
+    "aren’t bidding up consumer goods. New yuan loans fell by about ¥100 billion in October, the first October "
+    "contraction on record (interest.co.nz, 16 Nov). When the People’s Bank argued that its loan rates are "
+    "already low by world standards, Pettis pushed back that the binding problem is weak consumer loan "
+    "demand, not the price of credit. He flagged two signs of supply-side bias: labour-intensive exports are "
+    "slowing even though China has among the lowest unit labour costs in the world, and plans to extend the "
+    "high-speed rail network by 40% into more economically marginal regions look driven more by investment "
+    "targets than economic need. On pensions, he said the household share of GDP must keep rising to fund an "
+    "ageing population, which is the rebalancing question again. His latest Substack essay (7 Nov) argues "
+    "that hoping for a technological breakthrough is a way to postpone that rebalancing. On the deficit side, "
+    "the United States is absorbing China’s surplus with rising rates and a record $5.19 trillion of consumer "
+    "credit, and Pettis called President Trump’s threat to double tariffs on Mexico “nonsense” that makes US "
+    "trade policy’s impact “either zero or negative.” He also said Russia’s retreat from using the yuan "
+    "fits his long-standing argument about surplus countries; as he put it in a reply, Russia cannot balance its trade surplus with ruble assets."
 )
 PETTIS_PUSHBACK = (
-    "Where Pettis leans toward managed trade or US capital-account intervention, a more "
-    "market-oriented reading would put the distortion on China’s side of the ledger: the PBOC "
-    "stopping the yuan from rising is itself the policy that keeps income away from Chinese "
-    "households. Letting the currency appreciate, freeing deposit rates and enforcing harder "
-    "budget constraints on state firms would raise the household share without the US adding "
-    "tariffs or capital controls, which create their own rents and retaliation. The identity "
-    "S − I = CA still holds; the disagreement is whether the fix is more state management in "
-    "deficit countries or fewer repression-style distortions in surplus ones. This week’s US "
-    "productivity gain also cautions against treating all of the capex boom as non-productive "
-    "absorption — some of it may be paying for itself."
+    "Much of what Pettis diagnosed this week is state-made: credit steered into marginal rail lines, local "
+    "investment targets, and a central bank leaning against the yuan. A market-oriented fix is to remove those "
+    "distortions — harder budget constraints for state firms and local governments, market-set deposit rates, "
+    "and a freer currency — so that more income flows to households without a new round of administered "
+    "transfers. Guo Shuqing’s idea of moving state-owned capital into the pension system fits both camps, "
+    "because it shrinks state ownership while raising household income. On tariffs there was little to "
+    "dispute: free-traders and Pettis alike see the Mexico threat as costly to the United States."
 )
 
 AI = [
-    ("2117343929960112486", "Anthropic opened applications for a paid AI-safety residency; no machine-learning background is required, and the deadline is 22 November."),
-    ("2119419126045454531", "Elon Musk says Grok Bot fixes for better token efficiency and smarter behaviour are underway."),
-    ("2118124944928432327", "OpenAI launched ChatGPT Images 2.6, adding GIFs and reference images, with two faster image models coming to the API."),
-    ("2118390190246879554", "OpenAI introduced GPT-6 Cyber, a security-research model already used on the Linux kernel and by teams at Mozilla and Palo Alto Networks."),
-    ("2118814753154064501", "Anthropic explained how Claude uses “dreaming” to organise memory, correct mistakes and retrieve what it has learned."),
-    ("2118119451401048497", "OpenAI’s researchers built an autonomous pipeline that found and patched 948 Linux-kernel privilege-escalation bugs in a single run."),
-    ("2117307611338997846", "OpenAI released LifeVal, a benchmark of everyday assistant tasks shaped by feedback from thousands of ChatGPT users."),
-    ("2117710942826123294", "Anthropic’s FlashProve uses cryptography so developers can verify that a given response came from a given model."),
+    ("2119867114450268322", "Anthropic launched Claude Fable 5.2 and Claude Mythos 5.2, with gains in coding, reasoning and vision, the most-liked AI post of the week."),
+    ("2120973994191094179", "Claude Meetings joins a team’s video call and builds documents and whiteboards during the conversation; beta on Team and Enterprise plans."),
+    ("2120206365759094857", "Anthropic began rolling out Claude Whiteboards, Claude Sheets and Claude Data for planning, tracking and data storytelling."),
+    ("2120216592395174382", "OpenAI opened a beta that lets businesses claim a profile in ChatGPT and build a Business Agent that answers customers’ questions."),
+    ("2120841731302154708", "Anthropic published its IPO prospectus link after filing a registration statement with the SEC; Reuters reported a $70–80 range a share."),
+    ("2120940601319260164", "Google released Gemini 4 Hydrogen, a fast everyday model that follows instructions more closely and calls the right tools."),
+    ("2119913172039868579", "OpenAI built Control Room, a central system that tracks every research model workload and can stop it quickly on safety or security grounds."),
+    ("2120169787896525104", "Google DeepMind’s Gemini Robotics 2.5 learns hundreds of everyday physical skills, from folding laundry to sorting car parts."),
 ]
 MAC = [
-    ("2118379488971043055", "After the midterm-week crash, The Kobeissi Letter asked what had actually changed in the economic backdrop, not just the election result."),
-    ("2118455887413285205", "The Nasdaq 100 had its largest daily drop since the 2020 pandemic, and the S&P 500 erased about $3 trillion in a day."),
-    ("2118698893210763689", "The US added 165,000 jobs in October (versus 64,000 expected) and unemployment fell to 4.1%, which lifted December hike odds."),
-    ("2118147600847118353", "US consumer prices are up 31.3% since April 2020, while average hourly earnings rose only 25.9% over the same stretch."),
-    ("2119181497529684135", "The Fed’s balance sheet rose by $3 billion in the week to 4 November, to $6.75 trillion."),
-    ("2119249539873886436", "US non-defence capital-goods shipments excluding aircraft jumped 11.6% year on year in September, to a record $86 billion."),
-    ("2119116014478565476", "US nonfarm labour productivity rose at a 3.5% annualised pace in the September 2026 quarter, the strongest since the same quarter of 2025."),
-    ("2118370577924899272", "Markets blamed tighter AI-regulation fears after the Democratic midterm sweep: Nasdaq 100 down about 5%, chip stocks down 10%, Nvidia down 7%."),
+    ("2121234688391942348", "US producer-price inflation rose to 6.5% in October, the highest since November 2022; core PPI was 5.0%, as expected."),
+    ("2120473795899126012", "Nvidia jumped more than 6% as investors bought the dip after the Jensen Huang scandal, erasing the previous day’s fall."),
+    ("2120147133542125818", "US October CPI rose 0.4% on the month (0.3% expected) and core CPI 0.3% (0.2% expected); no annual figures because of last year’s shutdown."),
+    ("2120851159879762064", "President Trump threatened to double tariffs on Mexico unless it stops migrant caravans heading to the US."),
+    ("2120199304392700371", "The US 10-year Treasury yield rose back above 5% after the hot CPI print, and December hike odds hit a new high."),
+    ("2121607597211926983", "US consumer prices are up 30.2% since January 2020, about 4% a year, double the Fed’s 2% target."),
+    ("2121324139478757706", "Charlie Bilello: tariffs raised prices, then $128 billion was refunded to companies, but consumers got no refund and many prices kept rising."),
+    ("2120243221406089514", "Markets began to price a possible 50-basis-point Fed hike in December (11% odds), with a 25-point hike at 84%."),
 ]
 PETTIS = [
-    ("2119315203275846090", "Pascal Lamy, a long-time free-trader, told Caixin that China’s subsidies, weak consumption and supply-chain price power have distorted open trade."),
-    ("2118656238812618918", "Pettis hopes Democrats roll back the Canada tariff fight: the US is right to stop being consumer of last resort, he says, but not this way."),
-    ("2119319306047562038", "China’s planning chief admitted the economy faces “strong supply and weak demand” — Pettis’s household-underconsumption diagnosis in official language."),
-    ("2118985837039714805", "In a new Substack essay, Pettis argues that hopes of a technological breakthrough are more an excuse to postpone rebalancing than a reason it can wait."),
-    ("2118641505221120030", "Raising China’s household share of GDP means cutting the business or government share — which is why, he says, rebalancing keeps being deferred."),
-    ("2118972600445718560", "China’s 10-year government bond yield hit a record low of 1.565% as investors fled stocks for safer assets."),
+    ("2119952393798332848", "China’s CPI rose only 0.7% on the year in October and was flat on the month — no surprise, Pettis says, given weak consumption."),
+    ("2119805695386145162", "Mohamed El-Erian: China’s PPI hit 5.7%, a four-year high, widening the gap with consumer inflation."),
+    ("2120992708991037574", "Pettis on the PBOC’s claim that its loan rates are low by world standards: the real constraint is weak consumer loan demand."),
+    ("2120237210687672738", "China’s labour-intensive exports slowed again despite some of the world’s lowest unit labour costs, Pettis notes from Caixin."),
+    ("2121842324015911405", "On plans to extend high-speed rail by 40% into marginal regions: it is “hard to believe” this will be economically justified."),
+    ("2121846858230247447", "Former regulator Guo Shuqing warned China’s pension system could run short within 20 years; Pettis ties it to the household share of GDP."),
+    ("2120981900001153097", "Pettis calls the threat to double Mexico tariffs “nonsense” that leaves US trade policy’s impact “either zero or negative.”"),
+    ("2120566766598496482", "Russia has effectively abandoned replacing the dollar with the yuan; Pettis says it fits his long-running argument about surplus countries."),
 ]
 
 def fmt(n):
@@ -162,12 +158,12 @@ def fmt_num(n, kind="int"):
 rows = [
     {
         "label": "Net migration, annual",
-        "value": "+20,500",
-        "asof": "Year to August 2026",
-        "note": "Up from +9,200 in the August 2025 year. Latest monthly gain: +2,193 in August (after +5,154 in July).",
-        "source": "Stats NZ, International migration: August 2026",
-        "url": "https://www.stats.govt.nz/information-releases/international-migration-august-2026/",
-        "date": "14 Oct 2026",
+        "value": "+22,600",
+        "asof": "Year to September 2026",
+        "note": "Up from +9,900 in the September 2025 year: a net gain of 60,400 non-New Zealand citizens offset a net loss of 37,800 New Zealand citizens. Latest monthly gain: +3,509 in September (provisional).",
+        "source": "Stats NZ, International migration: September 2026",
+        "url": "https://www.stats.govt.nz/information-releases/international-migration-september-2026/",
+        "date": "12 Nov 2026",
         "spark": spark(series_tail(mig, "Net migration (12 months)", 36)),
     },
     {
@@ -207,20 +203,20 @@ rows = [
         "note": "July 16,289 and August 17,502; 53,990 approved in the first three months of the 2026/27 financial year. The 2025/26 year total was 201,179.",
         "source": "Immigration NZ, work applications decided",
         "url": "https://www.immigration.govt.nz/about-us/research-and-statistics/statistics/",
-        "date": "8 Oct 2026",
+        "date": "8 Oct 2026 (no newer release found)",
         "spark": spark(series_tail(vis, "Approved, month (current FY)", 12)),
     },
 ]
 
 nz_html = """
 <h2>New Zealand</h2>
-<div class="nut"><strong>Week in a nutshell.</strong> The standout official release was the labour market. Goods trade, the dollar, export prices and mortgage rates also moved, or were updated, around households this week.</div>
+<div class="nut"><strong>Week in a nutshell.</strong> The kiwi slid to its lowest against the US dollar since March 2009 as US yields jumped, migration figures showed net gains rising again, and card spending fell for a third month as fuel bills crowded out other purchases. Banks trimmed some fixed mortgage rates, even as their economists warn rates are heading up.</div>
 <div class="prose">
-<p>The latest goods-trade figures are still those for September, published on 19 October. Stats NZ recorded a monthly deficit of $2.0 billion: exports rose 12% on a year earlier, to $6.5 billion, while imports rose 18%, to $8.4 billion. Petroleum and petroleum products were $1.2 billion of those imports, up $608 million or 96% on September 2025, “predominately driven by higher prices.” For the year to September the goods deficit was about $6.2 billion. The broader balance-of-payments goods-and-services balance, year-ended June 2026, was −$2.95 billion, and the current-account deficit was 3.2% of GDP, or −$14.58 billion (<a href="https://www.stats.govt.nz/information-releases/overseas-merchandise-trade-september-2026/">Stats NZ, Overseas merchandise trade: September 2026</a>, 19 Oct 2026; <a href="https://www.stats.govt.nz/information-releases/balance-of-payments-and-international-investment-position-june-2026-quarter/">Balance of payments, June 2026 quarter</a>, 16 Sep 2026).</p>
-<p>The New Zealand dollar is historically weak. On 6 November the Reserve Bank’s 17-currency trade-weighted index was 63.66 and one kiwi bought US$0.55960, after an October monthly-average TWI of 64.05 and US$0.5632 (<a href="https://www.rbnz.govt.nz/statistics/series/exchange-and-interest-rates/exchange-rates-and-the-trade-weighted-index">RBNZ B1</a>, 6 Nov 2026). A weaker kiwi supports exporters, but it raises the cost of the roughly 24% of household consumption that is imported goods.</p>
-<p>That import-price pressure already shows up in the terms of trade. In the June 2026 quarter the goods terms of trade fell 9.0% on the quarter and 9.4% on the year, because import prices jumped — especially petroleum — not because export prices collapsed (<a href="https://www.stats.govt.nz/information-releases/international-trade-june-2026-quarter/">Stats NZ, International trade: June 2026 quarter</a>, 3 Sep 2026). Some offset arrived this week on the export side: ANZ’s world commodity-price index rose 0.6% in October (up 2.0% on the year), and the NZ-dollar index rose 2.5% because the kiwi weakened after the Reserve Bank’s late-October decision to leave the OCR unchanged. Dairy prices rose 1.6% on the month; skim milk powder was up 5.9% on the month and 51.6% on the year, while butter fell 3.3% and 29.3% respectively (<a href="https://www.anz.co.nz/content/dam/anzconz/documents/economics-and-market-research/2026/ANZ-CPI-20261104.pdf">ANZ Commodity Price Index</a>, 4 Nov 2026).</p>
-<p>Productivity per person is still barely moving. Real GDP per capita was $13,410 in the June 2026 quarter (2009/10 prices), up just 0.08% on the quarter and still below the September 2022 peak of $13,718. There was no new GDP or productivity release this week (<a href="https://www.stats.govt.nz/information-releases/gross-domestic-product-june-2026-quarter/">Stats NZ, GDP: June 2026 quarter</a>, 17 Sep 2026).</p>
-<p>Household mortgage costs have stopped falling in any meaningful way. The OCR remains 2.75% after the late-October hold; the next review is on 9 December. Carded standard rates at the end of October, published on 6 November, were 6.43% floating (unchanged from September) and 5.54% for a one-year fix (5.55% in September) (<a href="https://www.rbnz.govt.nz/statistics/series/exchange-and-interest-rates/wholesale-interest-rates">RBNZ B2</a>; <a href="https://www.rbnz.govt.nz/statistics/series/exchange-and-interest-rates/new-residential-mortgage-standard-interest-rates">RBNZ B20</a>, 6 Nov 2026). Housing lending was $404.76 billion in September, up 5.4% on the year (<a href="https://www.rbnz.govt.nz/statistics/series/lending-and-monetary/registered-banks-and-non-bank-lending-institutions-sector-lending">RBNZ C5</a>, 30 Oct 2026). House prices remain roughly flat: the CoreLogic index via the Reserve Bank was 3,365 in the June 2026 quarter, down 0.3% on the year (<a href="https://www.rbnz.govt.nz/statistics/series/economic-indicators/housing">RBNZ M10</a>, 9 Oct 2026).</p>
+<p>No new goods-trade figures this week; October’s are due shortly. The latest are still for September, published on 19 October: a monthly deficit of $2.0 billion, with exports up 12% on a year earlier, to $6.5 billion, and imports up 18%, to $8.4 billion. Petroleum imports were $1.2 billion, up 96%, “predominately driven by higher prices.” The goods deficit for the year to September was about $6.2 billion. The year-ended goods-and-services balance to June 2026 was −$2.95 billion, and the current-account deficit was 3.2% of GDP, or −$14.58 billion (<a href="https://www.stats.govt.nz/information-releases/overseas-merchandise-trade-september-2026/">Stats NZ, Overseas merchandise trade: September 2026</a>, 19 Oct 2026; <a href="https://www.stats.govt.nz/information-releases/balance-of-payments-and-international-investment-position-june-2026-quarter/">Balance of payments, June 2026 quarter</a>, 16 Sep 2026).</p>
+<p>The New Zealand dollar fell further. On 16 November one kiwi bought just under US$0.553, its lowest since March 2009, and the five-currency TWI was about 59.4, a 17-year low. The US dollar is at a 19-month high on rising US interest rates, with the US 10-year yield at 5.15%, up 30 basis points in the week (<a href="https://www.interest.co.nz/economy/141090/chinese-slowdown-sees-borrowing-retreat-us-ppi-stays-very-elevated-us-budget-deficit">interest.co.nz breakfast briefing</a>, 16 Nov 2026). The Reserve Bank’s October monthly averages were a 17-currency TWI of 64.05 and US$0.5632 (<a href="https://www.rbnz.govt.nz/statistics/series/exchange-and-interest-rates/exchange-rates-and-the-trade-weighted-index">RBNZ B1</a>, 6 Nov 2026). For households, a weaker kiwi raises the cost of the roughly 24% of consumption that is imported goods, and fuel is the clearest example: October card spending on fuel rose 4.8% while core retail spending fell 1.2% ($73 million), the third monthly fall in a row, with durables down 2.1% and hospitality down 1.6% (<a href="https://www.stats.govt.nz/information-releases/electronic-card-transactions-october-2026/">Stats NZ, Electronic card transactions: October 2026</a>, 12 Nov 2026). ASB’s Yen Nguyen said high fuel prices are “taxing consumption” (<a href="https://www.interest.co.nz/business/141061/higher-fuel-prices-and-weak-job-market-dragged-nz-electronic-card-spending-down">interest.co.nz</a>, 12 Nov 2026). Westpac noted that its own card data was stronger than the official series.</p>
+<p>The terms of trade are the offset. Export prices for dairy are firm: at the 3 November Global Dairy Trade auction the index rose 3% to an average US$4,166 a tonne, with whole milk powder up 5.9% and skim milk powder up 3.1%, while butter fell 4.7% (<a href="https://www.rnz.co.nz/news/business/2330539/average-dairy-prices-rise-3-percent-overnight">RNZ</a>, 4 Nov 2026); the next auction is on 18 November. ANZ’s commodity index rose 0.6% in October, and 2.5% in NZ-dollar terms (<a href="https://www.anz.co.nz/content/dam/anzconz/documents/economics-and-market-research/2026/ANZ-CPI-20261104.pdf">ANZ Commodity Price Index</a>, 4 Nov 2026). But the latest official goods terms of trade, for the June 2026 quarter, fell 9.0% on the quarter and 9.4% on the year because import prices, especially petroleum, jumped (<a href="https://www.stats.govt.nz/information-releases/international-trade-june-2026-quarter/">Stats NZ, International trade: June 2026 quarter</a>, 3 Sep 2026). A record-low kiwi helps exporters’ NZ-dollar returns but makes the fuel bill heavier.</p>
+<p>Productivity per person has not been updated: real GDP per capita was $13,410 in the June 2026 quarter (2009/10 prices), up 0.08% on the quarter and still below the September 2022 peak of $13,718 (<a href="https://www.stats.govt.nz/information-releases/gross-domestic-product-june-2026-quarter/">Stats NZ, GDP: June 2026 quarter</a>, 17 Sep 2026). September-quarter GDP is due in December.</p>
+<p>Mortgages: the OCR is 2.75% after October’s 4–3 hold, and the next review is on 9 December. Banks are competing at the short end: from 11 November Westpac cut its one-year special by 20 basis points to 4.99% and trimmed its three-, four- and five-year rates, but raised its two-year special to 5.39%, and said its economists “still think interest rates are heading upwards over the next year” (<a href="https://www.1news.co.nz/2026/11/10/major-bank-cuts-most-fixed-rates-but-warns-interest-rates-will-rise/">1News</a>, 10 Nov 2026). The NZ 10-year government bond yield was 4.85%, up 6 basis points on the week (interest.co.nz, 16 Nov 2026). Carded standard rates at the end of October were 6.43% floating and 5.54% for a one-year fix (<a href="https://www.rbnz.govt.nz/statistics/series/exchange-and-interest-rates/new-residential-mortgage-standard-interest-rates">RBNZ B20</a>, 6 Nov 2026). Housing lending was $404.76 billion in September, up 5.4% on the year (<a href="https://www.rbnz.govt.nz/statistics/series/lending-and-monetary/registered-banks-and-non-bank-lending-institutions-sector-lending">RBNZ C5</a>, 30 Oct 2026), and house prices are roughly flat, down 0.3% on the year in the June quarter (<a href="https://www.rbnz.govt.nz/statistics/series/economic-indicators/housing">RBNZ M10</a>, 9 Oct 2026). The Reserve Bank’s Financial Stability Report is due this week.</p>
 </div>
 """
 
@@ -236,25 +232,23 @@ for r in rows:
     )
 
 thesis = (
-    "This week’s standout release is the 4 November labour-market report. Unemployment rose to "
-    "5.7% — the highest since September 2015 — with 174,000 people out of work, while employment "
-    "fell by about 5,000 even as the working-age population rose by about 13,000. Real average "
-    "hourly earnings are still falling (2.89% versus CPI of 3.71%). At the same time, net migration "
-    "is rising again (an annual gain of 20,500 in the year to August, up from 9,200 a year earlier) "
-    "and work-visa approvals were 20,199 in September. That combination — more unemployed New "
-    "Zealanders, weak real wages, and still-easy migrant hiring — supports the labour-market half "
-    "of the thesis. The housing-and-trade half is less newly confirmed this week. Mortgage debt is "
-    "still growing (5.4% year on year, to $405 billion in September), which fits the idea that "
-    "housing credit absorbs the external deficit, but house prices are roughly flat rather than "
-    "inflating, and September’s $2.0 billion goods-trade deficit was driven mainly by a near-doubling "
-    "of the fuel-import bill, not by a fresh migration spike. The kiwi is already weak, so households "
-    "are paying more for the imported share of spending even without a further migration-driven "
-    "move in the currency."
+    "The new figure this week is migration. Net migration rose to 22,600 in the year to September, up "
+    "from 9,900 a year earlier, made up of a net gain of 60,400 non-New Zealand citizens and a net loss "
+    "of 37,800 New Zealand citizens. That is happening while unemployment is at an 11-year high of 5.7% "
+    "(174,000 people), real hourly earnings are still falling (2.89% against CPI of 3.71%), work-visa "
+    "approvals were 20,199 in September, and card spending has fallen for three months. Rising inflows "
+    "of non-citizen workers into a slack labour market, alongside falling real wages, support the "
+    "labour-market half of the thesis. The currency and housing half is challenged this week: the kiwi "
+    "fell to a 17-year low even as migration rose, because US interest rates and the US dollar are "
+    "driving it, and house prices are flat. Mortgage lending is still growing about 5% a year, which "
+    "fits the idea that housing credit funds the external deficit, but this week’s data gives no sign "
+    "that migration is propping up the NZD or house prices. Overall the week doesn’t change the thesis: "
+    "it strengthens the labour case and weakens the near-term currency link."
 )
 
 tracker_html = f"""
 <h2>NZ labour &amp; migration tracker</h2>
-<div class="nut"><strong>Thesis check: supports.</strong> {html.escape(thesis)}</div>
+<div class="nut"><strong>Thesis check: doesn’t change it (supports the labour half, challenges the currency link).</strong> {html.escape(thesis)}</div>
 <table class="tracker">
 <thead><tr><th>Indicator</th><th>Latest</th><th>Trend</th><th>Source</th></tr></thead>
 <tbody>
