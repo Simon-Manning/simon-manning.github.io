@@ -1,191 +1,260 @@
 {
  "data": [
   {
-   "author_id": "1943306828697550848",
-   "created_at": "2026-11-09T18:57:59.000Z",
+   "author_id": "1353836358901501952",
+   "conversation_id": "2123431689934291083",
+   "created_at": "2026-11-19T15:02:20.000Z",
    "edit_history_tweet_ids": [
-    "2119867114450268322"
+    "2123431689934291083"
    ],
-   "id": "2119867114450268322",
+   "id": "2123431689934291083",
+   "lang": "zxx",
    "public_metrics": {
-    "bookmark_count": 15770,
-    "impression_count": 19366039,
-    "like_count": 96099,
-    "quote_count": 6946,
-    "reply_count": 3129,
-    "retweet_count": 9236
+    "bookmark_count": 26300,
+    "impression_count": 12727578,
+    "like_count": 119132,
+    "quote_count": 3289,
+    "reply_count": 2020,
+    "retweet_count": 9964
    },
-   "text": "Introducing Claude Fable 5.2 and Claude Mythos 5.2, designed to tackle the most daunting technical challenges.\n\nThey\u2019re capable collaborators on ambitious projects in many fields, and show improvements in areas like coding, reasoning, and vision. https://t.co/jP0AutLxXb",
-   "url": "https://x.com/claudeai/status/2119867114450268322"
-  },
-  {
-   "author_id": "1943306828697550848",
-   "created_at": "2026-11-12T20:16:20.000Z",
-   "edit_history_tweet_ids": [
-    "2120973994191094179"
-   ],
-   "id": "2120973994191094179",
-   "public_metrics": {
-    "bookmark_count": 20505,
-    "impression_count": 9974418,
-    "like_count": 81133,
-    "quote_count": 5368,
-    "reply_count": 2269,
-    "retweet_count": 5145
-   },
-   "text": "Introducing Claude Meetings: add Claude to your team\u2019s video call and it builds docs, whiteboards, and other artifacts with you while you\u2019re still talking.\n\nStarting to roll out in beta on Team and Enterprise plans. https://t.co/qlZYTcXBsC",
-   "url": "https://x.com/claudeai/status/2120973994191094179"
-  },
-  {
-   "author_id": "1943306828697550848",
-   "created_at": "2026-11-10T17:26:03.000Z",
-   "edit_history_tweet_ids": [
-    "2120206365759094857"
-   ],
-   "id": "2120206365759094857",
-   "public_metrics": {
-    "bookmark_count": 29434,
-    "impression_count": 12333838,
-    "like_count": 64322,
-    "quote_count": 3851,
-    "reply_count": 1543,
-    "retweet_count": 5274
-   },
-   "text": "Starting to roll out today: Claude Whiteboards, Claude Sheets and Claude Data.\n\nThink a plan through on a board, build a tracker in a sheet, and tell a story with your data. https://t.co/S8M32FMrce",
-   "url": "https://x.com/claudeai/status/2120206365759094857"
+   "text": "https://t.co/Xa0ucYLnMN",
+   "url": "https://x.com/AnthropicAI/status/2123431689934291083"
   },
   {
    "author_id": "4398626122",
-   "created_at": "2026-11-10T18:06:42.000Z",
+   "conversation_id": "2122750124543926515",
+   "created_at": "2026-11-17T17:54:03.000Z",
    "edit_history_tweet_ids": [
-    "2120216592395174382"
+    "2122750124543926515"
    ],
-   "id": "2120216592395174382",
+   "id": "2122750124543926515",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 19212,
-    "impression_count": 6160118,
-    "like_count": 17797,
-    "quote_count": 1559,
-    "reply_count": 1477,
-    "retweet_count": 1444
+    "bookmark_count": 5711,
+    "impression_count": 14047401,
+    "like_count": 36076,
+    "quote_count": 3735,
+    "reply_count": 2303,
+    "retweet_count": 3616
    },
-   "text": "Now in beta: Businesses in ChatGPT.\n\nClaim your business, manage your information, and get insights on how people engage with you.\n\nEligible businesses can also build a Business Agent to answer customers\u2019 questions and help them explore what you offer.\n\nhttps://t.co/N2GEZX0mFT https://t.co/lYj2Z48fhQ",
-   "url": "https://x.com/OpenAI/status/2120216592395174382"
+   "text": "Some of you have been asking very politely. Some of you have just been asking.\n\nGPT-6.2 Astra and Sol are now available.\n\nSuper efficient and built to perform where it counts\u2014the real world.\n\nhttps://t.co/qr2iP0GpfX https://t.co/jLCyVIws2Y",
+   "url": "https://x.com/OpenAI/status/2122750124543926515"
+  },
+  {
+   "author_id": "14130366",
+   "conversation_id": "2123167780988125621",
+   "created_at": "2026-11-18T21:33:40.000Z",
+   "edit_history_tweet_ids": [
+    "2123167780988125621"
+   ],
+   "id": "2123167780988125621",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 1725,
+    "impression_count": 2171609,
+    "like_count": 18700,
+    "quote_count": 701,
+    "reply_count": 921,
+    "retweet_count": 1490
+   },
+   "text": "Gemini 4 Neon: frontier-level intelligence with fast end-to-end task completion across complex software engineering, knowledge work, and science workflows.\n\nBegins rolling out today in the Gemini API in @GoogleAIStudio, Gemini for business, for paid Google AI Pro and Ultra https://t.co/FMiFCFvejw",
+   "url": "https://x.com/sundarpichai/status/2123167780988125621"
   },
   {
    "author_id": "1353836358901501952",
-   "created_at": "2026-11-12T11:30:46.000Z",
+   "conversation_id": "2123196808675405860",
+   "created_at": "2026-11-18T23:29:00.000Z",
    "edit_history_tweet_ids": [
-    "2120841731302154708"
+    "2123196808675405860"
    ],
-   "id": "2120841731302154708",
+   "id": "2123196808675405860",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 2797,
-    "impression_count": 3231621,
-    "like_count": 10410,
-    "quote_count": 898,
-    "reply_count": 1049,
-    "retweet_count": 1019
+    "bookmark_count": 1826,
+    "impression_count": 3456016,
+    "like_count": 16977,
+    "quote_count": 1393,
+    "reply_count": 1319,
+    "retweet_count": 2194
    },
-   "text": "Our initial public offering: https://t.co/wPZ1LteuQv\n\nLegal disclaimer: Anthropic has filed a registration statement (including a prospectus) with the SEC for the offering to which this communication relates. Before you invest, you should read the prospectus in that registration",
-   "url": "https://x.com/AnthropicAI/status/2120841731302154708"
+   "text": "We\u2019ve priced our IPO at $83 per share, with trading expected to begin on Nasdaq tomorrow.\n\nhttps://t.co/igHvzweKdb\n\nLegal disclaimer: A registration statement relating to the Class A common stock was declared effective by the Securities and Exchange Commission on November 18,",
+   "url": "https://x.com/AnthropicAI/status/2123196808675405860"
   },
   {
-   "author_id": "1806359170830172162",
-   "created_at": "2026-11-12T18:03:39.000Z",
+   "author_id": "39125788",
+   "conversation_id": "2124010579836768572",
+   "created_at": "2026-11-21T05:22:39.000Z",
    "edit_history_tweet_ids": [
-    "2120940601319260164"
+    "2124010579836768572"
    ],
-   "id": "2120940601319260164",
+   "id": "2124010579836768572",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 862,
-    "impression_count": 4040314,
-    "like_count": 7562,
-    "quote_count": 407,
-    "reply_count": 433,
-    "retweet_count": 767
+    "bookmark_count": 2371,
+    "impression_count": 472364,
+    "like_count": 16652,
+    "quote_count": 191,
+    "reply_count": 524,
+    "retweet_count": 1081
    },
-   "text": "Gemini 4 Hydrogen is here, bringing cutting-edge intelligence to everyone for fast, everyday help.\n\nIt makes it easier to get things done, following your instructions more closely, calling the right tools, and getting you to a reliable output with less back-and-forth. \ud83e\uddf5",
-   "url": "https://x.com/GeminiApp/status/2120940601319260164"
+   "text": "It is amazing that human language turned out to be so unreasonably effective at modeling the universe that training a system to predict what comes next in a sentence would get us this far.",
+   "url": "https://x.com/emollick/status/2124010579836768572"
+  },
+  {
+   "author_id": "1482581556",
+   "conversation_id": "2122662616367853670",
+   "created_at": "2026-11-17T12:06:19.000Z",
+   "edit_history_tweet_ids": [
+    "2122662616367853670"
+   ],
+   "id": "2122662616367853670",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 1945,
+    "impression_count": 1017039,
+    "like_count": 14794,
+    "quote_count": 419,
+    "reply_count": 639,
+    "retweet_count": 1594
+   },
+   "text": "Thrilled to announce $5B in funding for @IsomorphicLabs to accelerate our mission to Solve All Disease. We continue to make rapid progress reimagining drug design from first principles with AI to radically cut the time &amp; cost to find new medicines. Gradually, then all at once... https://t.co/ihOS3L9vPC",
+   "url": "https://x.com/demishassabis/status/2122662616367853670"
+  },
+  {
+   "author_id": "14130366",
+   "conversation_id": "2123869629164786137",
+   "created_at": "2026-11-20T20:02:33.000Z",
+   "edit_history_tweet_ids": [
+    "2123869629164786137"
+   ],
+   "id": "2123869629164786137",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 761,
+    "impression_count": 465481,
+    "like_count": 13507,
+    "quote_count": 132,
+    "reply_count": 358,
+    "retweet_count": 792
+   },
+   "text": "Somewhere Euler, Gauss and Riemann in awe today! https://t.co/DDb0Da4rNh",
+   "url": "https://x.com/sundarpichai/status/2123869629164786137"
+  },
+  {
+   "author_id": "1353836358901501952",
+   "conversation_id": "2123461658890686863",
+   "created_at": "2026-11-19T17:01:26.000Z",
+   "edit_history_tweet_ids": [
+    "2123461658890686863"
+   ],
+   "entities": {
+    "mentions": [
+     {
+      "end": 39,
+      "id": "874126509245476864",
+      "start": 27,
+      "username": "DarioAmodei"
+     }
+    ]
+   },
+   "id": "2123461658890686863",
+   "lang": "en",
+   "note_tweet": {
+    "entities": {
+     "mentions": [
+      {
+       "end": 39,
+       "id": "874126509245476864",
+       "start": 27,
+       "username": "DarioAmodei"
+      }
+     ]
+    },
+    "text": "Remarks from Anthropic CEO @DarioAmodei on our initial public offering:\n\nMy co-founders and I started Anthropic because we believe that the most powerful technology of our time should be built for the benefit of humankind.\n\nDaniela and I lost our father to a disease that, just a few years later, became curable. I started my career in biology, hoping to help future cures come sooner. In the lab, I saw the vast thicket of complexity that scientists face when they\u2019re trying to understand disease and develop new treatments.\n\nSo many of the scientific tools that can cut through that thicket\u2014tools for gene editing, gene synthesis, controlling brain cells with light\u2014started as pure ideas. In other words, they came from thinking. From intelligence.\n\nHuman intelligence has already made diseases like plague, smallpox, and polio history for most of the world. But progress on other diseases has been too slow for so many patients and their families. Going from a great idea to a treatment can take decades: it took many years from the first discovery of a strange repeating pattern in DNA to the approval of the first treatment for a disease using CRISPR.\n\nNature is full of these patterns. But we\u2019ve had too little intelligence to decipher most of them; too few scientists, with too little time. Now we can build that intelligence. Whether it\u2019s protein folding, drug design, cancer genetics, or clinical trial administration, scientists across many areas of biology and medicine are finding Claude can help them do their research in a fraction of the time it would\u2019ve taken just a couple of years ago. I believe sufficiently powerful AI, working in concert with humans, could compress a century of scientific and medical progress into a decade.\n\nI don\u2019t want to get ahead of myself. At this point all we have are early results. Experiments and clinical trials will still take time. And although they involve slow and ponderous processes, I believe those processes can be substantially accelerated by AI. We hope that in the future fewer families miss a cure by just a few years.\n\nMedicine is just a particularly vivid example, but there are many others. Our customers\u2014the world\u2019s most ambitious companies, nonprofits, and individual people\u2014are already applying the intelligence we\u2019ve built to stimulate economic growth; lift people out of poverty; protect democracy and free societies; even make everyday services like the DMV work better. We\u2019re proud to work alongside them. And I\u2019m extremely optimistic about what we can do together in the future.\n\nAt the same time, we have always been honest that this technology has very real risks. These range from misuse of the technology by individuals or nation-states, to economic disruption, to losing control of AI systems. We discuss these risks not because we think they are inevitable, but because we think they are avoidable.\n\nAvoiding them depends on the choices made by the people building AI. There is a gigantic difference between how AI will go if we pay little attention to safety, versus how it will go if we are obsessed with safety. And an obsession with safety and with public benefit has been woven into Anthropic\u2019s DNA from the start. From safeguards against biological and cyber risks, to alignment training and testing, to looking inside our models like an X-ray, Anthropic has pioneered methods for understanding and steering the behavior of AI systems.\n\nThere is much work still to be done, and the most difficult safety work lies ahead of us. The incredible talent of the company that has enabled us to build the most capable AI systems will need to be directed, even more so than it has already, towards double- and triple-checking that those AI systems are safe and secure.\n\nAnd to state it unequivocally, we will pace the training and deployment of AI systems, taking as long as is necessary to have confidence that they are safe and will remain under human control. We will not bend to either business or political pressure. Today puts the company in a stronger financial position, and in doing so only strengthens our resolve to do the right thing.\n\nIf we can show it\u2019s possible to make the right choices on safety and still build an incredibly successful company, others in our industry will be inspired to do the same. We call this a race to the top. When the race to the top is working properly, it doesn\u2019t matter which company has the best models\u2014everyone wins because everyone is building safely. The race to the top works best when driven from the front of the pack, and we fully hope and expect to do so, but the goal is to make the whole industry better, regardless of whether Anthropic is winning or losing at any given time.\n\nThe advent of machine intelligence is one of the seminal moments in human history, and we have a rare opportunity to shape it for the better.\n\nThis moment is bigger than any one company, or any one country. It will take all of us, working together, to ensure this technology goes well for us and the many generations to come. Starting today, we hope that you\u2019ll join us on this mission."
+   },
+   "public_metrics": {
+    "bookmark_count": 2967,
+    "impression_count": 2132034,
+    "like_count": 12358,
+    "quote_count": 625,
+    "reply_count": 1352,
+    "retweet_count": 1269
+   },
+   "text": "Remarks from Anthropic CEO @DarioAmodei on our initial public offering:\n\nMy co-founders and I started Anthropic because we believe that the most powerful technology of our time should be built for the benefit of humankind.\n\nDaniela and I lost our father to a disease that, just a few years later, became curable. I started my career in biology, hoping to help future cures come sooner. In the lab, I saw the vast thicket of complexity that scientists face when they\u2019re trying to understand disease and develop new treatments.\n\nSo many of the scientific tools that can cut through that thicket\u2014tools for gene editing, gene synthesis, controlling brain cells with light\u2014started as pure ideas. In other words, they came from thinking. From intelligence.\n\nHuman intelligence has already made diseases like plague, smallpox, and polio history for most of the world. But progress on other diseases has been too slow for so many patients and their families. Going from a great idea to a treatment can take decades: it took many years from the first discovery of a strange repeating pattern in DNA to the approval of the first treatment for a disease using CRISPR.\n\nNature is full of these patterns. But we\u2019ve had too little intelligence to decipher most of them; too few scientists, with too little time. Now we can build that intelligence. Whether it\u2019s protein folding, drug design, cancer genetics, or clinical trial administration, scientists across many areas of biology and medicine are finding Claude can help them do their research in a fraction of the time it would\u2019ve taken just a couple of years ago. I believe sufficiently powerful AI, working in concert with humans, could compress a century of scientific and medical progress into a decade.\n\nI don\u2019t want to get ahead of myself. At this point all we have are early results. Experiments and clinical trials will still take time. And although they involve slow and ponderous processes, I believe those processes can be substantially accelerated by AI. We hope that in the future fewer families miss a cure by just a few years.\n\nMedicine is just a particularly vivid example, but there are many others. Our customers\u2014the world\u2019s most ambitious companies, nonprofits, and individual people\u2014are already applying the intelligence we\u2019ve built to stimulate economic growth; lift people out of poverty; protect democracy and free societies; even make everyday services like the DMV work better. We\u2019re proud to work alongside them. And I\u2019m extremely optimistic about what we can do together in the future.\n\nAt the same time, we have always been honest that this technology has very real risks. These range from misuse of the technology by individuals or nation-states, to economic disruption, to losing control of AI systems. We discuss these risks not because we think they are inevitable, but because we think they are avoidable.\n\nAvoiding them depends on the choices made by the people building AI. There is a gigantic difference between how AI will go if we pay little attention to safety, versus how it will go if we are obsessed with safety. And an obsession with safety and with public benefit has been woven into Anthropic\u2019s DNA from the start. From safeguards against biological and cyber risks, to alignment training and testing, to looking inside our models like an X-ray, Anthropic has pioneered methods for understanding and steering the behavior of AI systems.\n\nThere is much work still to be done, and the most difficult safety work lies ahead of us. The incredible talent of the company that has enabled us to build the most capable AI systems will need to be directed, even more so than it has already, towards double- and triple-checking that those AI systems are safe and secure.\n\nAnd to state it unequivocally, we will pace the training and deployment of AI systems, taking as long as is necessary to have confidence that they are safe and will remain under human control. We will not bend to either business or political pressure. Today puts the company in a stronger financial position, and in doing so only strengthens our resolve to do the right thing.\n\nIf we can show it\u2019s possible to make the right choices on safety and still build an incredibly successful company, others in our industry will be inspired to do the same. We call this a race to the top. When the race to the top is working properly, it doesn\u2019t matter which company has the best models\u2014everyone wins because everyone is building safely. The race to the top works best when driven from the front of the pack, and we fully hope and expect to do so, but the goal is to make the whole industry better, regardless of whether Anthropic is winning or losing at any given time.\n\nThe advent of machine intelligence is one of the seminal moments in human history, and we have a rare opportunity to shape it for the better.\n\nThis moment is bigger than any one company, or any one country. It will take all of us, working together, to ensure this technology goes well for us and the many generations to come. Starting today, we hope that you\u2019ll join us on this mission.",
+   "url": "https://x.com/AnthropicAI/status/2123461658890686863"
   },
   {
    "author_id": "4398626122",
-   "created_at": "2026-11-09T22:01:00.000Z",
+   "conversation_id": "2123862344422088794",
+   "created_at": "2026-11-20T19:33:37.000Z",
    "edit_history_tweet_ids": [
-    "2119913172039868579"
+    "2123862344422088794"
    ],
-   "id": "2119913172039868579",
+   "id": "2123862344422088794",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 1348,
-    "impression_count": 994600,
-    "like_count": 4869,
-    "quote_count": 348,
-    "reply_count": 836,
-    "retweet_count": 367
+    "bookmark_count": 1644,
+    "impression_count": 1895578,
+    "like_count": 4759,
+    "quote_count": 642,
+    "reply_count": 1039,
+    "retweet_count": 368
    },
-   "text": "We built Control Room, a central system to track model workloads across our research infrastructure and stop them quickly when safety or security concerns arise.\n\nIt connects every research inference workload, including agentic sampling for model training and evaluation, data",
-   "url": "https://x.com/OpenAI/status/2119913172039868579"
+   "text": "Distillation can reproduce powerful AI capabilities without the safeguards built around them.\n\nWe\u2019re sharing new research on our work to combat distillation of our models, how these capabilities transfer, and how we detect and disrupt coordinated attempts.\n\nThese findings are",
+   "url": "https://x.com/OpenAI/status/2123862344422088794"
   },
   {
-   "author_id": "4783690002",
-   "created_at": "2026-11-10T15:00:42.000Z",
+   "author_id": "1605",
+   "conversation_id": "2124551594691932405",
+   "created_at": "2026-11-22T17:12:27.000Z",
    "edit_history_tweet_ids": [
-    "2120169787896525104"
+    "2124551594691932405"
    ],
-   "id": "2120169787896525104",
+   "id": "2124551594691932405",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 1142,
-    "impression_count": 488656,
-    "like_count": 4654,
-    "quote_count": 402,
-    "reply_count": 373,
-    "retweet_count": 572
+    "bookmark_count": 962,
+    "impression_count": 288339,
+    "like_count": 3337,
+    "quote_count": 104,
+    "reply_count": 420,
+    "retweet_count": 215
    },
-   "text": "Gemini Robotics 2.5 is here. \ud83e\udd16\n\nOur latest physical AI is able to learn hundreds of everyday skills - from folding laundry and serving pastries to autonomously sorting car parts on the factory floor.\n\nHere\u2019s a snapshot of its capabilities \ud83e\uddf5 https://t.co/50WwnDudsH",
-   "url": "https://x.com/GoogleDeepMind/status/2120169787896525104"
+   "text": "This is the most important thing OpenAI has published in awhile.\n\nWe are providing a lot of transparency into our pretraining progress and hope we can agree as a frield to common limits. I think that would be very wise and help ensure safety and control. https://t.co/O3ev9Bs2SH",
+   "url": "https://x.com/sama/status/2124551594691932405"
   }
  ],
  "includes": {
   "users": [
-   {
-    "id": "1943306828697550848",
-    "name": "Claude",
-    "username": "claudeai"
-   },
-   {
-    "id": "1943306828697550848",
-    "name": "Claude",
-    "username": "claudeai"
-   },
-   {
-    "id": "1943306828697550848",
-    "name": "Claude",
-    "username": "claudeai"
-   },
-   {
-    "id": "4398626122",
-    "name": "OpenAI",
-    "username": "OpenAI"
-   },
    {
     "id": "1353836358901501952",
     "name": "Anthropic",
     "username": "AnthropicAI"
    },
    {
-    "id": "1806359170830172162",
-    "name": "Google Gemini",
-    "username": "GeminiApp"
-   },
-   {
     "id": "4398626122",
     "name": "OpenAI",
     "username": "OpenAI"
    },
    {
-    "id": "4783690002",
-    "name": "Google DeepMind",
-    "username": "GoogleDeepMind"
+    "id": "14130366",
+    "name": "Sundar Pichai",
+    "username": "sundarpichai"
+   },
+   {
+    "id": "39125788",
+    "name": "Ethan Mollick",
+    "username": "emollick"
+   },
+   {
+    "id": "1482581556",
+    "name": "Demis Hassabis",
+    "username": "demishassabis"
+   },
+   {
+    "id": "1605",
+    "name": "Sam Altman",
+    "username": "sama"
    }
   ]
  }

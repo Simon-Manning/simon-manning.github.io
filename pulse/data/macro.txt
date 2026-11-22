@@ -2,150 +2,278 @@
  "data": [
   {
    "author_id": "3316376038",
-   "created_at": "2026-11-13T13:32:15.000Z",
+   "conversation_id": "2123024053640274028",
+   "created_at": "2026-11-18T12:02:32.000Z",
    "edit_history_tweet_ids": [
-    "2121234688391942348"
+    "2123024053640274028"
    ],
-   "id": "2121234688391942348",
+   "id": "2123024053640274028",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 322,
-    "impression_count": 533936,
-    "like_count": 6110,
-    "quote_count": 160,
-    "reply_count": 334,
-    "retweet_count": 800
+    "bookmark_count": 1551,
+    "impression_count": 1536355,
+    "like_count": 22623,
+    "quote_count": 528,
+    "reply_count": 727,
+    "retweet_count": 2260
    },
-   "text": "BREAKING: October PPI Inflation rises to 6.5%, its highest level since November 2022.\n\nCore PPI Inflation was 5.0%, in-line with expectations of 5.0%.\n\nCPI, PPI, and PCE inflation continue to push higher in the US.\n\nAll signs point toward a December rate hike.",
-   "url": "https://x.com/KobeissiLetter/status/2121234688391942348"
+   "text": "BREAKING: President Trump, President Putin, and President Xi officially meet and shake hands.\n\nThis marks the first-ever trilateral meeting between the sitting presidents of the US, Russia, and China. https://t.co/D7oPtYBBYN",
+   "url": "https://x.com/KobeissiLetter/status/2123024053640274028"
   },
   {
    "author_id": "3316376038",
-   "created_at": "2026-11-11T11:08:44.000Z",
+   "conversation_id": "2123874615449768331",
+   "created_at": "2026-11-20T20:22:22.000Z",
    "edit_history_tweet_ids": [
-    "2120473108725252401",
-    "2120473795899126012"
+    "2123874615449768331"
    ],
-   "id": "2120473795899126012",
+   "id": "2123874615449768331",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 195,
-    "impression_count": 489538,
-    "like_count": 5724,
-    "quote_count": 145,
-    "reply_count": 292,
-    "retweet_count": 436
+    "bookmark_count": 784,
+    "impression_count": 666080,
+    "like_count": 9138,
+    "quote_count": 150,
+    "reply_count": 282,
+    "retweet_count": 887
    },
-   "text": "BREAKING: Nvidia, $NVDA, surges over +6% as investors buy the dip in the stock amid the Jensen Huang situation.\n\nThe stock has now erased yesterday\u2019s decline. https://t.co/Yzx1yZBaZU",
-   "url": "https://x.com/KobeissiLetter/status/2120473795899126012"
+   "text": "BREAKING: Nvidia, $NVDA, sets a new record for the largest-ever loss of market cap in a stock in 45 days.\n\nThe stock has now lost -$2.8 trillion in market cap from its high seen on October 6th.\n\nThere have been 33 trading days since October 6th, meaning Nvidia has lost an average",
+   "url": "https://x.com/KobeissiLetter/status/2123874615449768331"
   },
   {
    "author_id": "3316376038",
-   "created_at": "2026-11-10T13:30:41.000Z",
+   "conversation_id": "2123810146006532136",
+   "created_at": "2026-11-20T16:06:11.000Z",
    "edit_history_tweet_ids": [
-    "2120147133542125818"
+    "2123810146006532136"
    ],
-   "id": "2120147133542125818",
+   "id": "2123810146006532136",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 171,
-    "impression_count": 400672,
-    "like_count": 3096,
-    "quote_count": 128,
-    "reply_count": 216,
-    "retweet_count": 387
+    "bookmark_count": 418,
+    "impression_count": 598032,
+    "like_count": 9016,
+    "quote_count": 196,
+    "reply_count": 284,
+    "retweet_count": 857
    },
-   "text": "BREAKING: October CPI inflation rises +0.4% month-over-month, above expectations of +0.3%.\n\nCore CPI inflation rose +0.3%, also above expectations of +0.2%.\n\nBLS will not be releasing year-over-year figures due to the October 2025 government shutdown.\n\nInflation still appears to",
-   "url": "https://x.com/KobeissiLetter/status/2120147133542125818"
+   "text": "BREAKING: The Nasdaq Composite officially turns negative for 2026, erasing a gain of +19%. https://t.co/yPDb7Ul9ds",
+   "url": "https://x.com/KobeissiLetter/status/2123810146006532136"
   },
   {
    "author_id": "3316376038",
-   "created_at": "2026-11-12T12:08:14.000Z",
+   "conversation_id": "2123834118299349003",
+   "created_at": "2026-11-20T17:41:27.000Z",
    "edit_history_tweet_ids": [
-    "2120851159879762064"
+    "2123834118299349003"
    ],
-   "id": "2120851159879762064",
+   "id": "2123834118299349003",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 101,
-    "impression_count": 280599,
-    "like_count": 3065,
-    "quote_count": 57,
-    "reply_count": 237,
-    "retweet_count": 395
+    "bookmark_count": 1147,
+    "impression_count": 2155147,
+    "like_count": 8950,
+    "quote_count": 699,
+    "reply_count": 402,
+    "retweet_count": 1374
    },
-   "text": "BREAKING: President Trump threatens to double tariffs on Mexico if they do not stop \u201ccaravans\u201d heading to the US. https://t.co/LNRL77BvIi",
-   "url": "https://x.com/KobeissiLetter/status/2120851159879762064"
+   "text": "BREAKING: President Trump says he will impose a \u201ctremendous tax\u201d on any US company that attempts to build data centers outside of the US.\n\nTrump says he will not allow data center construction outside the US because \u201cChina will take all of them.\u201d\n\nThe Nasdaq 100 extends losses to",
+   "url": "https://x.com/KobeissiLetter/status/2123834118299349003"
   },
   {
    "author_id": "3316376038",
-   "created_at": "2026-11-10T16:58:00.000Z",
+   "conversation_id": "2123107215477547378",
+   "created_at": "2026-11-18T17:33:00.000Z",
    "edit_history_tweet_ids": [
-    "2120199304392700371"
+    "2123107215477547378"
    ],
-   "id": "2120199304392700371",
+   "id": "2123107215477547378",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 91,
-    "impression_count": 230288,
-    "like_count": 2575,
-    "quote_count": 33,
-    "reply_count": 143,
-    "retweet_count": 229
+    "bookmark_count": 451,
+    "impression_count": 1240675,
+    "like_count": 8686,
+    "quote_count": 335,
+    "reply_count": 399,
+    "retweet_count": 1185
    },
-   "text": "BREAKING: The US 10Y Note Yield surges back above 5.00% as October CPI inflation comes in higher than expected.\n\nOdds of a December rate hike are at a new high. https://t.co/BojsGRuCUl",
-   "url": "https://x.com/KobeissiLetter/status/2120199304392700371"
+   "text": "BREAKING: US oil prices fall below $82/barrel for the first time since August 27th.\n\nGas prices just posted their largest single-day drop in 18 years. https://t.co/xsLSLORU76",
+   "url": "https://x.com/KobeissiLetter/status/2123107215477547378"
   },
   {
    "author_id": "3316376038",
-   "created_at": "2026-11-14T14:14:03.000Z",
+   "created_at": "2026-11-20T02:17:17.000Z",
    "edit_history_tweet_ids": [
-    "2121607597211926983"
+    "2123601545434710165"
    ],
-   "id": "2121607597211926983",
+   "id": "2123601545434710165",
    "public_metrics": {
-    "bookmark_count": 287,
-    "impression_count": 255810,
-    "like_count": 2060,
-    "quote_count": 67,
-    "reply_count": 224,
-    "retweet_count": 353
+    "bookmark_count": 583,
+    "impression_count": 938307,
+    "like_count": 7800,
+    "quote_count": 236,
+    "reply_count": 303,
+    "retweet_count": 856
    },
-   "text": "US inflation is diverging from the Fed\u2019s target:\n\nUS CPI Inflation has surged +30.2% since January 2020, to an all-time high.\n\nThis translates into an annualized inflation rate of +4.0% over this period.\n\nMeanwhile, under a steady 2% annual inflation target, cumulative CPI growth https://t.co/rDu84djKmf",
-   "url": "https://x.com/KobeissiLetter/status/2121607597211926983"
+   "text": "BREAKING: Gold falls below $3,550/oz and silver falls below $42/oz as the selloff gains momentum.\n\nGold and silver have now lost a combined -$15 trillion in market cap from their record highs. https://t.co/A5PZIATMSI",
+   "url": "https://x.com/KobeissiLetter/status/2123601545434710165"
+  },
+  {
+   "author_id": "3316376038",
+   "conversation_id": "2123884549574623420",
+   "created_at": "2026-11-20T21:01:51.000Z",
+   "edit_history_tweet_ids": [
+    "2123884549574623420"
+   ],
+   "id": "2123884549574623420",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 521,
+    "impression_count": 510141,
+    "like_count": 7381,
+    "quote_count": 231,
+    "reply_count": 210,
+    "retweet_count": 928
+   },
+   "text": "BREAKING: The S&amp;P 500 officially closes the day down -3.7%, erasing -$6 trillion worth of market cap this week.\n\nThis marks the S&amp;P 500's first 7-day losing streak since the 2020 Pandemic. https://t.co/stbShTGH4F",
+   "url": "https://x.com/KobeissiLetter/status/2123884549574623420"
+  },
+  {
+   "author_id": "3316376038",
+   "created_at": "2026-11-21T17:19:00.000Z",
+   "edit_history_tweet_ids": [
+    "2124190855770656830"
+   ],
+   "id": "2124190855770656830",
+   "public_metrics": {
+    "bookmark_count": 671,
+    "impression_count": 679702,
+    "like_count": 6952,
+    "quote_count": 198,
+    "reply_count": 258,
+    "retweet_count": 725
+   },
+   "text": "BREAKING: Taiwan announces new restrictions on short selling after its stock market falls -18% in one week, its worst weekly decline in 35 years.\n\nEffective Monday, regulators will ban short sales below the previous closing price and raise margin requirements to 150%.\n\nTaiwan\u2019s",
+   "url": "https://x.com/KobeissiLetter/status/2124190855770656830"
+  },
+  {
+   "author_id": "3316376038",
+   "conversation_id": "2123134143437361568",
+   "created_at": "2026-11-18T19:20:00.000Z",
+   "edit_history_tweet_ids": [
+    "2123134143437361568"
+   ],
+   "id": "2123134143437361568",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 296,
+    "impression_count": 457320,
+    "like_count": 2735,
+    "quote_count": 78,
+    "reply_count": 180,
+    "retweet_count": 293
+   },
+   "text": "FED MEETING MINUTES (11/18/26):\n\n1. Almost all Fed officials saw \u201cfurther action\u201d appropriate\n\n2. A couple Fed officials believe a hike of more than 25 basis points may be warranted in December\n\n3. Some officials favored a 25 basis point rate hike in October \n\n4. Returning",
+   "url": "https://x.com/KobeissiLetter/status/2123134143437361568"
+  },
+  {
+   "author_id": "3316376038",
+   "conversation_id": "2124357933043511665",
+   "created_at": "2026-11-22T04:22:54.000Z",
+   "edit_history_tweet_ids": [
+    "2124357933043511665"
+   ],
+   "id": "2124357933043511665",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 127,
+    "impression_count": 209318,
+    "like_count": 1219,
+    "quote_count": 28,
+    "reply_count": 111,
+    "retweet_count": 170
+   },
+   "text": "China's economic slowdown is deepening:\n\nChina's retail sales rose just +0.4% YoY in October, the 3rd-lowest reading since December 2022, and well below the expected +0.8% growth.\n\nThis marks a sharp deceleration from a +1.1% YoY increase in September.\n\nRetail sales are now on https://t.co/1faQgqjq4z",
+   "url": "https://x.com/KobeissiLetter/status/2124357933043511665"
+  },
+  {
+   "author_id": "3316376038",
+   "conversation_id": "2124305136692408552",
+   "created_at": "2026-11-22T00:53:06.000Z",
+   "edit_history_tweet_ids": [
+    "2124305136692408552"
+   ],
+   "id": "2124305136692408552",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 150,
+    "impression_count": 192771,
+    "like_count": 1193,
+    "quote_count": 47,
+    "reply_count": 177,
+    "retweet_count": 154
+   },
+   "text": "BREAKING: AI-related investment contributed +1.27 percentage points to real US GDP growth in Q1 through Q3 2026.\n\nThis represents ~65% of the economy's cumulative growth of ~2% over this period.\n\nSoftware investment contributed the most, at +0.45 percentage points, followed by https://t.co/b4yXhD0vlq",
+   "url": "https://x.com/KobeissiLetter/status/2124305136692408552"
+  },
+  {
+   "author_id": "59603406",
+   "created_at": "2026-11-15T23:00:01.000Z",
+   "edit_history_tweet_ids": [
+    "2122102347509768298"
+   ],
+   "id": "2122102347509768298",
+   "public_metrics": {
+    "bookmark_count": 150,
+    "impression_count": 138591,
+    "like_count": 774,
+    "quote_count": 30,
+    "reply_count": 65,
+    "retweet_count": 186
+   },
+   "text": "With the CPI and PPI in hand, core PCE prices are expected to have risen 0.29% in October, which would push the 3-month annualized inflation rate to 3.5%, a six-month high.\n\nThe 12-month change would rise to 3.2%, the highest since January 2024. https://t.co/4VTpG0th49",
+   "url": "https://x.com/NickTimiraos/status/2122102347509768298"
   },
   {
    "author_id": "1413027896",
-   "created_at": "2026-11-13T19:27:41.000Z",
+   "conversation_id": "2123938538462773684",
+   "created_at": "2026-11-21T00:36:23.000Z",
    "edit_history_tweet_ids": [
-    "2121323372315328975",
-    "2121323546865508771",
-    "2121324139478757706"
+    "2123938538462773684"
    ],
-   "id": "2121324139478757706",
+   "id": "2123938538462773684",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 131,
-    "impression_count": 61835,
-    "like_count": 1352,
-    "quote_count": 40,
-    "reply_count": 113,
-    "retweet_count": 353
+    "bookmark_count": 94,
+    "impression_count": 68597,
+    "like_count": 628,
+    "quote_count": 13,
+    "reply_count": 47,
+    "retweet_count": 91
    },
-   "text": "Tariffs went up and companies raised prices.\n\nThen $128 billion in tariffs were refunded to companies.\n\nBut consumers didn't get any refund and many of those companies raised prices even more.\n\nFunny how that works. https://t.co/dQLsOlnsHA",
-   "url": "https://x.com/charliebilello/status/2121324139478757706"
+   "text": "The Nasdaq 100 crossed into bear market territory today for the first time since April 2025 (tariff tantrum), falling 21% from its October peak.\n\nIt was up 24% on the year in early October and is now down 1%. https://t.co/M64FLcbVXy",
+   "url": "https://x.com/charliebilello/status/2123938538462773684"
   },
   {
-   "author_id": "3316376038",
-   "created_at": "2026-11-10T19:52:30.000Z",
+   "author_id": "188369814",
+   "conversation_id": "2123051396823953682",
+   "created_at": "2026-11-18T13:51:12.000Z",
    "edit_history_tweet_ids": [
-    "2120243221406089514"
+    "2123047663683948913",
+    "2123051396823953682"
    ],
-   "id": "2120243221406089514",
+   "id": "2123051396823953682",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 82,
-    "impression_count": 204662,
-    "like_count": 1433,
-    "quote_count": 31,
-    "reply_count": 135,
-    "retweet_count": 134
+    "bookmark_count": 58,
+    "impression_count": 66514,
+    "like_count": 608,
+    "quote_count": 23,
+    "reply_count": 104,
+    "retweet_count": 83
    },
-   "text": "Rate hike expectations are soaring.\n\nIn a sudden turn of events, markets are now pricing in the possibility of a 50 basis point rate hike in December.\n\nMarket expectations for a 50 basis point hike have surged to 11%, while expectations for a 25 basis point hike stand at 84%.\n\nIt https://t.co/WXDTNls2Oa",
-   "url": "https://x.com/KobeissiLetter/status/2120243221406089514"
+   "text": "Fed Governor Chris Waller on CNBC this AM\n\n*WALLER: PEOPLE STARTING TO THINK 3% INFLATION MAY BE THE NORM\n\nWhat do you mean \u201cstarting to think?\u201d\n\nThe Fed\u2019s favorite inflation measure (core PCE) has been above 2% for 67 months, and it\u2019s been rising for the last year and a half. https://t.co/WRzialLMk0",
+   "url": "https://x.com/biancoresearch/status/2123051396823953682"
   }
  ],
  "includes": {
@@ -156,29 +284,9 @@
     "username": "KobeissiLetter"
    },
    {
-    "id": "3316376038",
-    "name": "The Kobeissi Letter",
-    "username": "KobeissiLetter"
-   },
-   {
-    "id": "3316376038",
-    "name": "The Kobeissi Letter",
-    "username": "KobeissiLetter"
-   },
-   {
-    "id": "3316376038",
-    "name": "The Kobeissi Letter",
-    "username": "KobeissiLetter"
-   },
-   {
-    "id": "3316376038",
-    "name": "The Kobeissi Letter",
-    "username": "KobeissiLetter"
-   },
-   {
-    "id": "3316376038",
-    "name": "The Kobeissi Letter",
-    "username": "KobeissiLetter"
+    "id": "59603406",
+    "name": "Nick Timiraos",
+    "username": "NickTimiraos"
    },
    {
     "id": "1413027896",
@@ -186,9 +294,9 @@
     "username": "charliebilello"
    },
    {
-    "id": "3316376038",
-    "name": "The Kobeissi Letter",
-    "username": "KobeissiLetter"
+    "id": "188369814",
+    "name": "Jim Bianco",
+    "username": "biancoresearch"
    }
   ]
  }

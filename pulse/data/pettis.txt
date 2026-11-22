@@ -2,215 +2,595 @@
  "data": [
   {
    "author_id": "917683048782503937",
-   "created_at": "2026-11-11T17:18:10.000Z",
+   "conversation_id": "2122361005917237722",
+   "created_at": "2026-11-16T16:07:50.000Z",
    "edit_history_tweet_ids": [
-    "2120566766598496482"
+    "2122361005917237722"
    ],
-   "id": "2120566766598496482",
+   "id": "2122361005917237722",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 147,
-    "impression_count": 47556,
-    "like_count": 549,
-    "quote_count": 5,
-    "reply_count": 37,
-    "retweet_count": 114
+    "bookmark_count": 361,
+    "impression_count": 74210,
+    "like_count": 726,
+    "quote_count": 10,
+    "reply_count": 22,
+    "retweet_count": 146
    },
-   "text": "Bloomberg: \u201cRussia has effectively abandoned attempts to replace the dollar with China\u2019s yuan under the pressure of US secondary sanctions, underlining the difficulties facing other nations looking for an alternative global currency.\u201d\n\nAs I\u2019ve long explained, surplus countries",
-   "url": "https://x.com/michaelxpettis/status/2120566766598496482"
+   "text": "1/7\nRuchir Sharma: \"So far this year, 80 per cent of global equity flows have gone into the US market, double the long-term average. No other country has ever drawn such a large share.\"\nhttps://t.co/QwyBNCOabC",
+   "url": "https://x.com/michaelxpettis/status/2122361005917237722"
   },
   {
    "author_id": "917683048782503937",
-   "created_at": "2026-11-12T20:47:45.000Z",
+   "conversation_id": "2124012607048695907",
+   "created_at": "2026-11-21T05:30:42.000Z",
    "edit_history_tweet_ids": [
-    "2120981900001153097"
+    "2124012607048695907"
    ],
-   "id": "2120981900001153097",
+   "id": "2124012607048695907",
+   "lang": "en",
+   "note_tweet": {
+    "entities": {
+     "urls": [
+      {
+       "display_url": "nytimes.com/2026/11/20/bus\u2026",
+       "end": 334,
+       "expanded_url": "https://www.nytimes.com/2026/11/20/business/china-economy-pensions.html?unlocked_article_code=1.SFE.EtmI.vI6ASMr6cHOy&smid=tw-share",
+       "start": 311,
+       "url": "https://t.co/al9psbqvpl"
+      }
+     ]
+    },
+    "text": "NYT: \"Xu Chenggang, an economist at Stanford, calls the government\u2019s all-out push to collect more social insurance self-defeating. \u201cThe economy\u2019s original problem is insufficient domestic demand,\u201d he said. \u201cNow the government squeezes ordinary people to plug its fiscal holes, which makes demand even weaker.\u201d\"\nhttps://t.co/al9psbqvpl"
+   },
    "public_metrics": {
-    "bookmark_count": 11,
-    "impression_count": 14178,
-    "like_count": 114,
+    "bookmark_count": 109,
+    "impression_count": 37014,
+    "like_count": 328,
     "quote_count": 3,
-    "reply_count": 11,
-    "retweet_count": 18
+    "reply_count": 16,
+    "retweet_count": 67
    },
-   "text": "FT: \u201c Donald Trump has threatened to double tariffs on Mexico \u201cimmediately\u201d over illegal immigration into the US over the country\u2019s border.\u201d\n\nThis is the type of nonsense that ensures that the impact of US trade policy on the US economy is either zero or negative.",
-   "url": "https://x.com/michaelxpettis/status/2120981900001153097"
+   "text": "NYT: \"Xu Chenggang, an economist at Stanford, calls the government\u2019s all-out push to collect more social insurance self-defeating. \u201cThe economy\u2019s original problem is insufficient domestic demand,\u201d he said. \u201cNow the government squeezes ordinary people to plug its fiscal holes, which makes demand even weaker.\u201d\"\nhttps://t.co/al9psbqvpl",
+   "url": "https://x.com/michaelxpettis/status/2124012607048695907"
   },
   {
    "author_id": "917683048782503937",
-   "created_at": "2026-11-12T21:30:42.000Z",
+   "conversation_id": "2123301813990375441",
+   "created_at": "2026-11-19T06:26:16.000Z",
    "edit_history_tweet_ids": [
-    "2120992708991037574"
+    "2123301813990375441"
    ],
-   "id": "2120992708991037574",
+   "entities": {
+    "urls": [
+     {
+      "display_url": "x.com/Brad_Setser/st\u2026",
+      "end": 301,
+      "expanded_url": "https://twitter.com/Brad_Setser/status/2123001362850132404",
+      "start": 278,
+      "url": "https://t.co/66v2tqqrUV"
+     }
+    ]
+   },
+   "id": "2123301813990375441",
+   "lang": "en",
+   "note_tweet": {
+    "text": "If global GDP is $128 trillion, and China's GDP just under $22 trillion, China's $1.5 trillion trade surplus net of gold imports (just one-third of the gold purchased by Chinese is used for jewelry), is equal to 1.4% of the rest of the world's GDP.\n\nIf you think of this as the rough equivalent of a fiscal contraction of 1.4% of GDP, it may help explain why fiscal deficits must rise."
+   },
    "public_metrics": {
-    "bookmark_count": 19,
-    "impression_count": 15527,
-    "like_count": 85,
+    "bookmark_count": 104,
+    "impression_count": 37488,
+    "like_count": 311,
     "quote_count": 4,
     "reply_count": 11,
-    "retweet_count": 11
+    "retweet_count": 57
    },
-   "text": "Bloomberg: \u201cChina\u2019s central bank highlighted what it said were relatively low loan rates compared to the rest of the world \u2014 a sign it may remain cautious about cutting interest rates while borrowing demand remains sluggish.\u201d\n\nIn fact with weak consumer loan demand, the main",
-   "url": "https://x.com/michaelxpettis/status/2120992708991037574"
+   "referenced_tweets": [
+    {
+     "id": "2123001362850132404",
+     "type": "quoted"
+    }
+   ],
+   "text": "If global GDP is $128 trillion, and China's GDP just under $22 trillion, China's $1.5 trillion trade surplus net of gold imports (just one-third of the gold purchased by Chinese is used for jewelry), is equal to 1.4% of the rest of the world's GDP.\n\nIf you think of this as the rough equivalent of a fiscal contraction of 1.4% of GDP, it may help explain why fiscal deficits must rise.",
+   "url": "https://x.com/michaelxpettis/status/2123301813990375441"
   },
   {
    "author_id": "917683048782503937",
-   "created_at": "2026-11-15T05:46:41.000Z",
+   "conversation_id": "2123797298547204389",
+   "created_at": "2026-11-20T15:15:08.000Z",
    "edit_history_tweet_ids": [
-    "2121842300955357380"
+    "2123797298547204389"
    ],
-   "id": "2121842300955357380",
-   "public_metrics": {
-    "bookmark_count": 16,
-    "impression_count": 17888,
-    "like_count": 80,
-    "quote_count": 4,
-    "reply_count": 8,
-    "retweet_count": 13
+   "entities": {
+    "urls": [
+     {
+      "display_url": "x.com/Brad_Setser/st\u2026",
+      "end": 304,
+      "expanded_url": "https://twitter.com/Brad_Setser/status/2123765184284262682",
+      "start": 281,
+      "url": "https://t.co/G4BMKnE1hl"
+     }
+    ]
    },
-   "text": "1/3\nXinhua: \"China's high-speed rail network is projected to hit 70,000 km by 2035 (from 50,000 today), featuring eight north-south vertical lines and eight east-west horizontal lines. Once complete, the network will connect major cities, city clusters and key economic zones",
-   "url": "https://x.com/michaelxpettis/status/2121842300955357380"
+   "id": "2123797298547204389",
+   "lang": "en",
+   "note_tweet": {
+    "text": "Needless to say, mainland China is not the only economy that is boosting domestic growth mainly by absorbing foreign demand. In order to protect its manufacturing competitiveness, Taiwan, too, does not allow domestic wages, and hence domestic demand, to grow in line with domestic productivity.\n\nFor any economy except those with very low populations and very high oil exports, a persistent double-digit surplus undermines global growth by more than it boosts domestic growth."
+   },
+   "public_metrics": {
+    "bookmark_count": 59,
+    "impression_count": 18992,
+    "like_count": 194,
+    "quote_count": 2,
+    "reply_count": 10,
+    "retweet_count": 45
+   },
+   "referenced_tweets": [
+    {
+     "id": "2123765184284262682",
+     "type": "quoted"
+    }
+   ],
+   "text": "Needless to say, mainland China is not the only economy that is boosting domestic growth mainly by absorbing foreign demand. In order to protect its manufacturing competitiveness, Taiwan, too, does not allow domestic wages, and hence domestic demand, to grow in line with domestic productivity.\n\nFor any economy except those with very low populations and very high oil exports, a persistent double-digit surplus undermines global growth by more than it boosts domestic growth.",
+   "url": "https://x.com/michaelxpettis/status/2123797298547204389"
   },
   {
    "author_id": "917683048782503937",
-   "created_at": "2026-11-10T19:28:37.000Z",
+   "conversation_id": "2122375187354263592",
+   "created_at": "2026-11-16T17:04:11.000Z",
    "edit_history_tweet_ids": [
-    "2120237210687672738"
+    "2122375187354263592"
    ],
-   "id": "2120237210687672738",
+   "entities": {
+    "urls": [
+     {
+      "display_url": "x.com/NewLeftEViews/\u2026",
+      "end": 85,
+      "expanded_url": "https://twitter.com/NewLeftEViews/status/2122362065624891520",
+      "start": 62,
+      "url": "https://t.co/iQmzU1HSsh"
+     }
+    ]
+   },
+   "id": "2122375187354263592",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 17,
-    "impression_count": 11047,
-    "like_count": 76,
+    "bookmark_count": 73,
+    "impression_count": 13239,
+    "like_count": 175,
+    "quote_count": 3,
+    "reply_count": 3,
+    "retweet_count": 29
+   },
+   "referenced_tweets": [
+    {
+     "id": "2122362065624891520",
+     "type": "quoted"
+    }
+   ],
+   "text": "\"The dollar is the currency not of a country but of a class.\" https://t.co/iQmzU1HSsh",
+   "url": "https://x.com/michaelxpettis/status/2122375187354263592"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2123672135038362005",
+   "created_at": "2026-11-20T06:57:47.000Z",
+   "edit_history_tweet_ids": [
+    "2123672135038362005"
+   ],
+   "entities": {
+    "urls": [
+     {
+      "description": "How China\u2019s $1.5 trillion adjusted trade surplus is forcing the rest of the world into fiscal expansion \u2014 or stagnation",
+      "display_url": "acemaxxanalytics.substack.com/p/the-14-globa\u2026",
+      "end": 260,
+      "expanded_url": "https://acemaxxanalytics.substack.com/p/the-14-global-demand-drain?r=12ygf&utm_campaign=post-expanded-share&utm_medium=web",
+      "images": [
+       {
+        "height": 800,
+        "url": "https://pbs.twimg.com/news_img/2123672136833552385/-g0FvLj6?format=jpg&name=orig",
+        "width": 1600
+       },
+       {
+        "height": 150,
+        "url": "https://pbs.twimg.com/news_img/2123672136833552385/-g0FvLj6?format=jpg&name=150x150",
+        "width": 150
+       }
+      ],
+      "start": 237,
+      "status": 200,
+      "title": "The 1.4% Global Demand Drain",
+      "unwound_url": "https://acemaxxanalytics.substack.com/p/the-14-global-demand-drain?r=12ygf&utm_campaign=post-expanded-share&utm_medium=web",
+      "url": "https://t.co/lRLkRFM0cm"
+     }
+    ]
+   },
+   "id": "2123672135038362005",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 49,
+    "impression_count": 12738,
+    "like_count": 158,
+    "quote_count": 2,
+    "reply_count": 14,
+    "retweet_count": 37
+   },
+   "text": "\"If surplus countries refuse to rebalance toward domestic consumption, the rest of the world is left with an uncomfortable menu: accept weaker growth, pile up private-sector debt, or use fiscal deficits to keep aggregate demand afloat.\"\nhttps://t.co/lRLkRFM0cm",
+   "url": "https://x.com/michaelxpettis/status/2123672135038362005"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2122373988345135251",
+   "created_at": "2026-11-16T16:59:25.000Z",
+   "edit_history_tweet_ids": [
+    "2122373988345135251"
+   ],
+   "id": "2122373988345135251",
+   "lang": "en",
+   "note_tweet": {
+    "entities": {
+     "urls": [
+      {
+       "display_url": "caixinglobal.com/2026-11-16/chi\u2026",
+       "end": 1344,
+       "expanded_url": "https://www.caixinglobal.com/2026-11-16/chinas-fixed-asset-investment-decline-deepens-102505237.html",
+       "start": 1321,
+       "url": "https://t.co/DoU96ubhbY"
+      }
+     ]
+    },
+    "text": "Caixin: \"China\u2019s fixed-asset investment fell 8.1% year on year in the first 10 months of the year, a sharper decline than economists expected, suggesting the impact of investment-support measures introduced since August has yet to fully materialize. Manufacturing investment fell 2.9%, while infrastructure investment dropped 5.1%, as a shortage of eligible local projects and limited local government funding continued to constrain infrastructure spending. Private investment also weakened, falling 11.4% in the first 10 months.\"\n\nWhat often isn't sufficiently well understood is that a rising trade surplus is the obverse of declining investment. As the gap between production and consumption continues to rise, it logically has to be balanced either by higher domestic investment or by higher net exports.\n\nIf it isn't, and because it is proving almost impossible  to get consumption growth to accelerate, China would otherwise be forced to rebalance with a decline in production, along with rising unemployment, something its already-high unemployment levels cannot allow.\n\nGiven the increasing difficult in finding productive investment projects, along with rising concerns about the country's rapidly-rising debt burden, it therefore shouldn't surprise anyone that China is locked into ever-rising trade surpluses.\nhttps://t.co/DoU96ubhbY"
+   },
+   "public_metrics": {
+    "bookmark_count": 30,
+    "impression_count": 15890,
+    "like_count": 107,
+    "quote_count": 2,
+    "reply_count": 6,
+    "retweet_count": 29
+   },
+   "text": "Caixin: \"China\u2019s fixed-asset investment fell 8.1% year on year in the first 10 months of the year, a sharper decline than economists expected, suggesting the impact of investment-support measures introduced since August has yet to fully materialize. Manufacturing investment fell 2.9%, while infrastructure investment dropped 5.1%, as a shortage of eligible local projects and limited local government funding continued to constrain infrastructure spending. Private investment also weakened, falling 11.4% in the first 10 months.\"\n\nWhat often isn't sufficiently well understood is that a rising trade surplus is the obverse of declining investment. As the gap between production and consumption continues to rise, it logically has to be balanced either by higher domestic investment or by higher net exports.\n\nIf it isn't, and because it is proving almost impossible  to get consumption growth to accelerate, China would otherwise be forced to rebalance with a decline in production, along with rising unemployment, something its already-high unemployment levels cannot allow.\n\nGiven the increasing difficult in finding productive investment projects, along with rising concerns about the country's rapidly-rising debt burden, it therefore shouldn't surprise anyone that China is locked into ever-rising trade surpluses.\nhttps://t.co/DoU96ubhbY",
+   "url": "https://x.com/michaelxpettis/status/2122373988345135251"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2122361005917237722",
+   "created_at": "2026-11-16T16:07:50.000Z",
+   "edit_history_tweet_ids": [
+    "2122361009792839794"
+   ],
+   "id": "2122361009792839794",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 15,
+    "impression_count": 39122,
+    "like_count": 103,
     "quote_count": 1,
-    "reply_count": 7,
-    "retweet_count": 13
+    "reply_count": 2,
+    "retweet_count": 7
    },
-   "text": "Caixin: \u201cGrowth in traditional labor-intensive exports slowed again after several months of improvement. Clothing, textiles, luggage and toy exports all lost momentum, as did household appliances.\u201d\n\nEven though China has among the lowest unit labor costs in the world,",
-   "url": "https://x.com/michaelxpettis/status/2120237210687672738"
+   "referenced_tweets": [
+    {
+     "id": "2122361005917237722",
+     "type": "replied_to"
+    }
+   ],
+   "text": "2/7\nSharma discusses the increasing obsession retail investors around the world have for owning American stocks, but while most analysts understand the (largely beneficial) impact this has on American financial markets, very few understand its impact on the US economy.",
+   "url": "https://x.com/michaelxpettis/status/2122361009792839794"
   },
   {
    "author_id": "917683048782503937",
-   "created_at": "2026-11-15T06:04:47.000Z",
+   "conversation_id": "2124401141987607019",
+   "created_at": "2026-11-22T07:14:36.000Z",
    "edit_history_tweet_ids": [
-    "2121846858230247447"
+    "2124401141987607019"
    ],
-   "id": "2121846858230247447",
+   "id": "2124401141987607019",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 14,
-    "impression_count": 15457,
-    "like_count": 63,
-    "quote_count": 1,
-    "reply_count": 4,
+    "bookmark_count": 25,
+    "impression_count": 13822,
+    "like_count": 98,
+    "quote_count": 0,
+    "reply_count": 11,
+    "retweet_count": 17
+   },
+   "text": "1/2\nBloomberg: \"China\u2019s top planning agency urged local authorities to speed up the construction of government investment projects and disbursement of funds in a bid to spur growth in the world\u2019s second-largest economy.\"\nhttps://t.co/LakOdMK0MG",
+   "url": "https://x.com/michaelxpettis/status/2124401141987607019"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2123670813358309440",
+   "created_at": "2026-11-20T06:52:32.000Z",
+   "edit_history_tweet_ids": [
+    "2123670813358309440"
+   ],
+   "id": "2123670813358309440",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 34,
+    "impression_count": 14475,
+    "like_count": 98,
+    "quote_count": 2,
+    "reply_count": 6,
     "retweet_count": 16
    },
-   "text": "1/2\nSCMP: \"Guo Shuqing, a former chairman of the China Banking and Insurance Regulatory Commission, warned that the country\u2019s pension system could run short of funds in the next 20 years, citing multiple projections.\nhttps://t.co/2yFsgw6rXO",
-   "url": "https://x.com/michaelxpettis/status/2121846858230247447"
+   "text": "1/4\nScott Rozelle: \"Part of the explanation is what\u2019s happened to the labor market. As wages rose, companies increasingly turned to contractors and informal workers to reduce costs. Our research found that informal employment rose from 33% of total employment in 2004 to 56% in",
+   "url": "https://x.com/michaelxpettis/status/2123670813358309440"
   },
   {
    "author_id": "917683048782503937",
-   "created_at": "2026-11-10T00:36:52.000Z",
+   "conversation_id": "2122361005917237722",
+   "created_at": "2026-11-16T16:07:54.000Z",
    "edit_history_tweet_ids": [
-    "2119952393798332848"
+    "2122361024758055074"
    ],
-   "id": "2119952393798332848",
+   "id": "2122361024758055074",
+   "lang": "en",
    "public_metrics": {
-    "bookmark_count": 5,
-    "impression_count": 11883,
-    "like_count": 75,
-    "quote_count": 2,
-    "reply_count": 3,
-    "retweet_count": 6
-   },
-   "text": "China's consumer price inflation was up 0.7 percent year on year in October, and was flat month on month. Given weak consumption so far this year, this doesn\u2019t come as a surprise.\nhttps://t.co/9VToquREx7",
-   "url": "https://x.com/michaelxpettis/status/2119952393798332848"
-  },
-  {
-   "author_id": "917683048782503937",
-   "created_at": "2026-11-15T06:04:48.000Z",
-   "edit_history_tweet_ids": [
-    "2121846861006872860"
-   ],
-   "id": "2121846861006872860",
-   "in_reply_to_user_id": "917683048782503937",
-   "public_metrics": {
-    "bookmark_count": 1,
-    "impression_count": 6019,
-    "like_count": 22,
-    "quote_count": 0,
-    "reply_count": 0,
-    "retweet_count": 3
-   },
-   "referenced_tweets": [
-    {
-     "id": "2121846858230247447",
-     "type": "replied_to"
-    }
-   ],
-   "text": "2/2\nGuo called for new tax sources and greater transfers of state-owned capital to social security funds to strengthen the long-term financing of the pension system.\"\n\nThe problem is that the share of GDP that must go directly or indirectly to households every year must rise by",
-   "url": "https://x.com/michaelxpettis/status/2121846861006872860"
-  },
-  {
-   "author_id": "917683048782503937",
-   "created_at": "2026-11-15T05:46:46.000Z",
-   "edit_history_tweet_ids": [
-    "2121842324015911405"
-   ],
-   "id": "2121842324015911405",
-   "in_reply_to_user_id": "917683048782503937",
-   "public_metrics": {
-    "bookmark_count": 1,
-    "impression_count": 6992,
-    "like_count": 35,
-    "quote_count": 0,
-    "reply_count": 4,
-    "retweet_count": 3
-   },
-   "referenced_tweets": [
-    {
-     "id": "2121842320056172986",
-     "type": "replied_to"
-    }
-   ],
-   "text": "4/4\nGiven all this, it is hard to believe that further extending the network by 40% into even more economically-marginal parts of the country will be economically justified.",
-   "url": "https://x.com/michaelxpettis/status/2121842324015911405"
-  },
-  {
-   "author_id": "332617373",
-   "created_at": "2026-11-09T14:53:56.000Z",
-   "edit_history_tweet_ids": [
-    "2119805695386145162"
-   ],
-   "id": "2119805695386145162",
-   "public_metrics": {
-    "bookmark_count": 13,
-    "impression_count": 32790,
-    "like_count": 180,
-    "quote_count": 1,
-    "reply_count": 26,
-    "retweet_count": 32
-   },
-   "text": "The gap between PPI and CPI inflation in China continues to widen, both in absolute terms and relative to market expectations.\nAs captured by this CNBC headline, China's PPI inflation came in at 5.7%, its highest level in more than four years and exceeding the consensus forecast https://t.co/Iv1isuXGSs",
-   "url": "https://x.com/elerianm/status/2119805695386145162"
-  },
-  {
-   "author_id": "18856867",
-   "created_at": "2026-11-10T02:31:05.000Z",
-   "edit_history_tweet_ids": [
-    "2119981137757917601"
-   ],
-   "id": "2119981137757917601",
-   "public_metrics": {
-    "bookmark_count": 7,
-    "impression_count": 86222,
-    "like_count": 145,
+    "bookmark_count": 33,
+    "impression_count": 8985,
+    "like_count": 94,
     "quote_count": 0,
     "reply_count": 8,
-    "retweet_count": 13
+    "retweet_count": 9
    },
-   "text": "*CHINA OCT. EXPORTS IN USD TERMS RISE 35.2% Y/Y; EST. +36.3%\n*CHINA OCT. IMPORTS IN USD TERMS RISE 41.6% Y/Y; EST. +33.9%",
-   "url": "https://x.com/zerohedge/status/2119981137757917601"
+   "referenced_tweets": [
+    {
+     "id": "2122361022082330683",
+     "type": "replied_to"
+    }
+   ],
+   "text": "7/7\nthat foreigners have changed their investment choices in response to a decline in US saving, but if the change in their investment decision was endogenous, as Sharma's article suggests, it must be the US economy and its saving rate that has changed to accommodate external",
+   "url": "https://x.com/michaelxpettis/status/2122361024758055074"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2122558847197876441",
+   "created_at": "2026-11-17T05:13:59.000Z",
+   "edit_history_tweet_ids": [
+    "2122558847197876441"
+   ],
+   "id": "2122558847197876441",
+   "lang": "en",
+   "note_tweet": {
+    "entities": {
+     "urls": [
+      {
+       "display_url": "caixinglobal.com/2026-11-16/chi\u2026",
+       "end": 449,
+       "expanded_url": "https://www.caixinglobal.com/2026-11-16/chinas-retail-sales-growth-slows-to-04-missing-forecasts-102505213.html?rkey=pAgjKe3ecjLgzOlntW1lHvFL%2FE7ci4pK7Tova9lxKFpuWqtnei%2FrFQ%3D%3D&cxg=web&Sfrom=twitter",
+       "start": 426,
+       "url": "https://t.co/F2whN9nfSl"
+      }
+     ]
+    },
+    "text": "1/3\nCaixin notes that while China\u2019s retail sales growth slowed to 0.4% year-on-year in October, well below already-low market forecasts, car sales remained the biggest drag, falling 21.4% from a year earlier. Cars accounted for 7.8% of retail sales in January-October, down from 9.9% for all of 2025. Excluding cars, retail sales rose 2.5% last month, still very low given GDP growth of 4.5%, and also slowing from September.\nhttps://t.co/F2whN9nfSl"
+   },
+   "public_metrics": {
+    "bookmark_count": 19,
+    "impression_count": 16899,
+    "like_count": 92,
+    "quote_count": 1,
+    "reply_count": 4,
+    "retweet_count": 11
+   },
+   "text": "1/3\nCaixin notes that while China\u2019s retail sales growth slowed to 0.4% year-on-year in October, well below already-low market forecasts, car sales remained the biggest drag, falling 21.4% from a year earlier. Cars accounted for 7.8% of retail sales in January-October, down from 9.9% for all of 2025. Excluding cars, retail sales rose 2.5% last month, still very low given GDP growth of 4.5%, and also slowing from September.\nhttps://t.co/F2whN9nfSl",
+   "url": "https://x.com/michaelxpettis/status/2122558847197876441"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2122361005917237722",
+   "created_at": "2026-11-16T16:07:51.000Z",
+   "edit_history_tweet_ids": [
+    "2122361013236367397"
+   ],
+   "id": "2122361013236367397",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 12,
+    "impression_count": 8336,
+    "like_count": 76,
+    "quote_count": 0,
+    "reply_count": 2,
+    "retweet_count": 7
+   },
+   "referenced_tweets": [
+    {
+     "id": "2122361009792839794",
+     "type": "replied_to"
+    }
+   ],
+   "text": "3/7\nWhen the rest of the world increases its acquisition of US assets, this must result \u2013 almost by definition \u2013 in an equivalent increase in the both the US capital account surplus and its current account deficit.",
+   "url": "https://x.com/michaelxpettis/status/2122361013236367397"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2122361005917237722",
+   "created_at": "2026-11-16T16:07:53.000Z",
+   "edit_history_tweet_ids": [
+    "2122361022082330683"
+   ],
+   "id": "2122361022082330683",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 12,
+    "impression_count": 9125,
+    "like_count": 76,
+    "quote_count": 0,
+    "reply_count": 1,
+    "retweet_count": 6
+   },
+   "referenced_tweets": [
+    {
+     "id": "2122361018940821796",
+     "type": "replied_to"
+    }
+   ],
+   "text": "6/7\nBecause few mainstream American economists understand the global balance of payments, they find it very hard to understand how a change in the investment decision of foreigners could possibly force a change in the structure of the US economy, and so they typically assume...",
+   "url": "https://x.com/michaelxpettis/status/2122361022082330683"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2122361005917237722",
+   "created_at": "2026-11-16T16:07:53.000Z",
+   "edit_history_tweet_ids": [
+    "2122361018940821796"
+   ],
+   "id": "2122361018940821796",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 9,
+    "impression_count": 6855,
+    "like_count": 70,
+    "quote_count": 4,
+    "reply_count": 3,
+    "retweet_count": 8
+   },
+   "referenced_tweets": [
+    {
+     "id": "2122361015748730956",
+     "type": "replied_to"
+    }
+   ],
+   "text": "5/7\nIf the US were a developing economy in which desired US investment were constrained by scarce capital, it might adjust with a rise in investment. If not, it must adjust with a rise either in US unemployment or (more likely) a rise in US household or fiscal debt).",
+   "url": "https://x.com/michaelxpettis/status/2122361018940821796"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2122361005917237722",
+   "created_at": "2026-11-16T16:07:52.000Z",
+   "edit_history_tweet_ids": [
+    "2122361015748730956"
+   ],
+   "id": "2122361015748730956",
+   "lang": "en",
+   "note_tweet": {
+    "text": "But because every country's external imbalances must be perfectly consistent with its internal imbalance at all times, it must also result in an adjustment in the US economy, i.e. the gap between domestic investment and domestic saving must rise regardless of domestic American preferences."
+   },
+   "public_metrics": {
+    "bookmark_count": 10,
+    "impression_count": 7371,
+    "like_count": 67,
+    "quote_count": 0,
+    "reply_count": 1,
+    "retweet_count": 6
+   },
+   "referenced_tweets": [
+    {
+     "id": "2122361013236367397",
+     "type": "replied_to"
+    }
+   ],
+   "text": "But because every country's external imbalances must be perfectly consistent with its internal imbalance at all times, it must also result in an adjustment in the US economy, i.e. the gap between domestic investment and domestic saving must rise regardless of domestic American preferences.",
+   "url": "https://x.com/michaelxpettis/status/2122361015748730956"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2123670813358309440",
+   "created_at": "2026-11-20T06:52:34.000Z",
+   "edit_history_tweet_ids": [
+    "2123670821415866827"
+   ],
+   "id": "2123670821415866827",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 6,
+    "impression_count": 4448,
+    "like_count": 49,
+    "quote_count": 1,
+    "reply_count": 0,
+    "retweet_count": 5
+   },
+   "referenced_tweets": [
+    {
+     "id": "2123670818186031174",
+     "type": "replied_to"
+    }
+   ],
+   "text": "4/4\nChina has too few productive jobs and stagnant wage growth, and yet its growth is mostly coming at the further expense of jobs. This tells you how distorted the cost of capital must be in China, and why investment misallocation has been such an issue.",
+   "url": "https://x.com/michaelxpettis/status/2123670821415866827"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2124401141987607019",
+   "created_at": "2026-11-22T07:14:37.000Z",
+   "edit_history_tweet_ids": [
+    "2124401144927523191"
+   ],
+   "id": "2124401144927523191",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 5,
+    "impression_count": 5075,
+    "like_count": 44,
+    "quote_count": 0,
+    "reply_count": 2,
+    "retweet_count": 6
+   },
+   "referenced_tweets": [
+    {
+     "id": "2124401141987607019",
+     "type": "replied_to"
+    }
+   ],
+   "text": "2/2\nWith the slowdown in Q3, this was probably inevitable. As we've long known, the purpose of government construction projects is less to serve the needs of the underlying economy and more to achieve the politically-determined GDP growth target.",
+   "url": "https://x.com/michaelxpettis/status/2124401144927523191"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2122558847197876441",
+   "created_at": "2026-11-17T05:13:59.000Z",
+   "edit_history_tweet_ids": [
+    "2122558849739546927"
+   ],
+   "id": "2122558849739546927",
+   "lang": "en",
+   "public_metrics": {
+    "bookmark_count": 3,
+    "impression_count": 5178,
+    "like_count": 38,
+    "quote_count": 0,
+    "reply_count": 1,
+    "retweet_count": 2
+   },
+   "referenced_tweets": [
+    {
+     "id": "2122558847197876441",
+     "type": "replied_to"
+    }
+   ],
+   "text": "2/3\nA few years ago, when in order to boost consumption local governments in China instituted with great fanfare their various consumer voucher programs, including for car purchases, skeptics in China and abroad worried that the only way this would boost consumption is by",
+   "url": "https://x.com/michaelxpettis/status/2122558849739546927"
+  },
+  {
+   "author_id": "917683048782503937",
+   "conversation_id": "2122558847197876441",
+   "created_at": "2026-11-17T05:14:00.000Z",
+   "edit_history_tweet_ids": [
+    "2122558852214210788"
+   ],
+   "id": "2122558852214210788",
+   "lang": "en",
+   "note_tweet": {
+    "text": "3/3\nThe bad news is that for all their attempts to rebalance, policymakers have been wholly unable to do so (almost certainly because of its impact on manufacturing competitiveness).\n\nThe good news, however, is that the reality of the decline in the consumption share of GDP may not be as bad as the data suggest, mainly because of the impact of consumer vouchers on moving consumption forward. This week's October data release was bad, and it is clear that consumption growth continues to lag the growth in production, but at least part of the decline reflects previous policies rather than structural constraints."
+   },
+   "public_metrics": {
+    "bookmark_count": 2,
+    "impression_count": 4480,
+    "like_count": 27,
+    "quote_count": 0,
+    "reply_count": 0,
+    "retweet_count": 1
+   },
+   "referenced_tweets": [
+    {
+     "id": "2122558849739546927",
+     "type": "replied_to"
+    }
+   ],
+   "text": "3/3\nThe bad news is that for all their attempts to rebalance, policymakers have been wholly unable to do so (almost certainly because of its impact on manufacturing competitiveness).\n\nThe good news, however, is that the reality of the decline in the consumption share of GDP may not be as bad as the data suggest, mainly because of the impact of consumer vouchers on moving consumption forward. This week's October data release was bad, and it is clear that consumption growth continues to lag the growth in production, but at least part of the decline reflects previous policies rather than structural constraints.",
+   "url": "https://x.com/michaelxpettis/status/2122558852214210788"
   }
  ],
  "includes": {
@@ -219,56 +599,6 @@
     "id": "917683048782503937",
     "name": "Michael Pettis",
     "username": "michaelxpettis"
-   },
-   {
-    "id": "917683048782503937",
-    "name": "Michael Pettis",
-    "username": "michaelxpettis"
-   },
-   {
-    "id": "917683048782503937",
-    "name": "Michael Pettis",
-    "username": "michaelxpettis"
-   },
-   {
-    "id": "917683048782503937",
-    "name": "Michael Pettis",
-    "username": "michaelxpettis"
-   },
-   {
-    "id": "917683048782503937",
-    "name": "Michael Pettis",
-    "username": "michaelxpettis"
-   },
-   {
-    "id": "917683048782503937",
-    "name": "Michael Pettis",
-    "username": "michaelxpettis"
-   },
-   {
-    "id": "917683048782503937",
-    "name": "Michael Pettis",
-    "username": "michaelxpettis"
-   },
-   {
-    "id": "917683048782503937",
-    "name": "Michael Pettis",
-    "username": "michaelxpettis"
-   },
-   {
-    "id": "917683048782503937",
-    "name": "Michael Pettis",
-    "username": "michaelxpettis"
-   },
-   {
-    "id": "332617373",
-    "name": "Mohamed A. El-Erian",
-    "username": "elerianm"
-   },
-   {
-    "id": "18856867",
-    "name": "zerohedge",
-    "username": "zerohedge"
    }
   ]
  }
