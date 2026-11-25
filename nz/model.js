@@ -1,5 +1,5 @@
 // NZ Economy Explorer: data loading, linked annual model, charts. No backend.
-const IDS=['migration','unemployment','wages','work_visas','current_account','trade_balance','terms_of_trade','fx','gdp_per_capita','mortgage','ocr','housing_credit','house_prices','meta'];
+const IDS=['migration','unemployment','wages','work_visas','current_account','trade_balance','terms_of_trade','fx','gdp_per_capita','capital_efficiency','mortgage','ocr','housing_credit','house_prices','meta'];
 const END=2031.0,D={};
 const t=p=>{const[y,m]=p.split('-').map(Number);return y+(m-0.5)/12};
 const last=a=>a[a.length-1];
@@ -186,6 +186,7 @@ function snapshot(){const r=[];const L=(k,s)=>last(D[k].series[s]);const fx=D.fx
  r.push(['Goods terms of trade, q/q',L('terms_of_trade','Quarterly % change')[0]+' qtr',sg(L('terms_of_trade','Quarterly % change')[1])+'%',D.terms_of_trade]);
  r.push(['Real GDP per head, q/q',L('gdp_per_capita','q/q % change')[0]+' qtr',sg(L('gdp_per_capita','q/q % change')[1])+'%',D.gdp_per_capita]);
  const W=D.work_visas.series;r.push(['Work-visa applications approved',last(W['Approved, month (current FY)'])[0]+' (month)',fmt(last(W['Approved, month (current FY)'])[1],0),D.work_visas]);
+ const CE=D.capital_efficiency.series['NZ (Stats NZ, Mar yrs)'];r.push(['Capital efficiency (5-yr rolling, 1/ICOR)',last(CE)[0]+' (5-yr Mar)',fmt(last(CE)[1],3),D.capital_efficiency]);
  document.getElementById('snap').innerHTML='<tr><th>Indicator</th><th>Period</th><th>Value</th><th>Source</th></tr>'+r.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td><td>${x[2]}</td><td class="m"><a href="${x[3].release_url}">${x[3].release||'source'}</a></td></tr>`).join('')}
 
 function thesis(){const H=hist();
@@ -208,10 +209,33 @@ function sources(){const ul=document.getElementById('srcs');for(const k of IDS.s
  for(const f of (D.meta.failed_last_run||[]))g.push('Last refresh failed for '+f.step+' (kept previous data): '+f.error);
  document.getElementById('gaps').innerHTML=g.map(x=>`<li>${x}</li>`).join('');document.getElementById('built').textContent='Data last refreshed '+D.meta.built+'.'}
 
+
+function buildCapEffChart(){
+ const d=D.capital_efficiency,S=d.series,box=document.getElementById('charts');
+ const wbLink1='https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG';
+ const wbLink2='https://data.worldbank.org/indicator/NE.GDI.FTOT.ZS';
+ const wbDate=d.release2&&d.release2.release_date?new Date(d.release2.release_date+'T00:00').toLocaleDateString('en-NZ',{day:'numeric',month:'short',year:'numeric'}):'n/a';
+ const snzDate=d.release_date?new Date(d.release_date+'T00:00').toLocaleDateString('en-NZ',{day:'numeric',month:'short',year:'numeric'}):'n/a';
+ box.insertAdjacentHTML('beforeend',`<div class="card full" id="card_capeff"><h3>Capital efficiency: 5-year rolling real GDP growth ÷ GFCF share of GDP (inverse ICOR)</h3><div class="cw"><canvas id="c_capeff"></canvas></div><p class="cite">Method: 5-yr mean real GDP growth ÷ 5-yr mean nominal GFCF (% GDP). Higher = more output growth per unit invested. Negative-growth years stay defined (ICOR diverges). NZ Stats NZ is year ended March (to 2025–26, 2014–26 revised); World Bank is annual (NZL, USA, CHN to 2024; AUS to 2025; WB indexes NZ Mar-yr t/t+1 as t). Sources: <a href="${d.release_url}">${d.release}</a> (${snzDate}); World Bank WDI <a href="${wbLink1}">GDP growth</a> &amp; <a href="${wbLink2}">GFCF % GDP</a> (${wbDate}).</p></div>`);
+ const pt=(s,lbl)=>s.filter(p=>+p[0].slice(0,4)>=1983).map(p=>{const y=+p[0].slice(0,4),m=p[0].slice(5,7);return{x:t(p[0]),y:p[1],lbl:m=='03'?`${y-4}–${String(y).slice(2)} Mar`:`${y-4}–${String(y).slice(2)}`}});
+ const dsList=[
+  ds('NZ (Stats NZ, Mar yrs)',pt(S['NZ (Stats NZ, Mar yrs)']),C.k,0,{borderWidth:2.6}),
+  ds('NZ (World Bank)',pt(S['NZ (World Bank)']),'#666',0,{borderDash:[5,4],borderWidth:1.8}),
+  ds('US (World Bank)',pt(S['US (World Bank)']),C.b,0,{borderWidth:2.2}),
+  ds('China (World Bank)',pt(S['China (World Bank)']),C.r,0,{borderWidth:2.2}),
+  ds('Australia (World Bank)',pt(S['Australia (World Bank)']),C.g,0,{borderWidth:2.2})
+ ];
+ CH['c_capeff']=new Chart(document.getElementById('c_capeff'),{type:'line',data:{datasets:dsList},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false,axis:'x'},
+  plugins:{legend:{labels:{boxWidth:12,font:{size:10}}},shade:false,tooltip:{callbacks:{title:items=>items.length?items[0].raw.lbl:'',label:i=>`${i.dataset.label}: ${fmt(i.parsed.y,3)} (${i.raw.lbl})`}}},
+  scales:{x:{type:'linear',min:1983,max:2027,ticks:{stepSize:5,callback:v=>Number.isInteger(v)&&v>=1985&&v<=2025?"'"+String(v).slice(2):'',font:{size:10},maxRotation:0,autoSkip:false},grid:{color:'#f0f0f0'}},
+   y:{title:{display:true,text:'efficiency (1 / ICOR)',font:{size:10}},ticks:{font:{size:10}},grid:{color:c=>c.tick&&c.tick.value===0?'#bbb':'#f0f0f0'}}}}});
+}
+
 Promise.all(IDS.map(k=>fetch('data/'+k+'.json').then(r=>r.json()).then(j=>D[k]=j))).then(()=>{
  base();const box=document.getElementById('charts');
  for(const[id,title,,keys,,,cls]of CHARTS)box.insertAdjacentHTML('beforeend',`<div class="card ${cls||''}"><h3>${title}</h3><div class="cw"><canvas id="${id}"></canvas></div><p class="cite">Source: ${keys.map(k=>`<a href="${D[k].release_url}">${D[k].release}</a>`).join('; ')}</p></div>`);
  for(const[id,,yl,,,y2]of CHARTS)mk(id,yl,y2);
+ buildCapEffChart();
  buildControls();snapshot();thesis();sources();render();
  document.getElementById('reset').onclick=()=>{for(const k in DEF){V[k]=DEF[k];document.getElementById('i_'+k).value=DEF[k]}for(const k in EDEF){E[k]=EDEF[k];document.getElementById('i_e_'+k).value=EDEF[k]}render()};
 }).catch(e=>{document.getElementById('charts').textContent='Failed to load data: '+e;console.error(e)});

@@ -45,8 +45,8 @@ details.assm summary{cursor:pointer;font-weight:600;font-size:.88rem;margin:6px 
 #drv{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px 20px}#drv small a{color:#777}
 @media(max-width:900px){#drv{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){#drv{grid-template-columns:minmax(0,1fr)}}
-.charts{grid-template-columns:repeat(2,minmax(0,1fr))}.charts .wide{grid-column:1/-1}
-@media(max-width:820px){.charts{grid-template-columns:minmax(0,1fr)}.charts .wide{grid-column:auto}}
+.charts{grid-template-columns:repeat(2,minmax(0,1fr))}.charts .wide,.charts .full{grid-column:1/-1}
+@media(max-width:820px){.charts{grid-template-columns:minmax(0,1fr)}.charts .wide,.charts .full{grid-column:auto}}
 details.box{background:#fff;border:1px solid #e3e3e3;border-radius:12px;padding:10px 16px;margin-top:14px}details.box>summary{cursor:pointer;font-weight:600;font-size:.9rem}
 #adjm td,#adjm th{padding:4px 6px}
 .lay{margin-top:10px}.lay .side{margin-bottom:14px}.tag{margin:0}
@@ -55,10 +55,10 @@ details.box{background:#fff;border:1px solid #e3e3e3;border-radius:12px;padding:
  .lay{display:grid;grid-template-columns:280px minmax(0,1fr);gap:14px;align-items:start}
  .lay .side{position:sticky;top:10px;height:calc(100vh - 20px);overflow:auto;margin:0;padding:14px}
  #drv{grid-template-columns:minmax(0,1fr);gap:6px}
- .charts{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.charts .wide{grid-column:auto}
+ .charts{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.charts .wide{grid-column:auto}.charts .full{grid-column:1/-1}
  .charts .card{padding:8px 10px}.charts h3{font-size:.82rem;margin:0 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
- .cw{height:calc(50vh - 105px);min-height:200px}
- .charts .cite{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;font-size:.68rem}}
+ .cw{height:calc(50vh - 105px);min-height:200px}.charts .full .cw{height:260px}
+ .charts .cite{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;font-size:.68rem}.charts .full .cite{white-space:normal}}
 #asm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 20px}
 @media(max-width:1000px){#asm{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){#asm{grid-template-columns:minmax(0,1fr)}}

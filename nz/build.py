@@ -75,14 +75,21 @@ def release_info(link):
     return dict(_rel[url])
 
 
+_csv_cache = {}
 def stats_csv(pattern, member=None):
+    key = (pattern, member)
+    if key in _csv_cache:
+        rows, rel = _csv_cache[key]
+        return rows, dict(rel)
     link = stats_link(pattern)
     b = get(link)
     if member:
         z = zipfile.ZipFile(io.BytesIO(b))
         name = [n for n in z.namelist() if re.search(member, n)][0]
         b = z.read(name)
-    return list(csv.DictReader(io.StringIO(b.decode('utf-8-sig', 'replace')))), release_info(link)
+    res = (list(csv.DictReader(io.StringIO(b.decode('utf-8-sig', 'replace')))), release_info(link))
+    _csv_cache[key] = res
+    return res[0], dict(res[1])
 
 
 def series(rows, ref, start=START):
@@ -350,8 +357,99 @@ def build_visas():
           note='Monthly figures are only published for the current financial year; 2015/16 and earlier are not in this pack. Latest FY is partial.'))
 
 
+
+
+# ---------------- Capital efficiency (Stats NZ + World Bank WDI) ----------------
+WB_GROWTH_URL = 'https://api.worldbank.org/v2/country/NZL;USA;CHN;AUS/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=2000'
+WB_GFCF_URL = 'https://api.worldbank.org/v2/country/NZL;USA;CHN;AUS/indicator/NE.GDI.FTOT.ZS?format=json&per_page=2000'
+
+def _roll5(pts_g_sh):
+    """pts_g_sh: sorted list of (year_int, period_str, real_gdp_growth_pct, gfcf_pct_gdp).
+    Returns [[period_str, round(mean_5y_growth / mean_5y_gfcf_share, 4)], ...].
+    """
+    out = []
+    for k in range(4, len(pts_g_sh)):
+        w = pts_g_sh[k - 4:k + 1]
+        if w[-1][0] - w[0][0] != 4:
+            continue
+        ag = sum(x[2] for x in w) / 5.0
+        ai = sum(x[3] for x in w) / 5.0
+        out.append([w[-1][1], round(ag / ai, 4)])
+    return out
+
+
+def build_capital_efficiency():
+    rows, rel = stats_csv(r'^gross-domestic-product-.*-quarter\.csv$')
+    def snz_map(ref):
+        return {r['Period']: float(r['Data_value']) for r in rows
+                if r['Series_reference'] == ref and r['Data_value'] not in ('', None) and r['Period'].endswith('.03')}
+    nom_gdp = snz_map('SNEA.SG00NAC00B15')   # Nominal GDP(E), March years ($m)
+    nom_gfcf = snz_map('SNEA.SG02NAC00P51Z') # Nominal GFCF, March years ($m)
+    real_gdp = snz_map('SNEA.SG00RAC00B01')  # Real GDP(P), chain volume, March years ($m)
+
+    snz_yrs = sorted(int(p[:4]) for p in real_gdp)
+    snz_ann = []
+    for y in snz_yrs:
+        p, p0 = f'{y}.03', f'{y - 1}.03'
+        if p0 in real_gdp and p in nom_gdp and p in nom_gfcf:
+            g = (real_gdp[p] / real_gdp[p0] - 1.0) * 100.0
+            sh = (nom_gfcf[p] / nom_gdp[p]) * 100.0
+            snz_ann.append((y, f'{y}-03', g, sh))
+
+    wb_g = json.loads(get(WB_GROWTH_URL, binary=False))
+    wb_i = json.loads(get(WB_GFCF_URL, binary=False))
+    wb_updated = wb_g[0].get('lastupdated')
+    g_map = {(r['countryiso3code'], int(r['date'])): r['value'] for r in wb_g[1] if r['value'] is not None}
+    i_map = {(r['countryiso3code'], int(r['date'])): r['value'] for r in wb_i[1] if r['value'] is not None}
+
+    wb_ann = {}
+    for code in ('NZL', 'USA', 'CHN', 'AUS'):
+        yrs = sorted(y for (cc, y) in g_map if cc == code and (cc, y) in i_map)
+        wb_ann[code] = [(y, f'{y}-12', g_map[(code, y)], i_map[(code, y)]) for y in yrs]
+
+    s_out = {
+        'NZ (Stats NZ, Mar yrs)': _roll5(snz_ann),
+        'NZ (World Bank)': _roll5(wb_ann['NZL']),
+        'US (World Bank)': _roll5(wb_ann['USA']),
+        'China (World Bank)': _roll5(wb_ann['CHN']),
+        'Australia (World Bank)': _roll5(wb_ann['AUS']),
+        'NZ (Stats NZ, 1-yr)': [[p, round(g / sh, 4)] for _, p, g, sh in snz_ann],
+        'NZ (World Bank, 1-yr)': [[p, round(g / sh, 4)] for _, p, g, sh in wb_ann['NZL']],
+        'US (World Bank, 1-yr)': [[p, round(g / sh, 4)] for _, p, g, sh in wb_ann['USA']],
+        'China (World Bank, 1-yr)': [[p, round(g / sh, 4)] for _, p, g, sh in wb_ann['CHN']],
+        'Australia (World Bank, 1-yr)': [[p, round(g / sh, 4)] for _, p, g, sh in wb_ann['AUS']],
+    }
+
+    write('capital_efficiency', dict(
+        title='Capital efficiency (5-year rolling average, inverse ICOR)',
+        unit='real GDP growth % per % of GDP invested',
+        freq='annual (Stats NZ: year ended March; World Bank: annual)',
+        source=(
+            'Stats NZ GDP June 2026 quarter: real GDP(P) chain-volume (SNEA.SG00RAC00B01), '
+            'nominal GDP(E) (SNEA.SG00NAC00B15), nominal GFCF (SNEA.SG02NAC00P51Z), March years 1979–2026; '
+            'World Bank WDI: real GDP growth % (NY.GDP.MKTP.KD.ZG) and GFCF % of GDP (NE.GDI.FTOT.ZS) '
+            'for NZL (1970–2024), USA (1970–2024), CHN (1961–2024), AUS (1961–2025). '
+            '5-yr rolling efficiency = (5-yr mean real GDP growth) / (5-yr mean GFCF % of GDP) = 1 / ICOR.'
+        ),
+        **rel,
+        release2={
+            'release': 'World Bank WDI (NY.GDP.MKTP.KD.ZG & NE.GDI.FTOT.ZS)',
+            'release_url': 'https://data.worldbank.org/indicator/NE.GDI.FTOT.ZS',
+            'release_date': wb_updated,
+        },
+        series=s_out,
+        note=(
+            'Capital efficiency (= 1 / ICOR) stays finite and defined when real GDP growth is zero or negative '
+            '(unlike ICOR, which diverges or flips sign). World Bank indexes NZ March-ended year t/t+1 as year t '
+            '(so WB 2024 = Stats NZ year ended March 2025) and Australian June-ended year t-1/t as year t. '
+            'World Bank 2025 GFCF % of GDP is not yet published for NZL, USA, or CHN. '
+            'Stats NZ marks 2014.03–2026.03 GDP and 2015.03–2026.03 GFCF as REVISED.'
+        ),
+    ))
+
+
 STEPS = [('migration', build_migration), ('wages+unemployment', build_wages), ('bop', build_bop), ('terms_of_trade', build_tot),
-         ('gdp_per_capita', build_gdp), ('rbnz', build_rbnz), ('work_visas', build_visas)]
+         ('gdp_per_capita', build_gdp), ('capital_efficiency', build_capital_efficiency), ('rbnz', build_rbnz), ('work_visas', build_visas)]
 
 if __name__ == '__main__':
     os.makedirs(OUT, exist_ok=True)
@@ -365,7 +463,11 @@ if __name__ == '__main__':
             failed.append({'step': name, 'error': str(e)[:300]}); print('FAIL', name, e)
     meta_p = os.path.join(OUT, 'meta.json')
     meta = json.load(open(meta_p)) if os.path.exists(meta_p) else {}
-    meta.update({'built': TODAY, 'failed_last_run': failed,
-                 'gaps': ['Work-visa approvals: monthly history before the current financial year and anything before 2016/17 are not in the INZ statistics pack (the Migration Data Explorer is an interactive app with no stable file URL).']})
+    if not only: meta['built'] = TODAY
+    meta.update({'failed_last_run': failed,
+                 'gaps': [
+                     'Work-visa approvals: monthly history before the current financial year and anything before 2016/17 are not in the INZ statistics pack (the Migration Data Explorer is an interactive app with no stable file URL).',
+                     'Capital efficiency (World Bank WDI): 2025 GFCF % of GDP (NE.GDI.FTOT.ZS) is not yet published for NZL, USA, or CHN (series end at 2024; AUS extends to 2025). Stats NZ official March-year series extends to year ended March 2026 (2014.03–2026.03 marked REVISED).'
+                 ]})
     json.dump(meta, open(meta_p, 'w'), indent=1)
     sys.exit(1 if failed else 0)

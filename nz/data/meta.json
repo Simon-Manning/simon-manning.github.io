@@ -2,6 +2,7 @@
  "built": "2026-11-19",
  "failed_last_run": [],
  "gaps": [
-  "Work-visa approvals: monthly history before the current financial year and anything before 2016/17 are not in the INZ statistics pack (the Migration Data Explorer is an interactive app with no stable file URL)."
+  "Work-visa approvals: monthly history before the current financial year and anything before 2016/17 are not in the INZ statistics pack (the Migration Data Explorer is an interactive app with no stable file URL).",
+  "Capital efficiency (World Bank WDI): 2025 GFCF % of GDP (NE.GDI.FTOT.ZS) is not yet published for NZL, USA, or CHN (series end at 2024; AUS extends to 2025). Stats NZ official March-year series extends to year ended March 2026 (2014.03\u20132026.03 marked REVISED)."
  ]
 }
